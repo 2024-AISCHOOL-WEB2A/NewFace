@@ -115,9 +115,10 @@
     display: flex;
     gap: 20px; /* short-item 간의 일정한 간격을 설정 */
     width: 90%;
-    overflow-x: auto; /* 수평 스크롤 활성화 */
+    overflow-x: hidden; /* 수평 스크롤은 숨기기 */
     scroll-behavior: smooth; /* 부드러운 스크롤 */
     z-index: 0; /* wrapper의 z-index를 낮게 설정 */
+    transition: transform 0.5s ease-in-out; /* 부드러운 전환 효과 */
 }
 /* 스크롤바 숨기기 */
 .shorts-wrapper::-webkit-scrollbar {

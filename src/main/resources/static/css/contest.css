@@ -2,7 +2,6 @@
 .contest-section {
     text-align: center;
     padding: 20px;
-    background: linear-gradient(to right, #ffb6c1, #d8b2f1);
     font-family: 'Maplestory Bold', sans-serif; /* Maplestory Bold 폰트 적용 */
 }
 
@@ -111,4 +110,53 @@
 .prize:hover {
     transform: scale(1.05); /* Hover시 살짝 확대 */
     transition: transform 0.3s ease;
+}
+
+/* Masonry Layout을 위한 섹션 */
+.masonry-section {
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+/* Masonry Grid 설정 */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 최소 300px 크기 */
+    grid-auto-rows: 300px; /* 기본 행 높이 */
+    gap: 25px; /* 그리드 항목 사이 간격 */
+}
+
+/* 기본 아이템 스타일 */
+.masonry-item {
+    background-color: #b0e0e6;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 이미지를 그리드 크기에 맞추기 위해 */
+    position: relative;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* 이미지가 잘리지 않도록 */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 세로로 긴 항목 스타일 */
+.masonry-item.tall {
+    grid-row: span 2; /* 세로로 두 행 차지 */
+}
+
+/* 가로로 긴 항목 스타일 */
+.masonry-item.wide {
+    grid-column: span 2; /* 가로로 두 열 차지 */
+}
+
+/* 호버 효과 */
+.masonry-item:hover {
+    transform: scale(1.05); /* 호버 시 이미지를 살짝 확대 */
 }

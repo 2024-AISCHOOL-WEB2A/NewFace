@@ -39,21 +39,30 @@ body {
 .main-header nav {
     background-color: white;
     border-radius: 15px;
-    padding: 10px 20px;
+    padding: 10px 30px;
 }
 
 .main-header nav ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 50px;
 }
 
 .main-header nav ul li a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    color: #baade6;
     font-size: 1.2vw;
     padding: 10px;
+}
+
+.main-header nav ul li a.active {
+    color: #333; /* 현재 페이지의 링크 색상 변경 */
+    font-weight: bold; /* 글씨 두껍게 */
+}
+
+
+.main-header nav ul li:hover {
+    transform: scale(1.3); /* 글씨가 10% 커지게 */
 }
 
 /* Sign-in Section */
@@ -72,8 +81,11 @@ body {
     padding: 10px 15px;
     cursor: pointer;
     font-family: 'Maplestory Bold', sans-serif; /* Maplestory 폰트 적용 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* 호버 시 색상 전환 효과 추가 */
 }
-
+#signUpButton:hover {
+    transform: scale(1.1); /* 글씨가 10% 커지게 */
+}
 /* Login Button Styles */
 #loginButton {
     background-color: white; /* 흰색 배경 */
@@ -84,6 +96,11 @@ body {
     border-radius: 10px; /* 둥근 버튼 */
     cursor: pointer;
     font-family: 'Maplestory Bold', sans-serif; /* Maplestory 폰트 적용 */
+    transition: background-color 0.3s ease, color 0.3s ease; /* 호버 시 색상 전환 효과 추가 */
+}
+
+#loginButton:hover {
+    transform: scale(1.1); /* 글씨가 10% 커지게 */
 }
 
 /* Login 상태 */
