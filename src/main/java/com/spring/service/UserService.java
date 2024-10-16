@@ -9,6 +9,8 @@ public interface UserService {
     boolean login(User user);
 
     User getUserByUserId(String userId);
+    
+    boolean isUserIdExists(String userId);
 
 }
 
