@@ -1,48 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Face - Contest</title>
-    <link rel="stylesheet" href="resources/static/css/styles.css"> <!-- 기존의 header와 footer 스타일 포함 -->
-    <link rel="stylesheet" href="resources/static/css/contest.css"> <!-- contest 페이지 스타일 포함 -->
+    <title>New Face - Virtual Idol Experience</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contest.css">
 </head>
-
 <body>
 
     <!--header-->
-    <header class="main-header">
-        <div class="logo">
-            <img src="resources/static/image/logo.png" alt="New Face Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Start Virtual</a></li>
-                <li><a href="shorts.html">Shorts</a></li>
-                <li><a href="contest.html">Contest</a></li>
-            </ul>
-        </nav>
-        <div class="sign-in">
-            <button id="signUpButton">Sign Up</button>
-            <button id="loginButton">Login</button>
-            <span id="greeting" style="display: none;">000님 안녕하세요</span>
-        </div>
-    </header>
+    <jsp:include page="common/header.jsp" />
 
     <!-- Contest Gallery Section -->
     <main>
         <section class="contest-section">
             <div class="contest-container">
                 <div class="contest-header">
-                    <img src="resources/static/image/youtube.png" alt="Contest Logo" style="width: 40px;">
+                    <img src="image/youtube.png" alt="Contest Logo" style="width: 40px;">
                     <span>#Contest</span>
                 </div>
 
                 <div class="prize-section">
                     <div class="prize">
-                        <img class="medal second-place" src="resources/static/image/2nd.png" alt="2nd Place">
+                        <img class="medal second-place" src="image/2nd.png" alt="2nd Place">
                         <div class="entry-image-placeholder" id="second-entry">
                             <!-- 여기 나중에 이미지 추가 가능 -->
                         </div>
@@ -50,7 +33,7 @@
                     </div>
 
                     <div class="prize">
-                        <img class="medal first-place" src="resources/static/image/1st.png" alt="1st Place">
+                        <img class="medal first-place" src="image/1st.png" alt="1st Place">
                         <div class="entry-image-placeholder" id="first-entry">
                             <!-- 여기 나중에 이미지 추가 가능 -->
                         </div>
@@ -58,7 +41,7 @@
                     </div>
 
                     <div class="prize">
-                        <img class="medal third-place" src="resources/static/image/3rd.png" alt="3rd Place">
+                        <img class="medal third-place" src="image/3rd.png" alt="3rd Place">
                         <div class="entry-image-placeholder" id="third-entry">
                             <!-- 여기 나중에 이미지 추가 가능 -->
                         </div>
@@ -134,11 +117,7 @@
     </main>
 
     <!-- footer 재사용 -->
-    <footer class="project-footer">
-        <div class="footer-copyright">
-            <p>&copy; 2024 Your Project Name. All rights reserved.</p>
-        </div>
-    </footer>
+    <jsp:include page="common/footer.jsp" />
 </body>
 
 </html>

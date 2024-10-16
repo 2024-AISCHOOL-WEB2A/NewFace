@@ -4,30 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Face - Shorts Detail</title>
-    <link rel="stylesheet" href="resources/static/css/styles.css"> <!-- 기존의 header와 footer 스타일 포함 -->
-    <link rel="stylesheet" href="resources/static/css/shorts-detail.css">  <!-- 별도의 shorts 상세 페이지 스타일 포함 -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- 기존의 header와 footer 스타일 포함 -->
+    <link rel="stylesheet" href="css/shorts-detail.css">  <!-- 별도의 shorts 상세 페이지 스타일 포함 -->
 </head>
 <body>
 
     <!--header-->
-    <header class="main-header">
-        <div class="logo">
-            <img src="resources/static/image/logo.png" alt="New Face Logo"> 
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Start Virtual</a></li>
-                <li><a href="shorts.html">Shorts</a></li>
-                <li><a href="#">Contest</a></li>
-            </ul>
-        </nav>
-        <div class="sign-in">
-            <button id="signUpButton">Sign Up</button>
-            <button id="loginButton">Login</button>
-            <span id="greeting" style="display: none;">000님 안녕하세요</span>
-        </div>
-    </header>
+    <jsp:include page="common/header.jsp" />
 
     <!-- Main Content -->
     <main class="shorts-detail">

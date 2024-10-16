@@ -10,24 +10,7 @@
 <body>
 
     <!--header-->
-    <header class="main-header">
-        <div class="logo">
-            <img src="resources/static/image/logo.png" alt="New Face Logo"> 
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Start Virtual</a></li>
-                <li><a href="shorts.html">Shorts</a></li>
-                <li><a href="#">Contest</a></li>
-            </ul>
-        </nav>
-        <div class="sign-in">
-            <button id="signUpButton">Sign Up</button>
-            <button id="loginButton">Login</button>
-            <span id="greeting" style="display: none;">000님 안녕하세요</span>
-        </div>
-    </header>
+    <jsp:include page="common/header.jsp" />
 
     <!-- Main Content -->
     <main class="shorts-write-section">
