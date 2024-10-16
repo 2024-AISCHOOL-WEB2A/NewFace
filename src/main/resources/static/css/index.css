@@ -1,0 +1,322 @@
+/* Main Content */
+/* 배경 비디오를 포함한 컨테이너 */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 91vh; /* 높이를 90vh로 설정 */
+    overflow: hidden;
+}
+
+/* 배경 비디오 */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 비디오가 화면에 꽉 차도록 */
+    z-index: 1;
+}
+
+/* 반투명 오버레이 */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.2; /* 불투명도 20% */
+    z-index: 2;
+}
+
+/* 텍스트를 포함한 컨테이너 */
+.text-container {
+    position: absolute;
+    bottom: 20%; /* 아래에서 10% 위치로 설정 */
+    left: 5%; /* 왼쪽에서 5% 위치로 설정 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    color: #541D7A; /* 글씨 색상 */
+    z-index: 3;
+    font-family: 'Maplestory Bold', sans-serif; /* 메이플체 적용 */
+}
+
+/* 텍스트 스타일 */
+.text-container h1 {
+    font-size: 5vw; /* 글씨 크기를 더 크게 */
+    font-weight: bold;
+}
+
+.text-container p {
+    font-size: 1.7vw; /* 글씨 크기를 더 크게 */
+    color: rgb(0, 0, 0); /* 검은색 텍스트 */
+    margin-top: 20px; /* 상단 여백 */
+}
+
+/*--------------------------------------------------------------------------*/
+/* Shorts 섹션 */
+.shorts-section {
+    padding: 30px 50px;
+    background: linear-gradient(to right, #fbc8d4, #baade6);
+    border-radius: 15px;
+    width: 90vw;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Maplestory Bold', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shorts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.shorts-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.shorts-header h2 {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #541D7A;
+}
+
+.more-link {
+    font-size: 1.5vw;
+    color: #541D7A;
+    text-decoration: none;
+}
+
+.shorts-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1; /* wrapper가 버튼 위에 나타나지 않도록 조정 */
+}
+
+.shorts-wrapper {
+    display: flex;
+    gap: 20px; /* short-item 간의 일정한 간격을 설정 */
+    width: 90%;
+    overflow-x: auto; /* 수평 스크롤 활성화 */
+    scroll-behavior: smooth; /* 부드러운 스크롤 */
+    z-index: 0; /* wrapper의 z-index를 낮게 설정 */
+}
+/* 스크롤바 숨기기 */
+.shorts-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera에서 스크롤바 감추기 */
+}
+
+
+.short-item {
+    flex: 0 0 20%;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.short-thumbnail {
+    width: 100%;
+    padding-top: 177.78%; /* 9:16 비율 유지 */
+    background-color: #f3f3f3;
+    border-radius: 10px;
+}
+
+.short-title {
+    margin-top: 10px;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #333;
+}
+
+.short-views {
+    font-size: 1vw;
+    color: #666;
+}
+
+.carousel-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* 버튼을 최상위에 위치 */
+}
+
+.left-button {
+    left: 10px;
+}
+
+.right-button {
+    right: 10px;
+}
+
+.carousel-button img {
+    width: 30px;
+    height: auto;
+}
+
+
+
+/*--------------------------------------*/
+/* Section Divider */
+.contest-section {
+    height: 79vh; /* 부모 섹션의 높이를 뷰포트 높이의 80%로 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 50px;
+    background: linear-gradient(to right, #fbc8d4, #baade6);
+    border-radius: 15px;
+    width: 90vw;
+    margin: 0 auto;
+    font-family: 'Maplestory Bold', sans-serif;
+}
+
+.contest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.contest-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.contest-header h2 {
+    font-size: 2vw;
+    font-weight: bold;
+    color: #541D7A;
+}
+
+.more-link {
+    font-size: 1.5vw;
+    color: #541D7A;
+    text-decoration: none;
+}
+
+/* Contest Gallery */
+.contest-gallery {
+    display: flex;
+    justify-content: center; /* 요소들을 중앙에 배치 */
+    align-items: flex-end; /* 하단 정렬 */
+    width: 100%;
+    height: 100%; /* 부모 높이에 맞추기 */
+    gap: 10px; /* 아이템 간의 간격을 10px로 조정 */
+    padding: 0 10px; /* 좌우 여백 추가 */
+}
+
+
+
+.contest-item {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Second Place */
+.second-place {
+    flex: 0 0 25%; /* 부모의 30% 크기로 설정 */
+}
+
+.second-place .contest-thumbnail {
+    width: 100%; /* 부모의 100% 너비 */
+    height: auto; /* 높이는 자동 */
+    aspect-ratio: 1/1.2; /* 적절한 비율 유지 */
+    background-color: #f3f3f3;
+    border-radius: 10px;
+}
+
+.second-place .medal img {
+    width: 65px; /* 2등 메달 크기 */
+    height: auto;
+}
+
+/* First Place */
+.first-place {
+    flex: 0 0 28%; /* 부모의 40% 크기로 설정 */
+}
+
+.first-place .contest-thumbnail {
+    width: 100%; /* 부모의 100% 너비 */
+    height: auto;
+    aspect-ratio: 1/1.2; /* 적절한 비율 유지 */
+    background-color: #f3f3f3;
+    border-radius: 10px;
+}
+
+.first-place .medal img {
+    width: 70px; /* 1등 메달 크기 */
+    height: auto;
+}
+
+/* Third Place */
+.third-place {
+    flex: 0 0 20%; /* 부모의 20% 크기로 설정 */
+}
+
+.third-place .contest-thumbnail {
+    width: 100%; /* 부모의 100% 너비 */
+    height: auto;
+    aspect-ratio: 1/1.2; /* 적절한 비율 유지 */
+    background-color: #f3f3f3;
+    border-radius: 10px;
+}
+
+.third-place .medal img {
+    width: 60px; /* 3등 메달 크기 */
+    height: auto;
+}
+
+.contest-title {
+    font-size: 1.2vw;
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.medal {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.medal img {
+    height: auto;
+}
+
