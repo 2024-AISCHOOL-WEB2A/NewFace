@@ -41,7 +41,7 @@
                     <img src="image/youtube.png" alt="Shorts Icon" class="shorts-icon">
                     <h2>Shorts</h2>
                 </div>
-                <a href="#" class="more-link">더보기 ></a>
+                <a href="shorts" class="more-link">더보기 ></a>
             </div>
 
             <div class="shorts-carousel">
@@ -106,7 +106,7 @@
                     <img src="image/youtube.png" alt="Contest Icon" class="contest-icon">
                     <h2>Contest</h2>
                 </div>
-                <a href="#" class="more-link">더보기 ></a>
+                <a href="contest" class="more-link">더보기 ></a>
             </div>
         
             <div class="contest-gallery">
