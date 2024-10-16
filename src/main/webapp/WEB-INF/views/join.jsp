@@ -30,11 +30,23 @@
         <div class="logo">
             <img src="image/logo.png" alt="New Face Logo">
         </div>
-        <form action="/join" method="post">
-            <input type="text" name="user_id" placeholder="ID" required>
-            <input type="password" name="user_pw" placeholder="Password" required>
-            <input type="text" name="user_nickname" placeholder="Nickname" required>
-            <input type="email" name="user_email" placeholder="Email" required>
+        
+        <!-- 오류 메시지 표시 -->
+         <c:if test="${not empty error}">
+            <div class="alert alert-danger">${error}</div>
+        </c:if>
+        
+        <!-- 성공 메시지 표시 -->
+        <c:if test="${not empty message}">
+            <div class="alert alert-success">${message}</div>
+        </c:if>
+
+
+        <form action="join" method="post">
+            <input type="text" name="userId" placeholder="ID" required>
+            <input type="password" name="userPw" placeholder="Password" required>
+            <input type="text" name="userNickname" placeholder="Nickname" required>
+            <input type="email" name="userEmail" placeholder="Email" required>
             <input type="submit" value="Join">
         </form>
     </div>

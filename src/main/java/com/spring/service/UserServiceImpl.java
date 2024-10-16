@@ -1,5 +1,7 @@
 package com.spring.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.spring.repository.UserRepository;
@@ -19,6 +21,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void join(User user) {
+        if (user.getUserEmail() == null || user.getUserEmail().isEmpty()) {
+        throw new IllegalArgumentException("이메일은 필수 입력 항목입니다.");
+        }
+        user.setUserSignupDate(LocalDateTime.now());
         userRepository.save(user);
     
     }
