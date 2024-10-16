@@ -8,47 +8,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join - New Face</title>
     <link rel="stylesheet" href="css/join.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <img src="image/logo.png" alt="New Face Logo">
-        </div>
-        <div class="nav-links">
-            <a href="#">HOME</a>
-            <a href="#">Start Virtual</a>
-            <a href="#">#Shorts</a>
-            <a href="#">#Contest</a>
-        </div>
-        <div class="auth-buttons">
-            <button onclick="location.href='/join'">Sign up</button>
-            <button id="loginButton" onclick="location.href='/login'">Log in</button>
-        </div>
-    </div>
+    <!--header-->
+    <jsp:include page="common/header.jsp" />
+
     
-    <div class="container">
-        <div class="logo">
-            <img src="image/logo.png" alt="New Face Logo">
+    <div class="container-wrapper">
+        <div class="container">
+            <div class="logo">
+                <img src="image/logo.png" alt="New Face Logo">
+            </div>
+            
+            <!-- 오류 메시지 표시 -->
+            <c:if test="${not empty error}">
+                <div class="alert alert-danger">${error}</div>
+            </c:if>
+            
+            <!-- 성공 메시지 표시 -->
+            <c:if test="${not empty message}">
+                <div class="alert alert-success">${message}</div>
+            </c:if>
+    
+    
+            <form action="join" method="post">
+                <input type="text" name="userId" placeholder="ID" required>
+                <input type="password" name="userPw" placeholder="Password" required>
+                <input type="text" name="userNickname" placeholder="Nickname" required>
+                <input type="email" name="userEmail" placeholder="Email" required>
+                <input type="submit" value="Join">
+            </form>
         </div>
-        
-        <!-- 오류 메시지 표시 -->
-         <c:if test="${not empty error}">
-            <div class="alert alert-danger">${error}</div>
-        </c:if>
-        
-        <!-- 성공 메시지 표시 -->
-        <c:if test="${not empty message}">
-            <div class="alert alert-success">${message}</div>
-        </c:if>
 
-
-        <form action="join" method="post">
-            <input type="text" name="userId" placeholder="ID" required>
-            <input type="password" name="userPw" placeholder="Password" required>
-            <input type="text" name="userNickname" placeholder="Nickname" required>
-            <input type="email" name="userEmail" placeholder="Email" required>
-            <input type="submit" value="Join">
-        </form>
     </div>
+
+    <!--header-->
+    <jsp:include page="common/sub-footer.jsp" />
+
 </body>
 </html>

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join - New Face</title>
     <link rel="stylesheet" href="css/join.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <title>로그인</title>
     <script>
@@ -22,31 +23,23 @@
 
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <img src="image/logo.png" alt="New Face Logo">
-        </div>
-        <div class="nav-links">
-            <a href="/">HOME</a>
-            <a href="#">Start Virtual</a>
-            <a href="#">#Shorts</a>
-            <a href="#">#Contest</a>
-        </div>
-        <div class="auth-buttons">
-            <button onclick="location.href='/joinForm'">Sign up</button>
-            <button id="loginButton" onclick="location.href='/login'">Log in</button>
-        </div>
-    </div>
+    <!--header-->
+    <jsp:include page="common/header.jsp" />
     
-    <div class="container">
-        <div class="logo">
-            <img src="image/logo.png" alt="New Face Logo">
+    <div class="container-wrapper1 ">
+        <div class="container">
+            <div class="logo">
+                <img src="image/logo.png" alt="New Face Logo">
+            </div>
+            <form action="/login" method="post">
+                <input type="text" name="userId" placeholder="ID" required>
+                <input type="password" name="userPw" placeholder="Password" required>
+                <input type="submit" value="Login">
+            </form>
         </div>
-        <form action="/login" method="post">
-            <input type="text" name="userId" placeholder="ID" required>
-            <input type="password" name="userPw" placeholder="Password" required>
-            <input type="submit" value="Login">
-        </form>
     </div>
+
+    <!--header-->
+    <jsp:include page="common/sub-footer.jsp" />
 </body>
 </html>
