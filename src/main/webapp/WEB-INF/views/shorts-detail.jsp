@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +30,11 @@
         <div class="detail-section">
             <div class="detail-header">
                 <h2>PLAVE (플레이브) - 버추얼 아이돌</h2>
-                <p>조회수 00만회 · 2개월 전</p>
-                <p>MBCKpop</p>
-                <p>#버추얼 아이돌</p>
+                <p>조회수 <span id="views">00만</span>회</span> · <span id="time">2개월 </span>전</p>
+                <p id="channel">MBCKpop</p>
+                <p id="hashtag">#버추얼 아이돌</p>
             </div>
+            
 
             <div class="interaction">
                 <p>내용을 입력해주세요</p>
