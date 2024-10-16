@@ -21,11 +21,23 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void join(User user) {
-        if (user.getUserEmail() == null || user.getUserEmail().isEmpty()) {
+         // 이메일 검사
+    if (user.getUserEmail() == null || user.getUserEmail().isEmpty()) {
         throw new IllegalArgumentException("이메일은 필수 입력 항목입니다.");
-        }
-        user.setUserSignupDate(LocalDateTime.now());
-        userRepository.save(user);
+    }
+    
+    // ID 중복 검사 추가
+    if (userRepository.findByUserId(user.getUserId()) != null) {
+        throw new IllegalArgumentException("이미 사용 중인 아이디입니다.");
+    }
+    
+    // 닉네임 중복 검사 추가 (필요한 경우)
+    if (userRepository.findByUserNickname(user.getUserNickname()) != null) {
+        throw new IllegalArgumentException("이미 사용 중인 닉네임입니다.");
+    }
+    
+    user.setUserSignupDate(LocalDateTime.now());
+    userRepository.save(user);
     
     }
 
@@ -46,6 +58,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUserId(String userId) {
         return userRepository.findByUserId(userId);
+    }
+
+    @Override
+    public boolean isUserIdExists(String userId) {
+        return userRepository.findByUserId(userId) != null;
     }
 
 
