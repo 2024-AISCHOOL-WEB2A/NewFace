@@ -1,0 +1,114 @@
+/* General styles */
+.contest-section {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #ffb6c1, #d8b2f1);
+    font-family: 'Maplestory Bold', sans-serif; /* Maplestory Bold 폰트 적용 */
+}
+
+.contest-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Contest Header 스타일 */
+.contest-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 24px;
+    font-family: 'Maplestory Bold', sans-serif; /* Maplestory Bold 폰트 적용 */
+}
+
+.contest-header img {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Prize Section Styles */
+.prize-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Prize 박스 */
+.prize {
+    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 가운데 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    position: relative;
+    font-family: 'Maplestory Bold', sans-serif; /* Maplestory Bold 폰트 적용 */
+}
+
+.prize .medal {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.prize .second-place {
+    width: 60px;
+}
+
+.prize .first-place {
+    width: 80px;
+}
+
+.prize .third-place {
+    width: 60px;
+}
+
+.entry-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.prize-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Entry 이미지 Placeholder */
+.entry-image-placeholder {
+    width: 80%; /* 가로를 80%로 설정 */
+    aspect-ratio: 1 / 1; /* 1:1 비율 유지 (정사각형) */
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; /* 이미지 아래에 여백 */
+}
+
+
+/* Entry 이미지 Placeholder 안에 이미지가 있을 때의 스타일 */
+.entry-image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Prize 텍스트 */
+.prize-text {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Maplestory Bold', sans-serif; /* Maplestory Bold 폰트 적용 */
+}
+
+/* Hover 효과 */
+.prize:hover {
+    transform: scale(1.05); /* Hover시 살짝 확대 */
+    transition: transform 0.3s ease;
+}

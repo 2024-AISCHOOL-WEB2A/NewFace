@@ -1,0 +1,90 @@
+/* shorts-write.css */
+.shorts-write-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    background: linear-gradient(to right, #fbc8d4, #baade6);
+    border-radius: 15px;
+    width: 90vw;
+    margin: 0 auto;
+    font-family: 'Maplestory Bold', sans-serif; /* 글꼴 적용 */
+}
+
+.thumbnail-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Maplestory Bold', sans-serif; /* 글꼴 적용 */
+}
+
+.thumbnail-preview {
+    width: 350px;
+    height: 350px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.file-input {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Maplestory Bold', sans-serif; /* 글꼴 적용 */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+}
+
+/* 등록하기 버튼을 오른쪽에 배치 */
+.submit-group {
+    display: flex;
+    justify-content: flex-end;  /* 오른쪽 정렬 */
+}
+
+.submit-button {
+    background-color: #ffffff;
+    color: #541d7a;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Maplestory Bold', sans-serif; /* 글꼴 적용 */
+}
+
+.submit-button:hover {
+    background-color: #541d7a;
+    color: #fff;
+}
