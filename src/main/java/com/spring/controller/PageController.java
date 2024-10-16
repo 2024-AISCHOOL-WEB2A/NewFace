@@ -25,4 +25,9 @@ public class PageController {
     public String contest() {
         return "contest";  // contest.jsp 또는 contest.html로 이동
     }
+
+    @GetMapping("/shorts-writer")
+    public String shorts_writer() {
+        return "shorts-writer";  // contest.jsp 또는 contest.html로 이동
+    }
 }

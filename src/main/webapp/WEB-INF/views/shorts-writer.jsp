@@ -1,11 +1,12 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Face - Shorts 게시글 작성</title>
-    <link rel="stylesheet" href="resources/static/css/styles.css"> <!-- 기존의 header와 footer 스타일 포함 -->
-    <link rel="stylesheet" href="resources/static/css/shorts-write.css">  <!-- 별도의 작성 페이지 스타일 포함 -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- 기존의 header와 footer 스타일 포함 -->
+    <link rel="stylesheet" href="css/shorts-write.css">  <!-- 별도의 작성 페이지 스타일 포함 -->
 </head>
 <body>
 
