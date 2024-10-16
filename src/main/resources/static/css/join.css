@@ -1,21 +1,32 @@
-body {
-    background: linear-gradient(to right, #FFC0CB, #E6E6FA);
+/* container-wrapper를 header와 footer를 제외한 공간에서 중앙 정렬 */
+.container-wrapper {
+    margin-top: 5vh;
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
+    padding-bottom: 50px; /* footer 높이만큼 아래 패딩 추가 */
 }
 
+.container-wrapper1 {
+    margin-top: 13vh;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 50px; /* footer 높이만큼 아래 패딩 추가 */
+}
+
+/* 컨테이너 스타일 */
 .container {
     background: white;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
 }
 
+/* 로고 스타일 */
 .logo {
     text-align: center;
     margin-bottom: 20px;
@@ -25,7 +36,8 @@ body {
     width: 150px;
 }
 
-input[type="text"], input[type="password"] {
+/* 모든 input 태그에 동일한 스타일 적용 */
+input[type="text"], input[type="password"], input[type="email"], input[type="submit"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -35,40 +47,19 @@ input[type="text"], input[type="password"] {
 }
 
 input[type="submit"] {
-    width: 100%;
-    padding: 10px;
     background-color: #333;
     color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.header {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-links a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.auth-buttons button {
-    margin-left: 10px;
-    padding: 5px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#loginButton {
-    background-color: white;
-    color: #333;
+/* footer를 화면 바닥에 고정 */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
 }

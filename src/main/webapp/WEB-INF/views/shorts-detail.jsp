@@ -42,7 +42,7 @@
             <div class="comment-section">
                 <h3>댓글 512개</h3>
                 <div class="comment-input">
-                    <img src="resources/static/image/user-icon.png" alt="User Icon" class="user-icon">
+                    <img src="image/user-icon.png" alt="User Icon" class="user-icon">
                     <input type="text" placeholder="댓글을 입력하세요" class="comment-box">
                 </div>
             </div>

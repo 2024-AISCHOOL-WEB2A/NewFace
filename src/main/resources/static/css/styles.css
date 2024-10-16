@@ -281,3 +281,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #541d7a; /* 호버 시 색상 변경 */
 }
+
+#logoutButton {
+    background-color: #333; /* 배경색 지정 */
+    color: white; /* 글씨 색상을 흰색으로 지정 */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Maplestory Bold', sans-serif;
+}
+
+nav {
+    position: fixed; /* 화면에 고정 */
+    left: 50%; /* 수평으로 화면의 중앙 */
+    transform: translateX(-50%); /* 중앙으로 정확히 이동 */
+    display: flex;
+    justify-content: center;
+}
