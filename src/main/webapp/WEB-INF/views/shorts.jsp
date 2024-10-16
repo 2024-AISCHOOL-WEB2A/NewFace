@@ -26,7 +26,7 @@
                             <div class="shorts-container">
                                 <div class="shorts-item">
                                     <div class="short-thumbnail"></div>
-                                    <p class="short-title">버추얼 아이돌 보컬</p>
+                                    <a href="shorts-detail"><p class="short-title">버추얼 아이돌 보컬</p></a>
                                     <p class="short-views">조회수 <span class="views-number">1.3만</span>회</p>
                                 </div>
                                 <div class="shorts-item">
