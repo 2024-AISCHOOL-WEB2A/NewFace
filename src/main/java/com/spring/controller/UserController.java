@@ -30,14 +30,18 @@ public class UserController {
    
     @PostMapping("/join")
     public String join(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
-        try {
-            userservice.join(user);
-            return "redirect:/login";
-        } catch (Exception e) {
-            e.printStackTrace();
-            redirectAttributes.addFlashAttribute("error", "회원가입 중 오류가 발생했습니다: " + e.getMessage());
-            return "login";  
+    try {
+        if (user.getUserEmail() == null || user.getUserEmail().isEmpty()) {
+            throw new IllegalArgumentException("이메일은 필수 입력 항목입니다.");
         }
+        userservice.join(user);
+        redirectAttributes.addFlashAttribute("message", "회원가입이 성공적으로 완료되었습니다.");
+        return "redirect:/";
+    } catch (Exception e) {
+        e.printStackTrace();
+        redirectAttributes.addFlashAttribute("error", "회원가입 중 오류가 발생했습니다: " + e.getMessage());
+        return "redirect:/joinForm";
+    }
     }
 
     @GetMapping("/loginForm")
