@@ -22,7 +22,7 @@
 
     <script>
         window.onload = function() {
-            var userNickname = "${sessionScope.userNickname}";
+            var userNickname = "${sessionScope.loginUser.getUserNickname()}";
             var greeting = document.getElementById("greeting");
             var signUpButton = document.getElementById("signUpButton");
             var loginButton = document.getElementById("loginButton");

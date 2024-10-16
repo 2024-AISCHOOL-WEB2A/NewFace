@@ -59,8 +59,7 @@ public class UserController {
         
         if (userservice.login(user)) {
             User loggedInUser = userservice.getUserByUserId(userId);
-            session.setAttribute("userId", user.getUserId());
-            session.setAttribute("userNickname", loggedInUser.getUserNickname());
+            session.setAttribute("loginUser", loggedInUser);
             return "redirect:/";
         } else {
             redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 잘못되었습니다.");
@@ -76,15 +75,3 @@ public class UserController {
     
     
 }
-
-
-
-
-
-
-
-   
-    
-
-
-
