@@ -3,11 +3,11 @@
 
 <header class="main-header">
     <div class="logo">
-        <a href="index"><img src="image/logo.png" alt="New Face Logo"></a>
+        <a href="/"><img src="image/logo.png" alt="New Face Logo"></a>
     </div>
     <nav>
         <ul>
-            <li><a href="index" class="<%= request.getRequestURI().contains("index") ? "active" : "" %>">Home</a></li>
+            <li><a href="/" class="<%= request.getRequestURI().contains("index") ? "active" : "" %>">Home</a></li>
             <li><a href="#" class="<%= request.getRequestURI().contains("start_virtual") ? "active" : "" %>">Start Virtual</a></li>
             <li><a href="shorts" class="<%= request.getRequestURI().contains("shorts") ? "active" : "" %>">Shorts</a></li>
             <li><a href="contest" class="<%= request.getRequestURI().contains("contest") ? "active" : "" %>">Contest</a></li>
