@@ -41,107 +41,92 @@
                     <img src="image/youtube.png" alt="Shorts Icon" class="shorts-icon">
                     <h2>Shorts</h2>
                 </div>
-                <a href="shorts" class="more-link">더보기 ></a>
+                <a href="#" class="more-link">더보기 ></a>
             </div>
-
+        
             <div class="shorts-carousel">
                 <button class="carousel-button left-button">
                     <img src="image/left-arrow.png" alt="Left Arrow">
                 </button>
-
+        
                 <div class="shorts-wrapper" id="shorts-wrapper">
-                    <c:forEach items="${popularShorts}" var="shorts">
-                        <div class="short-item">
-                            <div class="short-thumbnail">
-                                <img src="${shorts.shortsVideoUrl}" alt="${shorts.shortsTitle}">
-                            </div>
-                            <p class="short-title">${shorts.shortsTitle}</p>
-                            <p class="short-views">조회수 ${shorts.shortsViewCount}회</p>
-                        </div>
-                    </c:forEach>
+                    <!-- short-item을 반복해서 작성 -->
+                    <div class="short-item">
+                        <div class="short-thumbnail"></div>
+                        <p class="short-title">버추얼 아이돌 보컬</p>
+                        <p class="short-views">조회수 1.3만회</p>
+                    </div>
+                    <div class="short-item">
+                        <div class="short-thumbnail"></div>
+                        <p class="short-title">버추얼 아이돌 댄스</p>
+                        <p class="short-views">조회수 2.5만회</p>
+                    </div>
+                    <div class="short-item">
+                        <div class="short-thumbnail"></div>
+                        <p class="short-title">버추얼 아이돌 퍼포먼스</p>
+                        <p class="short-views">조회수 3.1만회</p>
+                    </div>
+                    <div class="short-item">
+                        <div class="short-thumbnail"></div>
+                        <p class="short-title">버추얼 아이돌 인터뷰</p>
+                        <p class="short-views">조회수 4.0만회</p>
+                    </div>
+                    <div class="short-item">
+                        <div class="short-thumbnail"></div>
+                        <p class="short-title">버추얼 아이돌 인터뷰</p>
+                        <p class="short-views">조회수 4.0만회</p>
+                    </div>
+                    <div class="short-item">
+                        <div class="short-thumbnail"></div>
+                        <p class="short-title">버추얼 아이돌 인터뷰</p>
+                        <p class="short-views">조회수 4.0만회</p>
+                    </div>
                 </div>
-
+        
                 <button class="carousel-button right-button">
                     <img src="image/right-arrow.png" alt="Right Arrow">
                 </button>
             </div>
         </section>
-
-        <!-- JavaScript for shorts carousel -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const wrapper = document.getElementById('shorts-wrapper');
-                const leftButton = document.querySelector('.left-button');
-                const rightButton = document.querySelector('.right-button');
-
-                let scrollAmount = 0;
-
-                rightButton.addEventListener('click', () => {
-                    scrollAmount += 300; // Adjust this value as needed
-                    wrapper.scrollTo({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
-
-                leftButton.addEventListener('click', () => {
-                    scrollAmount -= 300; // Adjust this value as needed
-                    if (scrollAmount < 0) scrollAmount = 0;
-                    wrapper.scrollTo({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        </script>
-        
-        
+        </main>
 
         <!-- 라인 추가 -->
         <hr class="section-divider">
 
+        <!-- Contest Section -->
         <section class="contest-section">
             <div class="contest-header">
                 <div class="header-content">
                     <img src="image/youtube.png" alt="Contest Icon" class="contest-icon">
                     <h2>Contest</h2>
                 </div>
-                <a href="contest" class="more-link">더보기 ></a>
+                <a href="#" class="more-link">더보기 ></a>
             </div>
         
             <div class="contest-gallery">
-                <c:if test="${not empty topContests}">
-                    <div class="contest-item second-place">
-                        <div class="medal">
-                            <img src="image/2nd.png" alt="Second Place Medal">
-                        </div>
-                        <div class="contest-thumbnail">
-                            <img src="${topContests[1].contestImageUrl}" alt="${topContests[1].contestTitle}">
-                        </div>
-                        <p class="contest-title">${topContests[1].user.userNickname}님의 작품</p>
+                <div class="contest-item second-place">
+                    <div class="medal">
+                        <img src="image/2nd.png" alt="Second Place Medal">
                     </div>
-                    <div class="contest-item first-place">
-                        <div class="medal">
-                            <img src="image/1st.png" alt="First Place Medal">
-                        </div>
-                        <div class="contest-thumbnail">
-                            <img src="${topContests[0].contestImageUrl}" alt="${topContests[0].contestTitle}">
-                        </div>
-                        <p class="contest-title">${topContests[0].user.userNickname}님의 작품</p>
+                    <div class="contest-thumbnail"></div>
+                    <p class="contest-title">000님의 작품</p>
+                </div>
+                <div class="contest-item first-place">
+                    <div class="medal">
+                        <img src="image/1st.png" alt="First Place Medal">
                     </div>
-                    <div class="contest-item third-place">
-                        <div class="medal">
-                            <img src="image/3rd.png" alt="Third Place Medal">
-                        </div>
-                        <div class="contest-thumbnail">
-                            <img src="${topContests[2].contestImageUrl}" alt="${topContests[2].contestTitle}">
-                        </div>
-                        <p class="contest-title">${topContests[2].user.userNickname}님의 작품</p>
+                    <div class="contest-thumbnail"></div>
+                    <p class="contest-title">000님의 작품</p>
+                </div>
+                <div class="contest-item third-place">
+                    <div class="medal">
+                        <img src="image/3rd.png" alt="Third Place Medal">
                     </div>
-                </c:if>
-            </div>
+                    <div class="contest-thumbnail"></div>
+                    <p class="contest-title">000님의 작품</p>
+                </div>
         </section>
-    </main>
+        </main>
 
     <!-- Footer Section -->
     <jsp:include page="common/footer.jsp" />
