@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!--header-->
-    <jsp:include page="common/header.jsp" />
+   
 
     <div class="container-wrapper">
         <div class="container">
@@ -43,8 +42,6 @@
     </div>
     
 
-    <!--footer-->
-    <jsp:include page="common/sub-footer.jsp" />
 
     <script>
     const message = "${message}";
