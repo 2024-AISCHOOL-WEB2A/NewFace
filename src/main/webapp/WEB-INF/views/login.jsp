@@ -23,8 +23,7 @@
 
 </head>
 <body>
-    <!--header-->
-    <jsp:include page="common/header.jsp" />
+    
     
     <div class="container-wrapper1 ">
         <div class="container">
@@ -39,7 +38,6 @@
         </div>
     </div>
 
-    <!--header-->
-    <jsp:include page="common/sub-footer.jsp" />
+    
 </body>
 </html>
