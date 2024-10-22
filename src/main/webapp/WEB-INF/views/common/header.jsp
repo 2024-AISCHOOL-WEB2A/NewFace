@@ -1,22 +1,22 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-
-<header class="main-header">
+<header class="header">
     <div class="logo">
-        <a href="/"><img src="image/logo.png" alt="New Face Logo"></a>
+        <a href="/">New Face</a>
     </div>
-    <nav>
-        <ul>
-            <li><a href="/" class="<%= request.getRequestURI().contains("index") ? "active" : "" %>">Home</a></li>
-            <li><a href="#" class="<%= request.getRequestURI().contains("start_virtual") ? "active" : "" %>">Start Virtual</a></li>
-            <li><a href="shorts" class="<%= request.getRequestURI().contains("shorts") ? "active" : "" %>">Shorts</a></li>
-            <li><a href="contest" class="<%= request.getRequestURI().contains("contest") ? "active" : "" %>">Contest</a></li>
+    <nav class="navigation">
+        <ul class="nav-list">
+            <li><a href="/" class="<%= request.getRequestURI().equals("/") ? "active" : "" %>">홈</a></li>
+            <li><a href="/start_virtual" class="<%= request.getRequestURI().contains("start_virtual") ? "active" : "" %>">게임하기</a></li>
+            <li><a href="/character_intro" class="<%= request.getRequestURI().contains("character_intro") ? "active" : "" %>">캐릭터 소개</a></li>
+            <li><a href="/pride_board" class="<%= request.getRequestURI().contains("pride_board") ? "active" : "" %>">자랑 게시판</a></li>
+            <li><a href="/support" class="<%= request.getRequestURI().contains("support") ? "active" : "" %>">고객지원</a></li>
         </ul>
     </nav>
-    <div class="sign-in">
-        <button id="signUpButton" onclick="location.href='/joinForm'">Sign Up</button>
-        <button id="loginButton" onclick="location.href='/loginForm'">Login</button>
-        <span id="greeting" style="display: none;">000님 안녕하세요</span>
+    <div class="auth-buttons">
+        <a href="/signup" class="signup-btn">Sign up</a>
+        <a href="/login" class="login-btn">Log in</a>
+        <span id="greeting" style="display: none;"></span>
         <button id="logoutButton" style="display: none;" onclick="location.href='/logout'">Logout</button>
     </div>
 
@@ -30,7 +30,7 @@
             
             if (userNickname) {
                 greeting.style.display = "inline";
-                greeting.textContent = userNickname + "님 안녕하세요";
+                greeting.textContent = userNickname + "님";
                 signUpButton.style.display = "none";
                 loginButton.style.display = "none";
                 logoutButton.style.display = "inline";

@@ -1,0 +1,224 @@
+/* 메인 배너 섹션 */
+.main-banner {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    color: var(--light-gray);
+}
+
+.character-banner {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 100%;
+    height: 90vh; 
+}
+
+.banner-image {
+    max-width: 70%;
+    max-height: 100%;
+    object-fit: contain; 
+}
+
+.banner-text {
+    width: 100%;
+    position: absolute;
+    top: 15%; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    font-family: var(--font-bold);
+    color: var(--main-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 가독성을 위한 텍스트 그림자 */
+    text-align: center;
+}
+
+.start-btn {
+    position: absolute;
+    bottom: 15%; /* 이미지의 하단에서 10% 지점에 배치 */
+    right: 5%;
+    background-color: var(--main-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 3rem;
+    border-radius: 30px; /* 버튼을 둥글게 */
+    font-family: var(--font-bold);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 버튼 그림자 */
+}
+
+
+
+/* Character Gallery 섹션 ----------------------------------------*/
+/* Gallery 스타일 */
+.character-gallery {
+    margin: 100px;
+}
+
+.gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.gallery-title {
+    font-family: var(--font-bold);
+    font-size: 1.5rem;
+    margin: 0;
+    flex-shrink: 0; /
+}
+
+.title-line {
+    flex-grow: 1; 
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0 10px; 
+}
+
+.add-button {
+    background-color: transparent;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0; 
+}
+
+
+.gallery-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.gallery {
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-light);
+    color: #555;
+    text-align: center;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    text-align: center;
+}
+
+
+
+
+/* 게시판 섹션------------------------ */
+.boards {
+    margin: 50px ; /* 위아래 마진 추가 */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* 두 보드 사이 간격 */
+}
+
+.board {
+    width: 48%; /* 각각의 보드가 화면의 48%를 차지 */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* 보드 헤더: 타이틀, 선, + 버튼 가로 배치 */
+.board-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.board-title {
+    font-family: var(--font-bold);
+    font-size: 1.5rem;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.board-line {
+    flex-grow: 1; /* 선이 중간 공간을 채우도록 설정 */
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0 10px; /* 선과 타이틀, 버튼 사이 간격 */
+}
+
+.add-button {
+    background-color: transparent;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* 테이블 스타일 */
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-light);
+    box-sizing: border-box;
+}
+
+.board-table th {
+    font-family: var(--font-bold);
+    font-size: 1rem;
+}
+
+.board-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.board-table td:first-child {
+    font-weight: bold; /* 첫 번째 칸 스타일 */
+}
+
+.board-table td:last-child {
+    text-align: right; /* 두 번째 칸 날짜 부분 스타일 */
+    font-size: 0.9rem;
+}
+
+/* 링크 스타일 */
+.board-table td a {
+    color: inherit; /* 부모 요소의 색상을 상속 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.board-table td a:hover {
+    text-decoration: underline; /* 마우스를 올리면 밑줄 표시 */
+}
+
