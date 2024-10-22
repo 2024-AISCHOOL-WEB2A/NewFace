@@ -15,7 +15,7 @@
     </nav>
     <div class="auth-buttons">
         <a href="/joinForm" class="signup-btn" id="signUpButton">Sign up</a>
-        <a href="/login" class="login-btn">Log in</a>
+        <a href="/loginForm" class="login-btn">Log in</a>
         <span id="greeting" style="display: none;"></span>
         <button id="logoutButton" style="display: none;" onclick="location.href='/logout'">Logout</button>
     </div>
