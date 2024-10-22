@@ -1,0 +1,79 @@
+.character-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5vh 10vw;
+    background-color: #fff;
+}
+
+.character-info {
+    flex: 1;
+    margin-right: 5vw;
+}
+
+.character-info h1 {
+    font-size: 3vw;
+    font-family: var(--font-bold);
+    margin-bottom: 2vh;
+}
+
+.character-info p {
+    font-size: 1.2vw;
+    line-height: 1.6;
+    margin-bottom: 3vh;
+    font-family: var(--font-light);
+}
+
+.cta-button {
+    background-color: #ff3b69;
+    color: white;
+    border: none;
+    padding: 1vh 2vw;
+    font-size: 1.5vw;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 3vh;
+    width: 100%;  /* 버튼 크기를 table과 동일하게 설정 */
+    font-family: var(--font-bold);
+}
+
+.character-details {
+    width: 100%;  /* 테이블과 버튼의 너비를 동일하게 설정 */
+    border-collapse: collapse;
+    font-size: 1.2vw;
+    border: 1px solid #ddd;  /* 테이블 전체 외곽선 */
+}
+
+/* 각 tr 태그의 아래쪽에 연한 회색 라인 추가 */
+.character-details tr {
+    border-bottom: 1px solid #ddd;  /* 연한 회색 라인 */
+}
+
+.character-details th, .character-details td {
+    padding: 1vh;
+    border: 1px solid #ddd;  /* 셀 테두리 추가 */
+}
+
+/* 성별, 좋아하는 것, 싫어하는 것 CSS */
+.character-details th {
+    text-align: left;
+    color: #888;  /* 연한 색으로 설정 */
+    font-family: var(--font-light);
+}
+
+.character-details td {
+    color: #333;  /* 좀 더 진한 색으로 설정 */
+    font-weight: bold;  /* 진한 폰트 웨이트 적용 */
+    font-family: var(--font-light);
+}
+
+.character-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.character-image img {
+    width: 40vw;
+    height: auto;
+}

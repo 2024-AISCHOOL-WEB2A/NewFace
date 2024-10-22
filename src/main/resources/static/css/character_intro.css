@@ -1,0 +1,151 @@
+/* 카테고리 섹션 */
+.category-section {
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0;
+    background-color: #f0f0f0;
+    position: relative;
+    margin: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    transition: all 0.5s ease; /* 전환 시간을 늘리고 더 자연스러운 전환 효과 */
+}
+
+.category-title {
+    font-size: 2vw;
+    margin-bottom: 1vh;
+    font-family: var(--font-bold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: px; /* 아이콘과 텍스트 사이 간격 */
+    color: var(--main-color);
+}
+
+.title-icon {
+    font-size: 1.5vw; /* 아이콘 크기 조절 */
+}
+
+.category-wrapper {
+    display: flex;
+    gap: 1vw;
+    justify-content: center; /* 가로축 중앙 정렬 */
+    align-items: center; /* 세로축 중앙 정렬 */
+}
+
+.category-item img, .category-item p {
+    transition: transform 0.5s ease, opacity 0.5s ease; /* 이미지와 텍스트 크기 및 투명도 전환 */
+    will-change: transform, opacity; /* 성능 최적화 */
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh 1vw;
+}
+
+.category-item img {
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 10vw;
+    height: 20vh;
+    transform: scale(1); /* 기본 상태 */
+    opacity: 1; /* 기본 투명도 */
+}
+
+.category-item p {
+    font-size: 1.2vw;
+    margin-top: 1vh;
+    font-family: var(--font-bold);
+    transform: scale(1); /* 기본 상태 */
+    opacity: 1; /* 기본 투명도 */
+}
+
+/* 스크롤 시 카테고리 섹션 축소 및 고정 */
+.category-section.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 1vh 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    transition: all 0.5s ease; /* 전환 시간과 효과를 늘려 더 자연스럽게 */
+}
+
+/* 스크롤 시 축소된 카테고리 섹션 */
+.category-section.sticky .category-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+.category-section.sticky .category-item {
+    display: flex;
+    flex-direction: row; /* 이미지를 왼쪽, 텍스트를 오른쪽으로 배치 */
+    align-items: center;
+    gap: 2vw;
+}
+
+.category-section.sticky img {
+    width: 4vw;
+    height: 8vh;
+    margin-right: 1vw;
+    transform: scale(0.9); /* 더 부드럽게 줄어들게 설정 */
+    opacity: 0.8; /* 살짝 투명해지게 */
+}
+
+.category-section.sticky p {
+    font-size: 1.3vw;
+    margin: 0;
+    transform: scale(0.9); /* 더 부드럽게 줄어들게 설정 */
+    opacity: 0.8; /* 살짝 투명해지게 */
+}
+
+/* 그리드 섹션 */
+.grid-section {
+    margin: 10vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 6개의 컬럼 */
+    gap: 2vw; /* 가로와 세로 간격 동일하게 설정 */
+}
+
+.grid-item {
+    position: relative;
+    width: 80%; /* 그리드 내 아이템은 부모의 80% 너비 */
+    padding-bottom: 80%; /* 정사각형 유지 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    overflow: hidden; /* 부모 요소를 넘지 않도록 설정 */
+}
+
+.grid-item img {
+    width: 60%; /* 이미지 크기를 비율로 설정 */
+    height: auto;
+    border: 2px solid #ddd;
+}
+
+.grid-item p {
+    font-size: 1.2vw; /* 비율에 맞춘 텍스트 크기 */
+    position: absolute; /* 텍스트를 하단에 고정 */
+    bottom: 1vh;
+    font-family: var(--font-bold);
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
