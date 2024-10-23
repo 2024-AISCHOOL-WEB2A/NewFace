@@ -3,8 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,8 +46,10 @@
         <section class="grid-section">
             <div class="grid-container">
                 <div class="grid-item">
-                    <img src="character1.png" alt="하츄핑">
-                    <p>하츄핑</p>
+                    <a href="character_intro_detail">
+                        <img src="character1.png" alt="하츄핑">
+                        <p>하츄핑</p>  
+                    </a>
                 </div>
                 <!-- 추가 캐릭터들 여기에 배치 -->
             </div>

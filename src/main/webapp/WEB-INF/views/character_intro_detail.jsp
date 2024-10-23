@@ -3,17 +3,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="resources/static/css/styles.css">
-    <link rel="stylesheet" href="resources/static/css/character_intro_detail.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/character_intro_detail.css">
 </head>
 
 <body>
+    <!--header 위치 -->
+    <jsp:include page="common/header.jsp" />
     <section class="character-detail">
         <div class="character-info">
             <h1>하츄핑</h1>
