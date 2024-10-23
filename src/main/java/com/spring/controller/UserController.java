@@ -53,7 +53,7 @@ public class UserController {
         return "login";
     }
 
-      @PostMapping("/login")
+    @PostMapping("/login")
     public String login(String userId, String userPw, HttpSession session, Model model) {
         User user = userService.login(userId, userPw);
         

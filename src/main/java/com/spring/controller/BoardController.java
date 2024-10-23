@@ -22,8 +22,8 @@ public class BoardController {
 
     @GetMapping("")
     public String boardList(Model model, 
-                          @RequestParam(defaultValue = "0") int page,
-                          @RequestParam(defaultValue = "11") int size) {
+    @RequestParam(defaultValue = "0") int page,
+     @RequestParam(defaultValue = "11") int size) {
         
         Pageable pageable = PageRequest.of(page, size);
         Page<Board> boardList = boardService.getBoardList(pageable);
