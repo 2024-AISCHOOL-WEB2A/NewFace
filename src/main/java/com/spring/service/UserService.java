@@ -3,6 +3,8 @@ package com.spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.spring.entity.User;
 import com.spring.repository.UserRepository;
 import java.sql.Timestamp;
@@ -22,15 +24,19 @@ public class UserService {
         return userRepository.existsByUserEmail(userEmail);
     }
 
+    public User getUserInfo(String userId) {
+        Optional<User> user = userRepository.findByUserId(userId);
+        return user.orElse(null);
+    }
+
     public void join(User user) {
-        // 회원가입 시 기본값 설정
+
         user.setUserRole("user");
         user.setUserIsActive(0);
         user.setUserPoint(0);
         user.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
         user.setUserProfilePicture("default.jpg"); 
         
-        // 저장
         userRepository.save(user);
     }
 
@@ -46,4 +52,18 @@ public class UserService {
         
         return null;
     } 
+
+    @Transactional
+    public void updateUserPoint(int userIdx, int points) {
+        User user = userRepository.findById(userIdx)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+        int currentPoint = user.getUserPoint();
+        user.setUserPoint(currentPoint + points);
+        userRepository.save(user);
+    }
+
+    public User getUserById(int userIdx) {
+        return userRepository.findById(userIdx)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+}
 }

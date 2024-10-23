@@ -4,86 +4,178 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>결제 페이지</title>
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <link rel="stylesheet" href="css/Payment.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- 포트원 SDK -->
-    <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-    <script>
-        var IMP = window.IMP; 
-        IMP.init("imp17165638"); 
-        
-        function requestPayment() {
-            IMP.request_pay({
-                pg : 'html5_inicis.INIpayTest', 
-                pay_method : 'card', 
-                merchant_uid: "order_" + new Date().getTime(), 
-                name : '포인트 충전',
-                amount : 100,
-                buyer_email : 'test@test.com', 
-                buyer_name : '테스트', 
-                buyer_tel : '010-1234-5678',
-            }, function(rsp) { 
-                if (rsp.success) {
-                alert('결제가 완료되었습니다.');
-                location.reload();
-            } else {
-                alert('결제에 실패하였습니다.\n' + rsp.error_msg);
-            }
-            });
-        }
-    </script>
+   <meta charset="UTF-8">
+   <title>결제 페이지</title>
+   <!-- jQuery -->
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   <!-- iamport.payment.js -->
+   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+   <link rel="stylesheet" href="css/Payment.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <!-- 포트원 SDK -->
+   <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+   <script>
+       var IMP = window.IMP;
+       IMP.init("imp17165638");
+
+       let selectedAmount = 0;
+       let selectedPoint = 0;
+
+       document.addEventListener('DOMContentLoaded', function() {
+           const modal = document.getElementById('chargeModal');
+
+           // 충전하기 버튼 클릭시 모달 열기
+           document.querySelector('.profile-section .charge-button').onclick = function() {
+               modal.style.display = 'block';
+           }
+
+           // 모달 닫기
+           document.querySelector('.close').onclick = function() {
+               modal.style.display = 'none';
+           }
+
+           // 모달 외부 클릭시 닫기
+           window.onclick = function(event) {
+               if (event.target == modal) {
+                   modal.style.display = 'none';
+               }
+           }
+
+           // 충전 금액 선택 처리
+           document.querySelectorAll('.charge-option').forEach(button => {
+               button.addEventListener('click', function() {
+                   document.querySelectorAll('.charge-option').forEach(btn => {
+                       btn.classList.remove('selected');
+                   });
+                   this.classList.add('selected');
+                   selectedAmount = parseInt(this.dataset.amount);
+                   selectedPoint = parseInt(this.dataset.point);
+                   document.querySelector('.modal .charge-button').disabled = false;
+               });
+           });
+       });
+
+       function requestPayment() {
+           if(selectedAmount <= 0) {
+               alert('충전할 금액을 선택해주세요.');
+               return;
+           }
+
+           IMP.request_pay({
+               pg: 'html5_inicis.INIpayTest',
+               pay_method: 'card',
+               merchant_uid: "order_" + new Date().getTime(),
+               name: selectedPoint + ' 스마일 충전',
+               amount: selectedAmount,
+               buyer_email: '${user.userEmail}',
+               buyer_name: '${user.userNickname}'
+           }, function(rsp) {
+               if (rsp.success) {
+                   // 결제 성공 시 포인트 적립 요청
+                   $.ajax({
+                       url: '/payment/complete',
+                       method: 'POST',
+                       data: {
+                           amount: selectedAmount,
+                           userId: '${user.userIdx}',
+                           paymentId: rsp.imp_uid,
+                           points: selectedPoint
+                       },
+                       success: function(response) {
+                           alert('스마일 충전이 완료되었습니다.');
+                           location.reload();
+                       },
+                       error: function(error) {
+                           alert('스마일 적립 중 오류가 발생했습니다.');
+                       }
+                   });
+               } else {
+                   alert('결제에 실패하였습니다.\n' + rsp.error_msg);
+               }
+               modal.style.display = 'none';
+           });
+       }
+   </script>
 </head>
+
 <body class="main-body">
     <jsp:include page="common/header.jsp" />
     <div class="content-container">
-        <div class="profile-section">
-            <div class="profile-image">
-                <div class="circle-image"></div>
-            </div>
-            <div class="profile-info">
-                <h2 class="username">00님</h2>
-                <p class="email">00000000@gmail.com</p>
-                <div class="point-display">
-                    <img src="/resources/images/smile.png" alt="포인트 아이콘" class="point-icon">
-                    <span class="point-amount">500</span>
-                </div>
-                <button class="charge-button" onclick="requestPayment()">충전하기</button>
-            </div>
-        </div>
+    <div class="profile-section">
+         <div class="circle-image"></div>
+           <h2 class="username">${user.userNickname}님</h2>
+           <p class="email">${user.userEmail}</p>
+           <div class="point-display">
+               <img src="/resources/images/smile.png" alt="포인트 아이콘" class="point-icon">
+               <span class="point-amount">${user.userPoint}</span>
+               <button class="charge-button">충전하기</button>
+           </div>
+       </div>
+       <!-- 충전 모달 -->
+       <div class="modal" id="chargeModal">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h2>스마일 충전</h2>
+                   <span class="close">&times;</span>
+               </div>
+               <div class="modal-body">
+                   <div class="charge-options">
+                       <button class="charge-option" data-amount="100" data-point="100">
+                           <span class="point-amount">100 스마일</span>
+                           <span class="price">100원</span>
+                       </button>
+                       <button class="charge-option" data-amount="300" data-point="300">
+                           <span class="point-amount">300 스마일</span>
+                           <span class="price">300원</span>
+                       </button>
+                       <button class="charge-option" data-amount="500" data-point="500">
+                           <span class="point-amount">500 스마일</span>
+                           <span class="price">500원</span>
+                       </button>
+                       <button class="charge-option" data-amount="1000" data-point="1000">
+                           <span class="point-amount">1000 스마일</span>
+                           <span class="price">1,000원</span>
+                       </button>
+                   </div>
+                   <button class="charge-button" onclick="requestPayment()" disabled>충전하기</button>
+               </div>
+           </div>
+       </div>
 
-        <div class="usage-section">
-            <h2 class="section-title">
-                <img src="/resources/images/smile.png" alt="사용 내역 아이콘" class="section-icon">
-                사용 내역
-            </h2>
-            <div class="usage-list">
+       <div class="usage-section">
+           <div class="usage-header">
+               <img src="/resources/images/smile.png" alt="사용 내역 아이콘" class="section-icon">
+               <h2>사용 내역</h2>
+           </div>
+           <div class="usage-list">
+            <c:forEach var="payment" items="${payments}">
                 <div class="usage-item">
-                    <div class="item-info">
-                        <span class="item-name">포슬핑</span>
-                        <span class="item-date">2000.00.00 00:00:00</span>
+                    <div class="item-title">${payment.paymentContent}</div>
+                    <div class="item-date">
+                        ${payment.paymentDate.format(java.time.format.DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"))}
                     </div>
-                    <div class="item-amount negative">-300</div>
-                    <div class="item-total">500</div>
+                    <div class="item-amount positive">+${payment.pointAmount}</div>
+                    <div class="item-total">${user.userPoint}</div>
                 </div>
-                <div class="usage-item">
-                    <div class="item-info">
-                        <span class="item-name">충전</span>
-                        <span class="item-date">2000.00.00 00:00:00</span>
-                    </div>
-                    <div class="item-amount positive">+800</div>
-                    <div class="item-total">800</div>
-                </div>
+            </c:forEach>
+            
+            <c:forEach var="pointPayment" items="${pointPayments}">
+            <div class="usage-item">
+            <div class="item-title">포인트 사용</div>
+            <div class="item-date">
+                ${pointPayment.pointDate.format(java.time.format.DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"))}
             </div>
+            <div class="item-amount negative">-${pointPayment.pointAmount}</div>
+            <div class="item-total">${user.userPoint}</div>
         </div>
-    </div>
+    </c:forEach>
+           </div>
+       </div>
+   </div>
 </body>
+
 </html>

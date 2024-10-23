@@ -3,6 +3,7 @@ package com.spring.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Entity
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_idx")
     private int userIdx;
     
     @Column(name = "user_id", nullable = false, unique = true)
@@ -37,5 +39,8 @@ public class User {
     private int userIsActive;
     
     @Column(name = "user_point")
-    private int userPoint;   
+    private int userPoint; 
+    
+    @OneToMany(mappedBy = "user")
+    private List<Payment> payments;
     }
