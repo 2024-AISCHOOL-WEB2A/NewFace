@@ -1,0 +1,55 @@
+/* styles.css 수정 */
+.category-title {
+    font-size: 2vw;
+    margin:4vh;
+    font-family: var(--font-bold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-color);
+    border-bottom: 1px solid #ccc; /* 타이틀 아래에 선 추가 */
+    padding-bottom: 4vh;
+}
+
+table {
+    width: calc(100% - 200px); /* 테이블 전체 너비 조정 */
+    border-collapse: collapse;
+    margin-right: 100px ;
+    margin-left: 100px ;
+    margin-bottom: 50px ;
+
+
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    font-family: var(--font-bold);
+    height: 5vh;
+}
+
+/* 각 열의 너비 비율 설정 */
+th.sequence, td.sequence {
+    width: 10%; /* 순번 */
+}
+
+th.title, td.title {
+    width: 70%; /* 제목 */
+}
+
+th.date, td.date {
+    width: 20%; /* 날짜 */
+}
+
+th {
+    border-top: none;
+}
+
+.sequence, .date {
+    color: #555;
+}
+
+.title {
+    font-style: italic;
+}
