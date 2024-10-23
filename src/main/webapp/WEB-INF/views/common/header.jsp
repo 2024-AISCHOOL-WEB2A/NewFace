@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <header class="header">
     <div class="logo">
@@ -14,34 +17,17 @@
         </ul>
     </nav>
     <div class="auth-buttons">
-        <a href="/joinForm" class="signup-btn" id="signUpButton">Sign up</a>
-        <a href="/loginForm" class="login-btn">Log in</a>
-        <a href="/payment"><span id="greeting" ></span></a>
-        <button id="logoutButton" style="display: none;" onclick="location.href='/logout'">Logout</button>
+        <!-- 로그인 상태 확인하여 if 조건문으로 버튼 표시 -->
+        <c:if test="${not empty sessionScope.loginUser}">
+            <!-- 로그인 된 경우 -->
+            <a href="/payment" id="greeting" class="greet">${sessionScope.loginUser.userNickname}님</a>
+            <a id="logoutButton" class="logout-btn" href='/logout'">Logout</a>
+        </c:if>
+
+        <c:if test="${empty sessionScope.loginUser}">
+            <!-- 로그아웃 된 경우 -->
+            <a href="/joinForm" class="signup-btn" id="signUpButton">Sign up</a>
+            <a href="/loginForm" class="login-btn" id="loginButton">Log in</a>
+        </c:if>
     </div>
-
-    <script>
-        window.onload = function() {
-            var userNickname = "${sessionScope.loginUser.getUserNickname()}";
-            var greeting = document.getElementById("greeting");
-            var signUpButton = document.getElementById("signUpButton");
-            var loginButton = document.getElementById("loginButton");
-            var logoutButton = document.getElementById("logoutButton");
-            
-            if (userNickname) {
-                greeting.style.display = "inline";
-                greeting.textContent = userNickname + "님";
-                signUpButton.style.display = "none";
-                loginButton.style.display = "none";
-                logoutButton.style.display = "inline";
-            } else {
-                greeting.style.display = "none";
-                signUpButton.style.display = "inline";
-                loginButton.style.display = "inline";
-                logoutButton.style.display = "none";
-            }
-        }
-    </script>
-
-
 </header>
