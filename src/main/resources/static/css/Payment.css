@@ -1,0 +1,142 @@
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+:root {
+    --main-color: #FF3B69;
+    --light-gray: #E6E6E6;
+    --background-color: #FFFFFF;
+    --font-bold: '메인 폰트 Bold', Arial, sans-serif;
+    --font-light: '메인 폰트 Light', Arial, sans-serif;
+}
+
+.main-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    font-family: var(--font-light);
+}
+
+.navigation {
+    background-color: var(--background-color);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: black;
+    font-family: var(--font-light);
+}
+
+.nav-button {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-light);
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.profile-section {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.circle-image {
+    width: 150px;
+    height: 150px;
+    background-color: var(--light-gray);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.point-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.charge-button {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: var(--font-light);
+    width: 100%;
+}
+
+.usage-section {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.usage-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.item-date {
+    color: #666;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.item-amount.negative {
+    color: red;
+}
+
+.item-amount.positive {
+    color: blue;
+}
+
+.point-icon, .section-icon {
+    width: 24px;
+    height: 24px;
+}
