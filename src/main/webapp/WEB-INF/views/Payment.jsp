@@ -11,7 +11,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <link rel="stylesheet" href="/resources/css/Payment.css">
+    <link rel="stylesheet" href="css/Payment.css">
+    <link rel="stylesheet" href="css/styles.css">
     <!-- 포트원 SDK -->
     <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

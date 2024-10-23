@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Face - Virtual Idol Experience</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/contest.css">
+    <link rel="stylesheet" href="css/pride_board.css">
 </head>
 <body>
 
@@ -21,32 +21,6 @@
                 <div class="contest-header">
                     <img src="image/youtube.png" alt="Contest Logo" style="width: 40px;">
                     <span>#Contest</span>
-                </div>
-
-                <div class="prize-section">
-                    <div class="prize">
-                        <img class="medal second-place" src="image/2nd.png" alt="2nd Place">
-                        <div class="entry-image-placeholder" id="second-entry">
-                            <!-- 여기 나중에 이미지 추가 가능 -->
-                        </div>
-                        <div class="prize-text">000님의 작품</div>
-                    </div>
-
-                    <div class="prize">
-                        <img class="medal first-place" src="image/1st.png" alt="1st Place">
-                        <div class="entry-image-placeholder" id="first-entry">
-                            <!-- 여기 나중에 이미지 추가 가능 -->
-                        </div>
-                        <div class="prize-text">000님의 작품</div>
-                    </div>
-
-                    <div class="prize">
-                        <img class="medal third-place" src="image/3rd.png" alt="3rd Place">
-                        <div class="entry-image-placeholder" id="third-entry">
-                            <!-- 여기 나중에 이미지 추가 가능 -->
-                        </div>
-                        <div class="prize-text">000님의 작품</div>
-                    </div>
                 </div>
             </div>
         </section>
