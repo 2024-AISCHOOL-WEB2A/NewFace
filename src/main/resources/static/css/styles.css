@@ -19,6 +19,15 @@
     --font-bold: '메인 폰트 Bold', Arial, sans-serif;
     --font-light: '메인 폰트 Light', Arial, sans-serif;
 }
+body{
+    width: 100%;
+}
+/* Reset 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 
 /* 공통 스타일 */
 .main-body {
@@ -30,14 +39,15 @@
 
 /* Header 스타일------------------------------------------- */
 .header {
+    height: 5vh;
     background-color: var(--background-color);
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+    border-bottom: 2px solid #ddd; /* 아래쪽에 연한 선 추가 */
 }
+
 
 .logo a {
     margin-left: 10px;

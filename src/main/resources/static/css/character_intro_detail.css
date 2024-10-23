@@ -2,8 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5vh 10vw;
+    padding: 0vh 10vw;
     background-color: #fff;
+    height: 90vh;
 }
 
 .character-info {
