@@ -2,7 +2,7 @@
 
 <header class="header">
     <div class="logo">
-        <a href="/">New Face</a>
+        <a href="/"><img src="image/logo.png" alt="Contest Logo" style="width: 150px;"></a>
     </div>
     <nav class="navigation">
         <ul class="nav-list">
@@ -16,7 +16,7 @@
     <div class="auth-buttons">
         <a href="/joinForm" class="signup-btn" id="signUpButton">Sign up</a>
         <a href="/loginForm" class="login-btn">Log in</a>
-        <span id="greeting" style="display: none;" onclick="/payment"></span>
+        <a href="/payment" style="display: none;"><span id="greeting" ></span></a>
         <button id="logoutButton" style="display: none;" onclick="location.href='/logout'">Logout</button>
     </div>
 

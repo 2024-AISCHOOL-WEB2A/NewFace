@@ -2,6 +2,8 @@ package com.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -22,6 +24,11 @@ public class PageController {
     
 
     // 자랑 게시판
+    @GetMapping("pride_board")
+    public String pride_board() {
+        return "pride_board";
+    }
+    
 
 
     // 고객 지원 
