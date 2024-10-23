@@ -43,18 +43,7 @@
     </script>
 </head>
 <body class="main-body">
-    <nav class="navigation">
-        <div class="nav-items">
-            <a href="#" class="nav-item">HOME</a>
-            <a href="#" class="nav-item">Start Virtual</a>
-            <a href="#" class="nav-item">캐릭터 소개</a>
-            <a href="#" class="nav-item">자랑 게시판</a>
-            <a href="#" class="nav-item">고객지원</a>
-            <span class="nav-point">00님</span>
-            <button class="nav-button">로그아웃</button>
-        </div>
-    </nav>
-
+    <jsp:include page="common/header.jsp" />
     <div class="content-container">
         <div class="profile-section">
             <div class="profile-image">

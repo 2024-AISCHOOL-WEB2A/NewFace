@@ -16,7 +16,7 @@
     <div class="auth-buttons">
         <a href="/joinForm" class="signup-btn" id="signUpButton">Sign up</a>
         <a href="/loginForm" class="login-btn">Log in</a>
-        <a href="/payment" style="display: none;"><span id="greeting" ></span></a>
+        <a href="/payment"><span id="greeting" ></span></a>
         <button id="logoutButton" style="display: none;" onclick="location.href='/logout'">Logout</button>
     </div>
 
