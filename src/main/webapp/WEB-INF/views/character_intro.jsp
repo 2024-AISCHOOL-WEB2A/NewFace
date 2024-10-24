@@ -20,37 +20,22 @@
         <!-- 카테고리 section-->
         <section class="category-section">
             <h2 class="category-title">
-                <span class="title-icon">🎥</span> # 캐릭터 소개
+                <span class="title-icon">🎥 </span> #캐릭터 소개
             </h2>
             <div class="category-wrapper">
-                <div class="category-item">
-                    <img src="character1.png" alt="사랑의 하츄핑">
-                    <p>사랑의 하츄핑</p>
-                </div>
-                <div class="category-item">
-                    <img src="character2.png" alt="뽀롱뽀롱 뽀로로">
-                    <p>뽀롱뽀롱 뽀로로</p>
-                </div>
-                <div class="category-item">
-                    <img src="character3.png" alt="또봇">
-                    <p>또봇</p>
-                </div>
-                <div class="category-item">
-                    <img src="character4.png" alt="명탐정 코난">
-                    <p>명탐정 코난</p>
-                </div>
+                <c:forEach items="${characters}" var="character">
+                    <div class="category-item" style="cursor: pointer;" onclick="loadCategory('${character.characterCategory}')">
+                        <img src="${character.characterImage}" alt="${character.characterName}">
+                        <p>${character.characterName}</p>
+                    </div>
+                </c:forEach>
             </div>
         </section>
 
         <!-- grid section-->
         <section class="grid-section">
             <div class="grid-container">
-                <div class="grid-item">
-                    <a href="character_intro_detail">
-                        <img src="character1.png" alt="하츄핑">
-                        <p>하츄핑</p>  
-                    </a>
-                </div>
+                <!-- ajax -->
                 <!-- 추가 캐릭터들 여기에 배치 -->
             </div>
         </section>
@@ -74,6 +59,34 @@
             }
         });
 
+    </script>
+
+    <script>
+    function loadCategory(category) {
+        console.log("Category clicked:", category);  // 클릭 확인용 로그
+        fetch('/character_intro/ajax/' + category)  // fetch → ajax요청을 보내는 JavaScript 내장 함수 1. 서버에 요청 보냄
+            .then(response => response.json())  // 2. 서버 응답을 json으로 변환
+            .then(data => {  // 3. 변환된 json 데이터로 작업
+                console.log("Received data:", data);  // 데이터 확인용 로그
+                const container = document.querySelector('.grid-container');  // 4. html 컨테이너 찾기
+                container.innerHTML = '';  // 5. 기존 내용 비우기
+                
+                data.forEach(character => {  // 6. 새로운 데이터로 화면 갱신
+                    const div = document.createElement('div');
+                    div.className = 'grid-item';
+                    div.onclick = function() {  // 클릭 시 상세페이지로 이동
+                        console.log('Character ID:', character.characterIdx);
+                        location.href = `/character_intro/detail/\${character.characterIdx}`;  // 이스케이프 처리
+                    };
+                    div.innerHTML = `
+                        <img src="\${character.characterImage}" alt="\${character.characterName}">
+                        <p>\${character.characterName}</p>
+                    `;
+                    container.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
     </script>
 </body>
 

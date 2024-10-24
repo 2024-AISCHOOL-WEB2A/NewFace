@@ -20,7 +20,7 @@
             <div class="contest-container">
                 <div class="contest-header">
                     <img src="image/youtube.png" alt="Contest Logo" style="width: 40px;">
-                    <span>#Contest</span>
+                    <span> #자랑 게시판</span>
                 </div>
             </div>
         </section>
@@ -28,35 +28,42 @@
         <!-- 두 번째 섹션 (Masonry Layout) -->
         <section class="masonry-section">
             <div class="masonry-grid">
-                <div class="masonry-item tall">1</div>
-                <div class="masonry-item">2</div>
-                <div class="masonry-item wide">3</div>
-                <div class="masonry-item">4</div>
-                <div class="masonry-item tall wide">5</div>
-                <div class="masonry-item">6</div>
-                <div class="masonry-item">7</div>
-                <div class="masonry-item wide">8</div>
-                <div class="masonry-item">9</div>
-                <div class="masonry-item tall">1</div>
-                <div class="masonry-item">2</div>
-                <div class="masonry-item wide">3</div>
-                <div class="masonry-item">4</div>
-                <div class="masonry-item tall wide">5</div>
-                <div class="masonry-item">6</div>
-                <div class="masonry-item">7</div>
-                <div class="masonry-item wide">8</div>
-                <div class="masonry-item">9</div>
-                <div class="masonry-item tall">1</div>
-                <div class="masonry-item">2</div>
-                <div class="masonry-item wide">3</div>
-                <div class="masonry-item">4</div>
-                <div class="masonry-item tall wide">5</div>
-                <div class="masonry-item">6</div>
-                <div class="masonry-item">7</div>
-                <div class="masonry-item wide">8</div>
-                <div class="masonry-item">9</div>
+                <c:forEach items="${boards}" var="board">
+                <div class="masonry-item">
+                    <img src="${board.boardFilePath}" alt="${board.boardFilePath}">
+                </div>
+            </c:forEach>
             </div>
         </section>
+
+        <div class="board-pagination">
+            <c:if test="${!isFirst}">
+                <a href="?page=${currentPage - 1}" class="page-number prev">◀</a>
+            </c:if>
+            
+            <c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
+                <a href="?page=${pageNum}" 
+                class="page-number ${pageNum == currentPage ? 'active' : ''}">${pageNum + 1}</a>
+            </c:forEach>
+            
+            <c:if test="${!isLast}">
+                <a href="?page=${currentPage + 2}" class="page-number next">▶</a>
+            </c:if>
+            <a href="javascript:void(0)" onclick="checkLoginAndRedirect()" class="register-button">등록하기</a>
+        </div>
+
+        <script>
+            function checkLoginAndRedirect() {
+                const loginUser = '${loginUser}';  // 세션의 loginUser 체크
+                if(!loginUser) {
+                    alert("로그인이 필요한 서비스입니다.");
+                    window.location.href = '/loginForm';
+                    return;
+                }
+                window.location.href = '/pride_board/register';
+                }
+            </script>
+        
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const masonryItems = document.querySelectorAll('.masonry-item');
@@ -86,8 +93,7 @@
                 });
             });
         </script>
-        
-        
+
     </main>
 
     <!-- footer 재사용 -->
