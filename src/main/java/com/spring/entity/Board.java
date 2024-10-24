@@ -29,7 +29,7 @@ public class Board {
     @Column(name = "board_title", nullable = false, length = 1500)
     private String boardTitle;
 
-    @Column(name = "board_file_path", nullable = false, length = 1000)
+    @Column(name = "board_file_path", nullable = true, length = 1000)
     private String boardFilePath;
 
     @Column(name = "board_content", nullable = false, columnDefinition = "TEXT")
