@@ -1,12 +1,14 @@
 package com.spring.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.entity.Payment;
 import com.spring.repository.PaymentRepository;
+
+import java.util.List;
+
 @Service
 public class PaymentService {
 
@@ -17,4 +19,8 @@ public class PaymentService {
         return paymentRepository.findByUserIdxOrderByPaymentDateDesc(userIdx);
     }
 
+    @Transactional
+    public Payment savePayment(Payment payment) {
+        return paymentRepository.save(payment);
+    }
 }

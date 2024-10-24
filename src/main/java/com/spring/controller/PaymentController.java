@@ -23,9 +23,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
 
 @Controller
 public class PaymentController {
@@ -44,16 +41,17 @@ public class PaymentController {
         if(loginUser != null) {
             model.addAttribute("user", loginUser);
 
-        // 사용자의 결제/포인트 내역 조회
-        List<Payment> payments = paymentService.getPaymentsByUserIdx(loginUser.getUserIdx());
-        List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
-        
-        model.addAttribute("payments", payments);
-        model.addAttribute("pointPayments", pointPayments);
+            // 사용자의 결제/포인트 내역 조회
+            List<Payment> payments = paymentService.getPaymentsByUserIdx(loginUser.getUserIdx());
+            List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
+            
+            model.addAttribute("payments", payments);
+            model.addAttribute("pointPayments", pointPayments);
             return "Payment";  
         } else {
             return "redirect:/loginForm";  
-        }
+        } 
+        
     }
 
     @PostMapping("payment/complete")
@@ -68,11 +66,14 @@ public class PaymentController {
             int characterIdx = 1;
             
             User user = userService.getUserById(userIdx);
-
-             // 1. 결제 내역 저장
+            if(user == null) {
+                return ResponseEntity.badRequest().body("사용자를 찾을 수 없습니다.");
+            }
+    
+            // 1. 결제 내역 저장
             Payment payment = new Payment();
             payment.setUser(user);
-            payment.setPaymentContent("스마일 충전");
+            payment.setPaymentContent("스마일 충전 (" + amount + "원)");
             payment.setPaymentDate(LocalDateTime.now());
             Payment savedPayment = paymentService.savePayment(payment);
             
@@ -83,11 +84,18 @@ public class PaymentController {
                 pointPayment.setCharacterIdx(characterIdx);
                 pointPayment.setPointAmount(points);
                 pointPayment.setPointDate(LocalDateTime.now());
-                pointPaymentService.savePointPayment(pointPayment); 
+                pointPayment.setUser(user);
+                PointPayment savedPointPayment = pointPaymentService.savePointPayment(pointPayment);
                 
-                userService.updateUserPoint(userIdx, points);
-                
-                return ResponseEntity.ok().body("success");
+                if(savedPointPayment != null) {
+                    // 3. 사용자 포인트 업데이트
+                    user.setUserPoint(user.getUserPoint() + points);
+                    userService.updateUserPoint(userIdx, user.getUserPoint());
+                    
+                    return ResponseEntity.ok().body("success");
+                } else {
+                    throw new RuntimeException("포인트 내역 저장 실패");
+                }
             } else {
                 throw new RuntimeException("결제 내역 저장 실패");
             }
