@@ -17,34 +17,34 @@ public class CharacterController {
     private CharacterService characterService;
     
     // 메인 캐릭터 페이지 (하츄핑, 뽀로로, 또봇, 코난 표시)
-    @GetMapping("/character")
+    @GetMapping("/character_intro")
     public String mainCharacters(Model model) {
         List<Characters> mainCharacters = characterService.getMainCharacters();
         model.addAttribute("characters", mainCharacters);
-        return "character";
+        return "character_intro";
     }
     
     // 카테고리별 캐릭터 페이지 (예: 하츄핑 카테고리의 캐릭터들 표시)
-    @GetMapping("/character/{category}")
+    @GetMapping("/character_intro/{category}")
     public String categoryCharacters(@PathVariable String category, Model model) {
         List<Characters> categoryCharacters = characterService.getCharactersByCategory(category);
         model.addAttribute("characters", categoryCharacters);
-        return "character";  
+        return "character_intro";  
     }
 
     // AJAX 요청 처리 (카테고리 클릭시 호출)
-    @GetMapping("/character/ajax/{category}")
+    @GetMapping("/character_intro/ajax/{category}")
     @ResponseBody
     public List<Characters> getCategoryCharacters(@PathVariable String category) {
         return characterService.getCharactersByCategory(category);
     }
 
     // 캐릭터 상세 페이지
-    @GetMapping("/character/detail/{characterIdx}")
+    @GetMapping("/character_intro/detail/{characterIdx}")
     public String characterDetail(@PathVariable Long characterIdx, Model model) {
         Characters character = characterService.getCharacterDetail(characterIdx);
         model.addAttribute("character", character);
-        return "characterDetail";    
+        return "character_intro_detail";    
     }
 
 }
