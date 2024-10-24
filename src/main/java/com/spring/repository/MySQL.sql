@@ -115,3 +115,7 @@ CREATE TABLE tb_payment
 ALTER TABLE tb_payment
     ADD CONSTRAINT FK_tb_payment_user_idx_tb_user_user_idx FOREIGN KEY (user_idx)
         REFERENCES tb_user (user_idx) ON DELETE RESTRICT ON UPDATE RESTRICT;
+-- 포인트차감 및 캐릭터 하루대여관련 컬럼추가
+ALTER TABLE tb_point_payment
+ADD rental_end_date timestamp NULL COMMENT '대여 만료일',
+ADD rental_status varchar(20) DEFAULT 'ACTIVE' COMMENT '대여 상태';
