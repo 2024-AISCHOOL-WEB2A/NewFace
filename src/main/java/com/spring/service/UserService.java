@@ -53,17 +53,17 @@ public class UserService {
         return null;
     } 
 
-//     @Transactional
-//     public void updateUserPoint(int userIdx, int points) {
-//         User user = userRepository.findById(userIdx)
-//             .orElseThrow(() -> new RuntimeException("User not found"));
-//         int currentPoint = user.getUserPoint();
-//         user.setUserPoint(currentPoint + points);
-//         userRepository.save(user);
-//     }
+    @Transactional
+    public void updateUserPoint(int userIdx, int points) {
+        User user = userRepository.findById(userIdx)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+        int currentPoint = user.getUserPoint();
+        user.setUserPoint(currentPoint + points);
+        userRepository.save(user);
+    }
 
-//     public User getUserById(int userIdx) {
-//         return userRepository.findById(userIdx)
-//                 .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
-// }
+    public User getUserById(int userIdx) {
+        return userRepository.findById(userIdx)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+}
 }
