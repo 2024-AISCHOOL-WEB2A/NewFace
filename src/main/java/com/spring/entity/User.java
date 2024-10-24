@@ -40,19 +40,5 @@ public class User {
     
     @Column(name = "user_point")
     private int userPoint; 
-    
-    @OneToMany(mappedBy = "user")
-    private List<Payment> payments;
 
-    @OneToMany(mappedBy = "user")
-    private List<PointPayment> pointPayments;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userIdx=" + userIdx +
-                ", userId='" + userId + '\'' +
-                ", userNickname='" + userNickname + '\'' +
-                '}';
-    }
     }
