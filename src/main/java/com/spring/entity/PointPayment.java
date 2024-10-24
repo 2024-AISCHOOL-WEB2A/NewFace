@@ -1,9 +1,11 @@
 package com.spring.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,14 +32,22 @@ public class PointPayment {
     @Column(name = "point_amount", nullable = false)
     private int pointAmount;
     
-    @Column(name = "user_idx", nullable = false)
+    @Column(name = "user_idx", insertable = false, updatable = false)
     private int userIdx;
 
-    @ManyToOne
-    @JoinColumn(name = "character_idx", referencedColumnName = "character_idx", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_idx")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "character_idx", insertable = false, updatable = false)
     private Characters character;
 
-    @ManyToOne
-    @JoinColumn(name = "user_idx", referencedColumnName = "user_idx", insertable = false, updatable = false)
-    private User user;
+    // 날짜 포맷팅을 위한 메서드 추가
+    public String getFormattedPointDate() {
+        if(pointDate != null) {
+            return pointDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
+        }
+        return "";
+    }
 }

@@ -147,34 +147,35 @@
        </div>
 
        <div class="usage-section">
-           <div class="usage-header">
-               <img src="/resources/images/smile.png" alt="사용 내역 아이콘" class="section-icon">
-               <h2>사용 내역</h2>
-           </div>
-           <div class="usage-list">
-            <c:forEach var="payment" items="${payments}">
+        <div class="usage-header">
+            <img src="/resources/images/smile.png" alt="사용 내역 아이콘" class="section-icon">
+            <h2>사용 내역</h2>
+        </div>
+        <div class="usage-list">
+            <c:forEach var="payment" items="${payments}" varStatus="status">
                 <div class="usage-item">
                     <div class="item-title">${payment.paymentContent}</div>
                     <div class="item-date">
-                        ${payment.paymentDate.format(java.time.format.DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"))}
+                        ${payment.formattedPaymentDate}
                     </div>
-                    <div class="item-amount positive">+${payment.pointAmount}</div>
+                    <!-- points 대신 pointPayments의 pointAmount를 사용 -->
+                    <div class="item-amount positive">+${pointPayments[status.index].pointAmount}</div>
                     <div class="item-total">${user.userPoint}</div>
                 </div>
             </c:forEach>
             
             <c:forEach var="pointPayment" items="${pointPayments}">
-            <div class="usage-item">
-            <div class="item-title">포인트 사용</div>
-            <div class="item-date">
-                ${pointPayment.pointDate.format(java.time.format.DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"))}
-            </div>
-            <div class="item-amount negative">-${pointPayment.pointAmount}</div>
-            <div class="item-total">${user.userPoint}</div>
+                <div class="usage-item">
+                    <div class="item-title">포인트 사용</div>
+                    <div class="item-date">
+                        ${pointPayment.formattedPointDate}
+                    </div>
+                    <div class="item-amount negative">-${pointPayment.pointAmount}</div>
+                    <div class="item-total">${user.userPoint}</div>
+                </div>
+            </c:forEach>
         </div>
-    </c:forEach>
-           </div>
-       </div>
+    </div>
    </div>
 </body>
 
