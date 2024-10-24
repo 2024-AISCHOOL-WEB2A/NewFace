@@ -137,4 +137,49 @@ public String payment(Model model, HttpSession session) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @PostMapping("/point/use")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<?> usePoint(@RequestParam Map<String, String> pointInfo) {
+        try {
+            int points = Integer.parseInt(pointInfo.get("points"));
+            int userIdx = Integer.parseInt(pointInfo.get("userId"));
+            int characterIdx = Integer.parseInt(pointInfo.get("characterIdx"));
+            
+            User user = userService.getUserById(userIdx);
+            if(user == null) {
+                return ResponseEntity.badRequest().body("사용자를 찾을 수 없습니다.");
+        }
+        
+        // 포인트 잔액 확인
+        if(user.getUserPoint() < points) {
+            return ResponseEntity.badRequest().body("포인트가 부족합니다.");
+        }
+
+        // 포인트 사용 내역 저장
+        PointPayment pointPayment = new PointPayment();
+        pointPayment.setUserIdx(userIdx);
+        pointPayment.setCharacterIdx(characterIdx);
+        pointPayment.setPointAmount(-points);  // 사용은 음수로 저장
+        pointPayment.setPointDate(LocalDateTime.now());
+        pointPayment.setUser(user);
+        PointPayment savedPointPayment = pointPaymentService.savePointPayment(pointPayment);
+        
+        if(savedPointPayment != null) {
+            // 사용자 포인트 차감
+            userService.updateUserPoint(userIdx, -points);  // 차감이므로 음수
+            return ResponseEntity.ok().body("success");
+        } else {
+            throw new RuntimeException("포인트 사용 내역 저장 실패");
+        }
+        
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+}
+
+
+
+
 }
