@@ -85,35 +85,31 @@
 
     // 확인 버튼 클릭 시
     confirmBtn.addEventListener('click', () => {
-        fetch('/api/character/rental', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                characterIdx: characterIdx,
-                points: 30,
-                days: 1  // 1일 대여로 수정
-            })
+    fetch('/character/purchase', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            userIdx: ${sessionScope.loginUser.userIdx},
+            characterIdx: characterIdx,
+            points: 30
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const startDate = new Date(data.startDate).toLocaleString();
-                const endDate = new Date(data.endDate).toLocaleString();
-                alert(`캐릭터 대여가 완료되었습니다.\n사용 기간: ${startDate} ~ ${endDate}`);
-                window.location.href = '/characterExperience';
-            } else {
-                alert(data.message || '포인트가 부족합니다.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('처리 중 오류가 발생했습니다.');
-        });
-        
-        modal.style.display = 'none';
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.href = '/characterExperience';
+        } else {
+            alert(data.message || '처리 중 오류가 발생했습니다.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('처리 중 오류가 발생했습니다.');
     });
+});
 
 
     // 취소 버튼 클릭 시
