@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -43,7 +44,17 @@ public class PointPayment {
     @JoinColumn(name = "character_idx", insertable = false, updatable = false)
     private Characters character;
 
-    // 날짜 포맷팅을 위한 메서드 추가
+    @Transient
+    private int totalPoints;
+
+    public int getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(int totalPoints) {
+        this.totalPoints = totalPoints;
+    }
+
     public String getFormattedPointDate() {
         if(pointDate != null) {
             return pointDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
