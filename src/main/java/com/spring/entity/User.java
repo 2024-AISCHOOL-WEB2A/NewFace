@@ -3,7 +3,6 @@ package com.spring.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Data
 @Entity
