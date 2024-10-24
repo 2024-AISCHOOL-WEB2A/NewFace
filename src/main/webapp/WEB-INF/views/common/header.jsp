@@ -5,7 +5,7 @@
 
 <header class="header">
     <div class="logo">
-        <a href="/"><img src="image/logo.png" alt="Contest Logo" style="width: 150px;"></a>
+        <a href="/"><img src="/image/logo.png" alt="Contest Logo" style="width: 150px;"></a>
     </div>
     <nav class="navigation">
         <ul class="nav-list">
