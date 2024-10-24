@@ -1,8 +1,11 @@
 package com.spring.controller;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,24 +38,55 @@ public class PaymentController {
     private PointPaymentService pointPaymentService;  
     
     @GetMapping("/payment")
-    public String payment(Model model, HttpSession session) {
-        User loginUser = (User) session.getAttribute("loginUser");
-        
-        if(loginUser != null) {
-            model.addAttribute("user", loginUser);
+public String payment(Model model, HttpSession session) {
+    User loginUser = (User) session.getAttribute("loginUser");
+    
+    if(loginUser != null) {
+        model.addAttribute("user", loginUser);
 
-            // 사용자의 결제/포인트 내역 조회
-            List<Payment> payments = paymentService.getPaymentsByUserIdx(loginUser.getUserIdx());
-            List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
-            
-            model.addAttribute("payments", payments);
-            model.addAttribute("pointPayments", pointPayments);
-            return "Payment";  
-        } else {
-            return "redirect:/loginForm";  
-        } 
+        List<Payment> payments = paymentService.getPaymentsByUserIdx(loginUser.getUserIdx());
+        List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
         
-    }
+        // 모든 포인트 내역을 날짜 역순으로 정렬 (reversed() 추가)
+        List<PointPayment> allPayments = pointPayments.stream()
+            .sorted(Comparator.comparing(PointPayment::getPointDate).reversed())  // 역순 정렬
+            .collect(Collectors.toList());
+            
+        // 충전 내역과 사용 내역 분리 (날짜 역순 정렬 유지)
+        List<PointPayment> chargePayments = allPayments.stream()
+            .filter(p -> p.getPointAmount() > 0)
+            .collect(Collectors.toList());
+            
+        List<PointPayment> usePayments = allPayments.stream()
+            .filter(p -> p.getPointAmount() < 0)
+            .collect(Collectors.toList());
+
+        // 누적 포인트는 여전히 날짜 순서대로 계산
+        List<PointPayment> forCalculation = new ArrayList<>(pointPayments);
+        forCalculation.sort(Comparator.comparing(PointPayment::getPointDate));  // 날짜순 정렬
+        
+        int runningTotal = 0;
+        for(PointPayment payment : forCalculation) {
+            runningTotal += payment.getPointAmount();
+            payment.setTotalPoints(runningTotal);
+        }
+        
+        // 역순 정렬된 리스트의 totalPoints 설정
+        for(PointPayment payment : allPayments) {
+            int index = forCalculation.indexOf(payment);
+            payment.setTotalPoints(forCalculation.get(index).getTotalPoints());
+        }
+        
+        model.addAttribute("payments", payments);
+        model.addAttribute("chargePayments", chargePayments);
+        model.addAttribute("usePayments", usePayments);
+        model.addAttribute("currentTotal", runningTotal);
+       
+        return "Payment";  
+    } else {
+        return "redirect:/loginForm";  
+    } 
+}
 
     @PostMapping("payment/complete")
     @ResponseBody
@@ -89,8 +123,7 @@ public class PaymentController {
                 
                 if(savedPointPayment != null) {
                     // 3. 사용자 포인트 업데이트
-                    user.setUserPoint(user.getUserPoint() + points);
-                    userService.updateUserPoint(userIdx, user.getUserPoint());
+                    userService.updateUserPoint(userIdx, points);
                     
                     return ResponseEntity.ok().body("success");
                 } else {

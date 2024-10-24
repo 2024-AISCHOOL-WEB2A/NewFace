@@ -111,7 +111,7 @@
            <p class="email">${user.userEmail}</p>
            <div class="point-display">
                <img src="/resources/images/smile.png" alt="포인트 아이콘" class="point-icon">
-               <span class="point-amount">${user.userPoint}</span>
+               <span class="point-amount">${currentTotal}</span>
                <button class="charge-button">충전하기</button>
            </div>
        </div>
@@ -152,26 +152,27 @@
             <h2>사용 내역</h2>
         </div>
         <div class="usage-list">
-            <c:forEach var="payment" items="${payments}" varStatus="status">
+            <!-- 충전 내역 -->
+            <c:forEach var="chargePayment" items="${chargePayments}">
                 <div class="usage-item">
-                    <div class="item-title">${payment.paymentContent}</div>
+                    <div class="item-title">스마일 충전</div>
                     <div class="item-date">
-                        ${payment.formattedPaymentDate}
+                        ${chargePayment.formattedPointDate}
                     </div>
-                    <!-- points 대신 pointPayments의 pointAmount를 사용 -->
-                    <div class="item-amount positive">+${pointPayments[status.index].pointAmount}</div>
-                    <div class="item-total">${user.userPoint}</div>
+                    <div class="item-amount positive">+${chargePayment.pointAmount}</div>
+                    <div class="item-total">${chargePayment.totalPoints}</div>
                 </div>
             </c:forEach>
             
-            <c:forEach var="pointPayment" items="${pointPayments}">
+            <!-- 사용 내역 -->
+            <c:forEach var="usePayment" items="${usePayments}">
                 <div class="usage-item">
                     <div class="item-title">포인트 사용</div>
                     <div class="item-date">
-                        ${pointPayment.formattedPointDate}
+                        ${usePayment.formattedPointDate}
                     </div>
-                    <div class="item-amount negative">-${pointPayment.pointAmount}</div>
-                    <div class="item-total">${user.userPoint}</div>
+                    <div class="item-amount negative">${usePayment.pointAmount}</div>
+                    <div class="item-total">${usePayment.totalPoints}</div>
                 </div>
             </c:forEach>
         </div>
