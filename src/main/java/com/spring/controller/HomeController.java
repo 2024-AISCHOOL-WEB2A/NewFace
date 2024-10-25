@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,10 @@ import org.springframework.data.domain.Pageable;
 
 import com.spring.entity.Board;
 import com.spring.entity.Characters;
+import com.spring.entity.CustomerService;
 import com.spring.service.BoardService;
 import com.spring.service.CharacterService;
+import com.spring.service.CustomerServiceService;
 
 @Controller
 public class HomeController {
@@ -22,6 +25,9 @@ public class HomeController {
     
     @Autowired
     private CharacterService characterService;
+
+    @Autowired
+    private CustomerServiceService customerServiceService;
 
     @GetMapping("/")
     public String home(Model model, 
@@ -36,6 +42,10 @@ public class HomeController {
         model.addAttribute("characters", characters.getContent());
         model.addAttribute("currentPage", characters.getNumber());
         model.addAttribute("totalPages", characters.getTotalPages());
+
+        // 고객지원 최신글 5개 조회
+        List<CustomerService> recentSupports = customerServiceService.getRecentPosts();
+        model.addAttribute("recentSupports", recentSupports);
         
         return "main";
     }

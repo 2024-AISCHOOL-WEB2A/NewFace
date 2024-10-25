@@ -16,4 +16,8 @@ public interface CustomerServiceRepository extends JpaRepository<CustomerService
      // 카테고리별로 날짜 역순 조회
      @Query("SELECT c FROM CustomerService c WHERE c.customerServiceCategory = :category ORDER BY c.customerServiceDate DESC")
      List<CustomerService> findByCustomerServiceCategoryOrderByCustomerServiceDateDesc(@Param("category") String category);
+
+    // 메인_최신 5개 조회
+    @Query("SELECT c FROM CustomerService c ORDER BY c.customerServiceDate DESC LIMIT 5")
+    List<CustomerService> findTop5ByOrderByCustomerServiceDateDesc();
  }
