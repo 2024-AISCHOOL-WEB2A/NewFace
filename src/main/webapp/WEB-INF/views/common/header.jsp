@@ -13,7 +13,7 @@
             <li><a href="/start_virtual" class="<%= request.getRequestURI().contains("start_virtual") ? "active" : "" %>">게임하기</a></li>
             <li><a href="/character_intro" class="<%= request.getRequestURI().contains("character_intro") ? "active" : "" %>">캐릭터 소개</a></li>
             <li><a href="/pride_board" class="<%= request.getRequestURI().contains("pride_board") ? "active" : "" %>">자랑 게시판</a></li>
-            <li><a href="/support" class="<%= request.getRequestURI().contains("support") ? "active" : "" %>">고객지원</a></li>
+            <li><a href="/customerService" class="<%= request.getRequestURI().contains("support") ? "active" : "" %>">고객지원</a></li>
         </ul>
     </nav>
     <div class="auth-buttons">

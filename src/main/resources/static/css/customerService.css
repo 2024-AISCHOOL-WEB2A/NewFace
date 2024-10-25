@@ -1,0 +1,94 @@
+/* 타이틀 스타일 */
+.category-title {
+    font-size: 2vw;
+    margin: 4vh;
+    font-family: var(--font-bold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-color);
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4vh;
+}
+
+/* 테이블 기본 스타일 */
+table {
+    width: calc(100% - 200px);
+    border-collapse: collapse;
+    margin: 0 100px 50px 100px;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-family: var(--font-bold);
+    height: 5vh;
+}
+
+th {
+    background-color: #f8f9fa;
+    border-top: none;
+}
+
+/* 열 너비 설정 */
+th.sequence, td.sequence {
+    width: 10%;
+    color: #555;
+}
+
+th.title, td.title {
+    width: 70%;
+    font-style: italic;
+}
+
+th.date, td.date {
+    width: 20%;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 카테고리 필터 스타일 */
+.category-filter {
+    margin: 20px 100px;
+    display: flex;
+    justify-content: flex-end;  /* 오른쪽 정렬 */
+}
+
+.category-filter select {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    width: 200px;
+}
+
+.category-filter select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.category-filter select option {
+    padding: 8px;
+}
+
+/* 태그 스타일 */
+.notice-tag {
+    color: #ff0000;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.faq-tag {
+    color: #0000ff;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.request-tag {
+    color: #008000;
+    font-weight: bold;
+    margin-right: 10px;
+}
