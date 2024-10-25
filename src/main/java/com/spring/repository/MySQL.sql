@@ -119,3 +119,17 @@ ALTER TABLE tb_payment
 ALTER TABLE tb_point_payment
 ADD rental_end_date timestamp NULL COMMENT '대여 만료일',
 ADD rental_status varchar(20) DEFAULT 'ACTIVE' COMMENT '대여 상태';
+
+INSERT INTO tb_customer_service 
+(customer_service_category, customer_service_title, customer_service_content, user_idx, customer_service_comment)
+VALUES
+('0', '시스템 정기점검 안내', '2024년 1월 정기점검 안내드립니다...', 1, '안내 완료'),
+('0', '캐릭터 업데이트 안내', '새로운 캐릭터가 추가될 예정입니다...', 1, '안내 완료'),
+('0', '결제 시스템 개선 안내', '결제 시스템이 개선될 예정입니다...', 1, '안내 완료'),
+('1', '포인트 충전 방법 안내', '포인트 충전 방법에 대해 안내드립니다...', 1, '답변 완료'),
+('1', '캐릭터 구매 방법 안내', '캐릭터 구매 절차를 안내드립니다...', 1, '답변 완료'),
+('1', '비밀번호 변경 방법', '비밀번호 변경 방법을 안내드립니다...', 1, '답변 완료'),
+('2', '새로운 기능 제안', '채팅 시스템 개선을 제안드립니다...', 2, '검토중'),
+('2', '캐릭터 추가 요청', '새로운 캐릭터 추가를 요청드립니다...', 2, '검토중'),
+('2', '이벤트 제안', '신규 이벤트 아이디어를 제안드립니다...', 2, '검토중'),
+('0', '연말 이벤트 안내', '12월 특별 이벤트를 안내드립니다...', 1, '안내 완료');

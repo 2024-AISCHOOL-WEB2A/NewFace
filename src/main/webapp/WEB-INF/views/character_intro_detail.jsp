@@ -20,7 +20,7 @@
             <div class="modal-content">
                 <h2>결제 확인</h2>
                 <p>${character.characterName} 캐릭터를 1일 동안 이용하시겠습니까?</p>
-                <p>필요 포인트: 30P</p>
+                <p>필요 스마일😊: 30P</p>
                 <div class="modal-buttons">
                     <button id="confirmPayment">확인</button>
                     <button id="cancelPayment">취소</button>
