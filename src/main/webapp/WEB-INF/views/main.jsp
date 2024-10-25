@@ -107,15 +107,38 @@
                 <div class="board-header">
                     <h3 class="board-title">고객 지원</h3>
                     <hr class="board-line">
-                    <button class="add-button">+</button>
+                    <a href="/customerService">
+                        <button class="add-button">+</button>
+                    </a>
                 </div>
                 <table class="board-table">
                     <tbody>
-                        <!-- tr 태그 반복-->
-                        <tr>
-                            <td><a href="#">공지 자랑 게시판 이용 안내 및 규칙</a></td>
-                            <td><a href="#">2024-10-22</a></td>
-                        </tr>
+                        <c:forEach items="${recentSupports}" var="support">
+                            <tr>
+                                <td>
+                                    <a href="/customerService/detail/${support.customerServiceIdx}">
+                                        <!-- 카테고리에 따른 색상 처리 -->
+                                        <c:choose>
+                                            <c:when test="${support.customerServiceCategory == '0'}">
+                                                <span style="color: red;">[공지]</span>
+                                            </c:when>
+                                            <c:when test="${support.customerServiceCategory == '1'}">
+                                                <span style="color: blue;">[FAQ]</span>
+                                            </c:when>
+                                            <c:when test="${support.customerServiceCategory == '2'}">
+                                                <span style="color: green;">[요청]</span>
+                                            </c:when>
+                                        </c:choose>
+                                        ${support.customerServiceTitle}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/customerService/detail/${support.customerServiceIdx}">
+                                        ${support.formattedDate}
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>

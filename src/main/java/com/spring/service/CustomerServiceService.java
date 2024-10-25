@@ -21,4 +21,9 @@ public class CustomerServiceService {
     public List<CustomerService> getPostsByCategory(String category) {
         return customerServiceRepository.findByCustomerServiceCategoryOrderByCustomerServiceDateDesc(category);
     }
+
+    // 메인_최신 5개 조회
+    public List<CustomerService> getRecentPosts() {
+        return customerServiceRepository.findTop5ByOrderByCustomerServiceDateDesc();
+    }
 }
