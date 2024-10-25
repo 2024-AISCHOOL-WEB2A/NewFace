@@ -53,12 +53,13 @@
     </section>
 
     <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            // 줄바꿈 처리
+        document.addEventListener('DOMContentLoaded', function() {
             var paragraphs = document.querySelectorAll('.character-info p');
             paragraphs.forEach(function(p) {
-                p.innerHTML = p.textContent.replace(/\n/g, '<br>');
+                console.log(p.innerHTML);
+                p.innerHTML = p.innerHTML.replace(/\r\n/g, '<br>'); // innerHTML로 수정
             });
+        });
 
             // 모달 관련 요소들
             const modal = document.getElementById('paymentModal');
@@ -118,7 +119,6 @@
                     modal.style.display = 'none';
                 }
             });
-        });
     </script>
 </body>
 </html>
