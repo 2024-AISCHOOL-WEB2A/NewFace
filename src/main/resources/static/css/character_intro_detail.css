@@ -69,15 +69,21 @@
 }
 
 .character-image {
-    flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center; /* 이미지를 수직 중앙에 배치 */
+    width: 40vw;
+    height: 40vw; /* 정사각형 비율 유지 */
+    overflow: hidden; /* 이미지가 컨테이너를 벗어나면 숨김 */
 }
 
 .character-image img {
-    width: 40vw;
-    height: auto;
+    width: 100%;  /* 컨테이너 크기에 맞추어 너비 조정 */
+    height: 100%; /* 컨테이너 크기에 맞추어 높이 조정 */
+    object-fit: contain; /* 비율을 유지하면서 컨테이너에 꽉 차도록 */
 }
+
+
 /* 모달 스타일 */
 .modal {
     display: none;
