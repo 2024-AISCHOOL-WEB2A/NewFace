@@ -7,15 +7,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>${character.characterName} - 상세정보</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/character_intro_detail.css">
 </head>
 
 <body>
-    <!--header 위치 -->
     <jsp:include page="common/header.jsp" />
     <section class="character-detail">
+            <!--모달 창-->
+            <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <h2>결제 확인</h2>
+                <p>${character.characterName} 캐릭터를 1일 동안 이용하시겠습니까?</p>
+                <p>필요 포인트: 30P</p>
+                <div class="modal-buttons">
+                    <button id="confirmPayment">확인</button>
+                    <button id="cancelPayment">취소</button>
+                </div>
+            </div>
+        </div>
         <div class="character-info">
             <h1>${character.characterName}</h1>
             <p>${character.characterDescription}</p>
@@ -43,14 +54,71 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
+            // 줄바꿈 처리
             var paragraphs = document.querySelectorAll('.character-info p');
-            paragraphs.forEach(function (p) {
+            paragraphs.forEach(function(p) {
                 p.innerHTML = p.textContent.replace(/\n/g, '<br>');
             });
+
+            // 모달 관련 요소들
+            const modal = document.getElementById('paymentModal');
+            const ctaButton = document.querySelector('.cta-button');
+            const confirmBtn = document.getElementById('confirmPayment');
+            const cancelBtn = document.getElementById('cancelPayment');
+
+            // 체험하기 버튼 클릭 시
+            ctaButton.addEventListener('click', () => {
+                const isLoggedIn = document.querySelector('.greet') !== null;
+                
+                if (!isLoggedIn) {
+                    alert('로그인이 필요한 서비스입니다.');
+                    window.location.href = '/loginForm';
+                    return;
+                }
+                
+                modal.style.display = 'block';
+            });
+
+            // 확인 버튼 클릭 시
+            confirmBtn.addEventListener('click', () => {
+                fetch('/point/use', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        userId: '${sessionScope.loginUser.userIdx}',
+                        characterIdx: '${character.characterIdx}',
+                        points: 30
+                    })
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if(result === 'success') {
+                        alert('캐릭터 구매가 완료되었습니다.');
+                        window.location.href = '/characterExperience?characterIdx=${character.characterIdx}';
+                    } else {
+                        alert(result);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('처리 중 오류가 발생했습니다.');
+                });
+            });
+
+            // 취소 버튼 클릭 시
+            cancelBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // 모달 외부 클릭 시 닫기
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
-
     </script>
-
 </body>
-
 </html>

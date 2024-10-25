@@ -153,17 +153,21 @@
         </div>
         <div class="usage-list">
             <!-- 충전 내역 -->
-            <c:forEach var="chargePayment" items="${chargePayments}">
-                <div class="usage-item">
-                    <div class="item-title">스마일 충전</div>
-                    <div class="item-date">
-                        ${chargePayment.formattedPointDate}
-                    </div>
-                    <div class="item-amount positive">+${chargePayment.pointAmount}</div>
-                    <div class="item-total">${chargePayment.totalPoints}</div>
-                </div>
-            </c:forEach>
-            
+            <c:forEach var="payment" items="${allPayments}">
+            <div class="usage-item">
+            <div class="item-title">
+                ${payment.pointAmount > 0 ? '스마일 충전' : '포인트 사용'}
+            </div>
+            <div class="item-date">
+                ${payment.formattedPointDate}
+            </div>
+            <div class="item-amount ${payment.pointAmount > 0 ? 'positive' : 'negative'}">
+                ${payment.pointAmount > 0 ? '+' : ''}${payment.pointAmount}
+            </div>
+            <div class="item-total">${payment.totalPoints}</div>
+        </div>
+    </c:forEach>
+</div>
             <!-- 사용 내역 -->
             <c:forEach var="usePayment" items="${usePayments}">
                 <div class="usage-item">

@@ -38,32 +38,21 @@ public class PaymentController {
     private PointPaymentService pointPaymentService;  
     
     @GetMapping("/payment")
-public String payment(Model model, HttpSession session) {
+    public String payment(Model model, HttpSession session) {
     User loginUser = (User) session.getAttribute("loginUser");
     
     if(loginUser != null) {
         model.addAttribute("user", loginUser);
 
-        List<Payment> payments = paymentService.getPaymentsByUserIdx(loginUser.getUserIdx());
         List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
         
-        // 모든 포인트 내역을 날짜 역순으로 정렬 (reversed() 추가)
-        List<PointPayment> allPayments = pointPayments.stream()
-            .sorted(Comparator.comparing(PointPayment::getPointDate).reversed())  // 역순 정렬
-            .collect(Collectors.toList());
-            
-        // 충전 내역과 사용 내역 분리 (날짜 역순 정렬 유지)
-        List<PointPayment> chargePayments = allPayments.stream()
-            .filter(p -> p.getPointAmount() > 0)
-            .collect(Collectors.toList());
-            
-        List<PointPayment> usePayments = allPayments.stream()
-            .filter(p -> p.getPointAmount() < 0)
-            .collect(Collectors.toList());
-
-        // 누적 포인트는 여전히 날짜 순서대로 계산
+        // 모든 포인트 내역을 날짜 역순으로 정렬
+        List<PointPayment> allPayments = new ArrayList<>(pointPayments);
+        allPayments.sort((a, b) -> b.getPointDate().compareTo(a.getPointDate()));
+        
+        // 누적 포인트 계산을 위해 날짜순 정렬된 리스트 생성
         List<PointPayment> forCalculation = new ArrayList<>(pointPayments);
-        forCalculation.sort(Comparator.comparing(PointPayment::getPointDate));  // 날짜순 정렬
+        forCalculation.sort(Comparator.comparing(PointPayment::getPointDate));
         
         int runningTotal = 0;
         for(PointPayment payment : forCalculation) {
@@ -77,9 +66,7 @@ public String payment(Model model, HttpSession session) {
             payment.setTotalPoints(forCalculation.get(index).getTotalPoints());
         }
         
-        model.addAttribute("payments", payments);
-        model.addAttribute("chargePayments", chargePayments);
-        model.addAttribute("usePayments", usePayments);
+        model.addAttribute("allPayments", allPayments);  // 하나의 리스트로 전달
         model.addAttribute("currentTotal", runningTotal);
        
         return "Payment";  
