@@ -26,7 +26,7 @@
                 <c:forEach items="${characters}" var="character">
                     <div class="category-item" style="cursor: pointer;" onclick="loadCategory('${character.characterCategory}')">
                         <img src="${character.characterImage}" alt="${character.characterName}">
-                        <p>${character.characterName}</p>
+                        <p>${character.characterCategory}</p>
                     </div>
                 </c:forEach>
             </div>
