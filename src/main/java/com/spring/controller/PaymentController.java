@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -144,13 +145,22 @@ public class PaymentController {
             return ResponseEntity.badRequest().body("포인트가 부족합니다.");
         }
 
+         // 현재 활성화된 렌탈이 있는지 확인
+         PointPayment activeRental = pointPaymentService.getActiveRental(userIdx, characterIdx);
+         if(activeRental != null) {
+             return ResponseEntity.badRequest().body("이미 대여 중인 캐릭터입니다.");
+         }
+
         // 포인트 사용 내역 저장
         PointPayment pointPayment = new PointPayment();
         pointPayment.setUserIdx(userIdx);
         pointPayment.setCharacterIdx(characterIdx);
         pointPayment.setPointAmount(-points);  // 사용은 음수로 저장
         pointPayment.setPointDate(LocalDateTime.now());
+        pointPayment.setRentalEndDate(LocalDateTime.now().plusDays(1));
+        pointPayment.setRentalStatus("ACTIVE");
         pointPayment.setUser(user);
+        
         PointPayment savedPointPayment = pointPaymentService.savePointPayment(pointPayment);
         
         if(savedPointPayment != null) {
@@ -165,6 +175,26 @@ public class PaymentController {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 }
+    @GetMapping("/checkRentalStatus")
+    @ResponseBody
+    public Map<String, Object> checkRentalStatus(
+            @RequestParam("characterIdx") int characterIdx,
+            @RequestParam("userId") int userId) {
+        
+        Map<String, Object> response = new HashMap<>();
+        
+        // 현재 활성화된 렌탈 정보 조회
+        PointPayment activeRental = pointPaymentService.getActiveRental(userId, characterIdx);
+        
+        if (activeRental != null) {
+            response.put("isRented", true);
+            response.put("endDate", activeRental.getFormattedRentalEndDate());
+        } else {
+            response.put("isRented", false);
+        }
+        
+        return response;
+    }
 
 
 

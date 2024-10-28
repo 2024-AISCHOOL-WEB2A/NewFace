@@ -36,6 +36,12 @@ public class PointPayment {
     @Column(name = "user_idx", insertable = false, updatable = false)
     private int userIdx;
 
+    @Column(name = "rental_end_date")
+    private LocalDateTime rentalEndDate;
+
+    @Column(name = "rental_status", length = 20)
+    private String rentalStatus;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private User user;
@@ -58,6 +64,13 @@ public class PointPayment {
     public String getFormattedPointDate() {
         if(pointDate != null) {
             return pointDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
+        }
+        return "";
+    }
+
+    public String getFormattedRentalEndDate() {
+        if(rentalEndDate != null) {
+            return rentalEndDate.format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss"));
         }
         return "";
     }
