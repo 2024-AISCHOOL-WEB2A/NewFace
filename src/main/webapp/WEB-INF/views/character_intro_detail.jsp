@@ -77,8 +77,24 @@
                     return;
                 }
                 
-                modal.style.display = 'block';
+                
+            // 렌탈 상태 확인
+            fetch(`/checkRentalStatus?characterIdx=${character.characterIdx}&userId=${sessionScope.loginUser.userIdx}`)
+            .then(response => response.json())
+            .then(rentalStatus => {
+                if (rentalStatus.isRented) {
+                    alert('이미 대여 중인 캐릭터입니다.\n만료일: ' + rentalStatus.endDate);
+                    window.location.href = '/characterExperience?characterIdx=${character.characterIdx}';
+                } else {
+                    modal.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('처리 중 오류가 발생했습니다.');
             });
+        });
+
 
             // 확인 버튼 클릭 시
             confirmBtn.addEventListener('click', () => {

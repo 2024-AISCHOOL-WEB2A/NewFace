@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.entity.PointPayment;
 import com.spring.repository.PointPaymentRepository;
+import java.time.LocalDateTime;
 
 import java.util.List;
 
@@ -21,6 +22,14 @@ public class PointPaymentService {
     
     @Transactional
     public PointPayment savePointPayment(PointPayment pointPayment) {
+         // 포인트 사용 시 (음수일 때) 렌탈 정보 설정
+         if (pointPayment.getPointAmount() < 0) {
+            pointPayment.setRentalEndDate(LocalDateTime.now().plusDays(1));
+            pointPayment.setRentalStatus("ACTIVE");
+        }
         return pointPaymentRepository.save(pointPayment);
+    }
+    public PointPayment getActiveRental(int userId, int characterIdx) {
+        return pointPaymentRepository.findActiveRental(userId, characterIdx);
     }
 }
