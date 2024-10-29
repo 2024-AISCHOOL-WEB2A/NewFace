@@ -2,6 +2,7 @@
 .main-banner {
     width: 100%;
     position: relative;
+    z-index: 1;  /* 헤더보다 낮은 z-index 값 */
     text-align: center;
     display: flex;
     justify-content: center;
@@ -12,6 +13,7 @@
 
 .character-banner {
     position: relative;
+    z-index: 1;  /* 헤더보다 낮은 z-index 값 */
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -127,7 +129,7 @@
 }
 
 .card span {
-    text-align: center; */
+    text-align: center; 
     height: 40px;    /* 텍스트 영역 고정 높이 */
     display: flex;
     align-items: center;
