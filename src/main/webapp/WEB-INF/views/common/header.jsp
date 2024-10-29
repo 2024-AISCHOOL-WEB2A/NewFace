@@ -21,7 +21,7 @@
         <c:if test="${not empty sessionScope.loginUser}">
             <!-- 로그인 된 경우 -->
             <a href="/payment" id="greeting" class="greet">${sessionScope.loginUser.userNickname}님</a>
-            <a id="logoutButton" class="logout-btn" href='/logout'">Logout</a>
+            <a id="logoutButton" class="logout-btn" href='/logout'>Logout</a>
         </c:if>
 
         <c:if test="${empty sessionScope.loginUser}">

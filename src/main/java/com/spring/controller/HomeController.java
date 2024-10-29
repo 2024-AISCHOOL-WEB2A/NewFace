@@ -37,8 +37,8 @@ public class HomeController {
         Page<Board> boardList = boardService.getBoardList(pageable);
         model.addAttribute("recentBoards", boardList.getContent());
 
-        // 캐릭터 5개 랜덤 조회
-        Page<Characters> characters = characterService.getRandomCharacters(page, 5);
+        // 캐릭터 15개 랜덤 조회
+        Page<Characters> characters = characterService.getRandomCharacters(page, 15);
         model.addAttribute("characters", characters.getContent());
         model.addAttribute("currentPage", characters.getNumber());
         model.addAttribute("totalPages", characters.getTotalPages());
