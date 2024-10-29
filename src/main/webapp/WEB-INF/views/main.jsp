@@ -68,12 +68,17 @@
             slidesPerView: 5,
             spaceBetween: -50,
             centeredSlides: true,
-            slidesPerGroup: 2,  // 한 번씩 슬라이드 되도록 수정
             loop: true,
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
+                nextEl: ".swiper-button-prev",
+                prevEl: ".swiper-button-next"
             },
+            loopFillGroupWithBlank: true,  // 빈 슬라이드로 그룹을 채움
+            speed: 500,  // 슬라이드 속도
+            autoplay: {  // 자동 재생 (선택사항)
+            delay: 3000,
+            disableOnInteraction: false
+            }
         });
         </script>
 
