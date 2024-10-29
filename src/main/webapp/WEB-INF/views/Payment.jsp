@@ -109,9 +109,12 @@
          <div class="circle-image"></div>
            <h2 class="username">${user.userNickname}님</h2>
            <p class="email">${user.userEmail}</p>
+           
+        <div class="button-section">
            <div class="point-display">
-               <img src="/resources/images/smile.png" alt="포인트 아이콘" class="point-icon">
+               <img src="/image/happy.png" alt="포인트 아이콘">
                <span class="point-amount">${currentTotal}</span>
+        </div>
                <button class="charge-button">충전하기</button>
            </div>
        </div>
@@ -119,7 +122,7 @@
        <div class="modal" id="chargeModal">
            <div class="modal-content">
                <div class="modal-header">
-                   <h2>스마일 충전</h2>
+                   <h2><img src="/image/happy.png">스마일 충전</h2>
                    <span class="close">&times;</span>
                </div>
                <div class="modal-body">
@@ -148,7 +151,7 @@
 
        <div class="usage-section">
         <div class="usage-header">
-            <img src="/resources/images/smile.png" alt="사용 내역 아이콘" class="section-icon">
+            <img src="/image/happy.png" alt="사용 내역 아이콘" class="section-icon">
             <h2>사용 내역</h2>
         </div>
         <div class="usage-list">
@@ -156,7 +159,7 @@
             <c:forEach var="payment" items="${allPayments}">
             <div class="usage-item">
             <div class="item-title">
-                ${payment.pointAmount > 0 ? '스마일 충전' : '포인트 사용'}
+                ${payment.pointAmount > 0 ? '스마일 충전' : '스마일 사용'}
             </div>
             <div class="item-date">
                 ${payment.formattedPointDate}
@@ -171,7 +174,7 @@
             <!-- 사용 내역 -->
             <c:forEach var="usePayment" items="${usePayments}">
                 <div class="usage-item">
-                    <div class="item-title">포인트 사용</div>
+                    <div class="item-title">스마일 사용</div>
                     <div class="item-date">
                         ${usePayment.formattedPointDate}
                     </div>

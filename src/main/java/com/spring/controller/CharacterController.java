@@ -20,6 +20,12 @@ public class CharacterController {
     @GetMapping("/character_intro")
     public String mainCharacters(Model model) {
         List<Characters> mainCharacters = characterService.getMainCharacters();
+        // 첫 번째 카테고리의 캐릭터들도 함께 가져오기
+            if (!mainCharacters.isEmpty()) {
+            String firstCategory = mainCharacters.get(0).getCharacterCategory();
+            List<Characters> categoryCharacters = characterService.getCharactersByCategory(firstCategory);
+            model.addAttribute("categoryCharacters", categoryCharacters);
+    }
         model.addAttribute("characters", mainCharacters);
         return "character_intro";
     }
