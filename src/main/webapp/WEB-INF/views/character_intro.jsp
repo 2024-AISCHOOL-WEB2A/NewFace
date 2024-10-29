@@ -33,10 +33,15 @@
         </section>
 
         <!-- grid section-->
+        <!--첫페이지 들어오자마자 하츄핑 보이게 수정-->
         <section class="grid-section">
             <div class="grid-container">
-                <!-- ajax -->
-                <!-- 추가 캐릭터들 여기에 배치 -->
+                <c:forEach items="${categoryCharacters}" var="character">
+                    <div class="grid-item" onclick="location.href='/character_intro/detail/${character.characterIdx}'">
+                        <img src="${character.characterImage}" alt="${character.characterName}">
+                        <p>${character.characterName}</p>
+                    </div>
+                </c:forEach>
             </div>
         </section>
 
@@ -51,12 +56,18 @@
         window.addEventListener('scroll', function () {
             var categorySection = document.querySelector('.category-section');
             var sticky = categorySection.offsetTop;
+            var gridSection = document.querySelector('.grid-section');
 
             if (window.pageYOffset > sticky) {
                 categorySection.classList.add('sticky');
+                // sticky 적용 시 본문 여백 추가
+                gridSection.style.marginTop = categorySection.offsetHeight + 'px';
             } else {
                 categorySection.classList.remove('sticky');
+                // sticky 해제 시 본문 여백 원래대로
+                gridSection.style.marginTop = '10vh';
             }
+
         });
 
     </script>

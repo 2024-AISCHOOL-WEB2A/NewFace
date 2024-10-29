@@ -138,6 +138,13 @@
     width: 8vw;
     transition: opacity 0.2s;
 }
+.modal-content p img  {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+    object-fit: contain;
+}
 
 #confirmPayment {
     background-color: #ff3b69;  /* 체험하기 버튼과 동일한 색상 */
