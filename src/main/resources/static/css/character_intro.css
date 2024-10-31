@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+}
 /* 카테고리 섹션 */
 .category-section {
     display: flex;
@@ -19,7 +27,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: var(--main-color);
+    color: 'Maplestory Bold';
 }
 
 .title-icon {
@@ -52,7 +60,7 @@
 .category-item p {
     font-size: 1.2vw;
     margin-top: 1vh;
-    font-family: var(--font-bold);
+    font-family: 'Maplestory Bold';
 }
 
 /* 스크롤 시 카테고리 섹션 */
@@ -129,7 +137,7 @@
 
 .grid-item p {
     font-size: 1.2vw;
-    font-family: var(--font-bold);
+    font-family: 'Maplestory Bold';
     text-align: center;
     margin: 0;
     height: 20%;
