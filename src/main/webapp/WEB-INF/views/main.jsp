@@ -22,8 +22,10 @@
     <main class="main-content">
         <section class="main-banner">
             <div class="character-banner">
-                <img src="image/main_start.png" alt="캐릭터 선택 이미지" class="banner-image">
-                <div class="banner-text">지금 당신이 좋아하는 캐릭터를 고르세요!!</div>
+                <video autoplay loop muted playsinline class="banner-video">
+                    <source src="image/main1.mp4" type="video/mp4">
+                </video>
+                <div class="banner-text">나만의 이야기를 펼칠 새로운 캐릭터를 만나보세요!</div>
                 <a href="#" class="start-btn">시작하기 ➔</a>
             </div>
         </section>

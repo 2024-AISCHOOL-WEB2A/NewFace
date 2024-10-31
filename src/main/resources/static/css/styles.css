@@ -1,7 +1,7 @@
 /* 기본 설정---------------------------------------------------- */
 @font-face {
     font-family: '메인 폰트 Bold';
-    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
     font-weight: bold;
 }
 
@@ -9,6 +9,14 @@
     font-family: '메인 폰트 Light';
     src: url('../fonts/Maplestory Light.ttf') format('truetype');
     font-weight: 300;
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
 }
 
 :root {
@@ -39,7 +47,7 @@ body{
 
 /* Header 스타일------------------------------------------- */
 .header {
-    height: 5vh;
+    height: 7vh;
     background-color: var(--background-color);
     padding: 10px;
     display: flex;
@@ -80,26 +88,26 @@ body{
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-family: var(--font-bold);
+    font-family: "Maplestory Bold";
 }
 
 .signup-btn {
     background-color: white;
     color: var(--main-color);
     border: 1px solid var(--main-color);
-    font-family: var(--font-bold);
+    font-family: "Maplestory Bold";
     
 }
 
 .login-btn {
     background-color: var(--main-color);
-    font-family: var(--font-bold);
+    font-family: "Maplestory Bold";
     color: white;
 }
 
 .logout-btn {
     background-color: var(--main-color);
-    font-family: var(--font-bold);
+    font-family: "Maplestory Bold";
     color: white;
 }
 

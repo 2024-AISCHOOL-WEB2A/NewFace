@@ -1,3 +1,19 @@
+/* 기본 설정---------------------------------------------------- */
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
 /* container-wrapper를 header와 footer를 제외한 공간에서 중앙 정렬 */
 .container-wrapper {
     margin-top: 5vh;
@@ -24,7 +40,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    font-family: 'Maplestory Bold', sans-serif; /* 컨테이너 폰트 설정 */
+    font-family: '메인 폰트 Light', sans-serif; /* 컨테이너 폰트 설정 */
 }
 
 /* 로고 스타일 */

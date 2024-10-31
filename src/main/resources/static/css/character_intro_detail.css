@@ -1,3 +1,24 @@
+/* 기본 설정---------------------------------------------------- */
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+}
+
 .character-detail {
     display: flex;
     justify-content: space-between;
@@ -14,7 +35,7 @@
 
 .character-info h1 {
     font-size: 3vw;
-    font-family: var(--font-bold);
+    font-family: 'Maplestory Bold';
     margin-bottom: 2vh;
 }
 
@@ -22,7 +43,7 @@
     font-size: 1.2vw;
     line-height: 1.6;
     margin-bottom: 3vh;
-    font-family: var(--font-light);
+    font-family: '메인 폰트 Light';
 }
 
 .cta-button {
@@ -35,7 +56,7 @@
     cursor: pointer;
     margin-bottom: 3vh;
     width: 100%;  /* 버튼 크기를 table과 동일하게 설정 */
-    font-family: var(--font-bold);
+    font-family: 'Maplestory Bold';
 }
 
 .character-details {
