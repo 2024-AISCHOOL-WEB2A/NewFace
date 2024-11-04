@@ -105,7 +105,7 @@
 }
 
 .grid-item {
-    width: 32%; /* 33.333% 대신 32%로 조정 */
+    width: 32% !important;
     margin: 0.5%;
     background-color: #f0f0f0;
     border-radius: var(--border-radius);
@@ -188,7 +188,7 @@
 /* 반응형 설정 */
 @media (max-width: 1200px) {
     .grid-item {
-        width: calc(33.333% - 20px);
+        width: 32% !important;
     }
 }
 
