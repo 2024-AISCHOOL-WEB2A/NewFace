@@ -26,7 +26,7 @@
                     <source src="image/main1.mp4" type="video/mp4">
                 </video>
                 <div class="banner-text">나만의 이야기를 펼칠 새로운 캐릭터를 만나보세요!</div>
-                <a href="#" class="start-btn">시작하기 ➔</a>
+                <a href="/start_virtual" class="start-btn">시작하기 ➔</a>
             </div>
         </section>
         
