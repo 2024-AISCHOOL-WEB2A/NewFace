@@ -6,11 +6,17 @@
 }
 
 /* 공통 스타일 */
-.contest-section, .prize, .prize-text {
+.contest-section {
+    font-family: 'Maplestory Bold', sans-serif;
+    text-align: center;
+    margin-top: 20px;  /* 여기에 상단 여백 추가 */
+}
+
+.prize, .prize-text {
     font-family: 'Maplestory Bold', sans-serif;
 }
 
-.contest-section, .prize {
+.prize {
     text-align: center;
 }
 
