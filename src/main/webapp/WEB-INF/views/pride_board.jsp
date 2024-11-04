@@ -8,9 +8,12 @@
     <title>New Face - Virtual Idol Experience</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/pride_board.css">
+    <!-- Masonry 라이브러리 추가 -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <!-- imagesLoaded 라이브러리 추가 (이미지 로딩 완료 확인용) -->
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 </head>
 <body>
-
     <!--header-->
     <jsp:include page="common/header.jsp" />
 
@@ -26,10 +29,12 @@
         </section>
 
         <!-- 두 번째 섹션 (Masonry Layout) -->
+        <!-- grid class 이름 변경 -->
         <section class="masonry-section">
-            <div class="masonry-grid">
+            <div class="grid">
                 <c:forEach items="${boards}" var="board">
-                    <div class="masonry-item">
+                    <!-- grid-item class 이름 변경 -->
+                    <div class="grid-item">
                         <c:choose>
                             <c:when test="${fn:endsWith(board.boardFilePath, '.mp4')}">
                                 <video muted loop autoplay playsinline class="hover-video" onclick="location.href='/pride_board/detail/${board.boardIdx}'">
@@ -63,50 +68,40 @@
 
         <script>
             function checkLoginAndRedirect() {
-                const loginUser = '${loginUser}';  // 세션의 loginUser 체크
+                const loginUser = '${loginUser}';
                 if(!loginUser) {
                     alert("로그인이 필요한 서비스입니다.");
                     window.location.href = '/loginForm';
                     return;
                 }
                 window.location.href = '/pride_board/register';
-                }
-            </script>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const masonryItems = document.querySelectorAll('.masonry-item');
-        
-                masonryItems.forEach(item => {
-                    const img = item.querySelector('img');
-        
-                    // 이미지가 로드된 후 크기를 계산
-                    img.onload = function() {
-                        const width = img.naturalWidth;
-                        const height = img.naturalHeight;
-                        const ratio = width / height;
-        
-                        // 비율 계산: 가로/세로 비율 차이가 20% 이하인 경우 기본 상태로 유지
-                        if (Math.abs(ratio - 1) <= 0.2) {
-                            // 20% 이내 차이는 기본 상태 유지
-                            return;
-                        }
-        
-                        // 가로가 더 길면 'wide', 세로가 더 길면 'tall'
-                        if (width > height) {
-                            item.classList.add('wide');
-                        } else {
-                            item.classList.add('tall');
-                        }
-                    };
-                });
-            });
+            }
         </script>
+        
+        <!-- Masonry 초기화 스크립트 추가 -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var grid = document.querySelector('.grid');
+            
+            imagesLoaded(grid, function() {
+                var masonry = new Masonry(grid, {
+                    itemSelector: '.grid-item',
+                    columnWidth: '.grid-item',
+                    gutter: 10,  // 간격
+                    percentPosition: true,  // 퍼센트 기반 포지션
+                    fitWidth: true,  // 컨테이너에 맞추기
+                    columns: 3,  // 3열 강제 지정
+                    transitionDuration: 0  // 애니메이션 효과 제거
+                });
 
+                // 레이아웃 재계산
+                masonry.layout();
+            });
+        });
+        </script>
     </main>
 
     <!-- footer 재사용 -->
     <jsp:include page="common/footer.jsp" />
 </body>
-
 </html>
