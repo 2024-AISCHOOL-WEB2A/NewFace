@@ -34,7 +34,7 @@
     object-fit: cover; /* 컨테이너를 꽉 채우도록 */
     object-position: center; /* 중앙 정렬 */
     position: absolute;
-    top: 70%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%); /* 정중앙 정렬 */
 }

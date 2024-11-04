@@ -19,8 +19,8 @@
         <section class="contest-section">
             <div class="contest-container">
                 <div class="contest-header">
-                    <img src="image/youtube.png" alt="Contest Logo" style="width: 40px;">
-                    <span> #자랑 게시판</span>
+                    <img src="image/children.png" alt="Contest Logo" style="width: 40px;">
+                    <span># 자랑 게시판</span>
                 </div>
             </div>
         </section>

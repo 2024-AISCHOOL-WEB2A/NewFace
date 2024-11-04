@@ -1,61 +1,73 @@
-/* 타이틀 스타일 */
-.category-title {
-    font-size: 2vw;
-    margin: 4vh;
-    font-family: var(--font-bold);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--main-color);
+/* 컨테이너 스타일 */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 4vh;
-}
-
-/* 테이블 기본 스타일 */
-table {
+ }
+ 
+ /* 타이틀과 아이콘 스타일 */
+ .content-wrapper img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+ }
+ 
+ .category-title {
+    font-size: 2vw;
+    font-family: var(--font-bold);
+    color: black;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+ }
+ 
+ /* 테이블 기본 스타일 */
+ table {
     width: calc(100% - 200px);
     border-collapse: collapse;
     margin: 0 100px 50px 100px;
-}
-
-th, td {
+ }
+ 
+ th, td {
     text-align: left;
     padding: 12px;
     border-bottom: 1px solid #ddd;
     font-family: var(--font-bold);
     height: 5vh;
-}
-
-th {
+ }
+ 
+ th {
     background-color: #f8f9fa;
     border-top: none;
-}
-
-/* 열 너비 설정 */
-th.sequence, td.sequence {
+ }
+ 
+ /* 열 너비 설정 */
+ th.sequence, td.sequence {
     width: 10%;
     color: #555;
-}
-
-th.title, td.title {
+ }
+ 
+ th.title, td.title {
     width: 70%;
     font-style: italic;
-}
-
-th.date, td.date {
+ }
+ 
+ th.date, td.date {
     width: 20%;
     color: #666;
     font-size: 0.9em;
-}
-
-/* 카테고리 필터 스타일 */
-.category-filter {
+ }
+ 
+ /* 카테고리 필터 스타일 */
+ .category-filter {
     margin: 20px 100px;
     display: flex;
     justify-content: flex-end;  /* 오른쪽 정렬 */
-}
-
-.category-filter select {
+ }
+ 
+ .category-filter select {
     padding: 8px 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -63,32 +75,48 @@ th.date, td.date {
     cursor: pointer;
     background-color: white;
     width: 200px;
-}
-
-.category-filter select:focus {
+ }
+ 
+ .category-filter select:focus {
     outline: none;
     border-color: #007bff;
-}
-
-.category-filter select option {
+ }
+ 
+ .category-filter select option {
     padding: 8px;
-}
-
-/* 태그 스타일 */
-.notice-tag {
+ }
+ 
+ /* 태그 스타일 */
+ .notice-tag {
     color: #ff0000;
     font-weight: bold;
     margin-right: 10px;
-}
-
-.faq-tag {
+ }
+ 
+ .faq-tag {
     color: #0000ff;
     font-weight: bold;
     margin-right: 10px;
-}
-
-.request-tag {
+ }
+ 
+ .request-tag {
     color: #008000;
     font-weight: bold;
     margin-right: 10px;
-}
+ }
+ 
+ /* 반응형 스타일 */
+ @media (max-width: 768px) {
+    table {
+        width: 90%;
+        margin: 0 5%;
+    }
+    
+    .category-filter {
+        margin: 20px 5%;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+ }

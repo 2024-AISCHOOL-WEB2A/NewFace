@@ -88,7 +88,7 @@ body{
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.8rem;
-    font-family: "Maplestory Bold";
+    font-family: var(--font-light);
 }
 
 .signup-btn {
@@ -119,7 +119,7 @@ body{
 
 .auth-buttons .greet {
     color: #000000 !important;
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
     padding: 4px 8px;
 }
 

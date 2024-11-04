@@ -12,7 +12,10 @@
 <body>
     <jsp:include page="common/header.jsp" />
     <div class="content-wrapper">
-        <h2 class="category-title"># 고객지원</h2>
+        <h2 class="category-title">
+            <img src="image/megaphone.png" alt="customerService Logo" style="width: 40px;">
+            <span># 고객지원</span>
+        </h2>
         
         <!-- 카테고리 필터 -->
         <div class="category-filter">

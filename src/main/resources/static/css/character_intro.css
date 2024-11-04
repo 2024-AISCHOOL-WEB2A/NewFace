@@ -1,9 +1,21 @@
+/* 기본 설정---------------------------------------------------- */
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
 @font-face {
     font-family: 'Maplestory Bold';
     src: url('../fonts/Maplestory Bold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Maplestory Bold';
+    font-family: 'Maplestory Light';
     src: url('../fonts/Maplestory Light.ttf') format('truetype');
 }
 /* 카테고리 섹션 */
@@ -27,7 +39,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: 'Maplestory Bold';
+    color: black;
 }
 
 .title-icon {
@@ -60,7 +72,7 @@
 .category-item p {
     font-size: 1.2vw;
     margin-top: 1vh;
-    font-family: 'Maplestory Bold';
+    font-family: var(--font-bold);
 }
 
 /* 스크롤 시 카테고리 섹션 */
@@ -137,7 +149,7 @@
 
 .grid-item p {
     font-size: 1.2vw;
-    font-family: 'Maplestory Bold';
+    font-family: 'Maplestory Light';
     text-align: center;
     margin: 0;
     height: 20%;

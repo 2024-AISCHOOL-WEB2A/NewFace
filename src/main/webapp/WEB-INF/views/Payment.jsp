@@ -174,7 +174,7 @@
             <!-- 사용 내역 -->
             <c:forEach var="usePayment" items="${usePayments}">
                 <div class="usage-item">
-                    <div class="item-title">스마일 사용</div>
+                    <div class="item-title">스마일 사용${character.character_name}</div>
                     <div class="item-date">
                         ${usePayment.formattedPointDate}
                     </div>

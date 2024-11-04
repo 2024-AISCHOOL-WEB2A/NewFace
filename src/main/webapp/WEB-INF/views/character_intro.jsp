@@ -20,7 +20,7 @@
         <!-- 카테고리 section-->
         <section class="category-section">
             <h2 class="category-title">
-                <span class="title-icon">🎥 </span> #캐릭터 소개
+                <span class="title-icon">🎥 </span> # 캐릭터 소개
             </h2>
             <div class="category-wrapper">
                 <c:forEach items="${characters}" var="character">

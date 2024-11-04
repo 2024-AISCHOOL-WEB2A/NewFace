@@ -28,7 +28,7 @@
     gap: var(--spacing-unit);
     font-size: 2vw;
     font-family: var(--font-bold);
-    color: var(--main-color);
+    color: black !important; 
 }
 
 /* Prize 섹션 */
