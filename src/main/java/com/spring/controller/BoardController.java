@@ -53,12 +53,13 @@ public class BoardController {
     @PostMapping("/save")
     public String saveBoard(@RequestParam("title") String title,
                             @RequestParam("content") String content,
-                            @RequestParam(value = "file", required = false) MultipartFile file,
+                            @RequestParam(value = "file", required = false) MultipartFile imageFile,
+                            @RequestParam(value = "videoFile", required = false) MultipartFile videoFile,
                             HttpSession session) throws IOException {
         
         User loginUser = (User) session.getAttribute("loginUser");
         
-        if(loginUser == null) {
+        if (loginUser == null) {
             return "redirect:/loginForm";
         }
         
@@ -67,7 +68,14 @@ public class BoardController {
         board.setBoardContent(content);
         board.setUser(loginUser);
         
-        boardService.saveBoard(board, file);
+        // 이미지 파일이 있으면 이미지 저장
+        if (imageFile != null && !imageFile.isEmpty()) {
+            boardService.saveBoard(board, imageFile);
+        }
+        // 동영상 파일이 있으면 동영상 저장
+        else if (videoFile != null && !videoFile.isEmpty()) {
+            boardService.saveBoard(board, videoFile);
+        }
         
         return "redirect:/pride_board";
     }

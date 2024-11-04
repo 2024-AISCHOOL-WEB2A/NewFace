@@ -29,10 +29,19 @@
         <section class="masonry-section">
             <div class="masonry-grid">
                 <c:forEach items="${boards}" var="board">
-                <div class="masonry-item">
-                    <img src="${board.boardFilePath}" alt="${board.boardFilePath}">
-                </div>
-            </c:forEach>
+                    <div class="masonry-item">
+                        <c:choose>
+                            <c:when test="${fn:endsWith(board.boardFilePath, '.mp4')}">
+                                <video muted loop autoplay playsinline class="hover-video" onclick="location.href='/pride_board/detail/${board.boardIdx}'">
+                                    <source src="${board.boardFilePath}" type="video/mp4">
+                                </video>
+                            </c:when>
+                            <c:otherwise>
+                                <img src="${board.boardFilePath}" alt="${board.boardFilePath}" onclick="location.href='/pride_board/detail/${board.boardIdx}'">
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:forEach>
             </div>
         </section>
 

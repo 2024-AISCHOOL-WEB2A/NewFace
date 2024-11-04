@@ -77,6 +77,11 @@
                 <label for="file">이미지 첨부</label>
                 <input type="file" id="file" name="file" accept="image/*">
             </div>
+
+            <div class="form-group">
+                <label for="videoFile">동영상 첨부</label>
+                <input type="file" id="videoFile" name="videoFile" accept="video/mp4">
+            </div>
             
             <div class="form-group">
                 <label for="editor">내용</label>
@@ -131,7 +136,7 @@
                 }
             }
         });
-
+    
         document.getElementById('writeForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const content = editor.getHTML();

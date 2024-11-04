@@ -27,31 +27,36 @@ public class BoardService {
         return boardRepository.findAllByOrderByBoardUpdatedAtDesc(pageable);
     }
 
-    // 게시글 저장
+    // 파일 저장 메서드: 이미지와 동영상을 저장할 수 있도록 공통 메서드 추가
+    private String saveFile(MultipartFile file, String uploadDir) throws IOException {
+        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+        File saveFile = new File(uploadDir, fileName);
+
+        // 경로가 없으면 디렉토리 생성
+        if (!saveFile.getParentFile().exists()) {
+            saveFile.getParentFile().mkdirs();
+        }
+
+        file.transferTo(saveFile);
+        
+        // 반환되는 경로는 웹에서 접근 가능한 상대 경로로 조정
+        return "/uploads/" + uploadDir.substring(uploadDir.lastIndexOf("uploads/") + 8) + "/" + fileName;
+    }
+
     @Transactional
     public Board saveBoard(Board board, MultipartFile file) throws IOException {
-        // 기본값 설정
         board.setBoardViewCount(0);
         board.setBoardUpdatedAt(new Timestamp(System.currentTimeMillis()));
 
-        // 파일이 있는 경우에만 처리
         if (file != null && !file.isEmpty()) {
-            String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/uploads/images";
-            String fileName = UUID.randomUUID().toString() + file.getOriginalFilename();
-
-            File saveFile = new File(projectPath, fileName);
-            
-            // 디렉토리가 없으면 생성
-            if (!saveFile.getParentFile().exists()) {
-                saveFile.getParentFile().mkdirs();
-            }
-            
-            file.transferTo(saveFile);
-            
-            // DB에는 웹에서 접근 가능한 경로 저장
-            board.setBoardFilePath("/uploads/images/" + fileName);
+            // 모든 파일을 동일한 경로에 저장
+            String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/uploads/images";
+            String filePath = saveFile(file, uploadDir);
+            System.out.println("File path set in board: " + filePath);
+            board.setBoardFilePath(filePath);
         }
-        
+
+        System.out.println("Board details before save: " + board);
         return boardRepository.save(board);
     }
 }
