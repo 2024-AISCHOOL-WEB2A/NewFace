@@ -51,7 +51,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <!-- 브랜드 로고 -->
-                    <a href="" class="app-brand-link">
+                    <a href="/" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <img src="image/logo.png" width="150" />
                         </span>
@@ -61,7 +61,7 @@
                 <ul class="menu-inner py-1">
                     <!-- 대시보드 링크 -->
                     <li class="menu-item active">
-                        <a href="{{ url_for('index') }}" class="menu-link">
+                        <a href="/admin"class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">대시보드</div>
                         </a>
@@ -72,41 +72,16 @@
                         <span class="menu-header-text">관리</span>
                     </li>
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <a href="user-list" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account Settings">유저 페이지</div>
                         </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ url_for('user_list') }}" class="menu-link">
-                                    <div data-i18n="Basic">유저 목록</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                            <div data-i18n="Account Settings">관리자 페이지</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ url_for('account') }}" class="menu-link">
-                                    <div data-i18n="Account">계정</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ url_for('notifications') }}" class="menu-link">
-                                    <div data-i18n="Notifications">알림</div>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
 
                     <!-- 계정 메뉴 -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">계정</span></li>
                     <li class="menu-item">
-                        <a href="{{ url_for('login') }}" class="menu-link">
+                        <a href="/logout" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
                             <div data-i18n="Basic">로그아웃</div>
                         </a>

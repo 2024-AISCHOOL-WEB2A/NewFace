@@ -32,4 +32,10 @@ public class CustomerServiceController {
         model.addAttribute("posts", posts);
         return "customerService";
     }
+
+    @GetMapping("/goservice_detail")
+    public String goservice_detail() {
+        return "customerService_detail";
+    }
+    
 }

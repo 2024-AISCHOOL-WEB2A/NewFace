@@ -38,7 +38,7 @@
                 <tbody>
                 <c:if test="${not empty posts}">
                     <c:forEach items="${posts}" var="post" varStatus="status">
-                        <tr>
+                        <tr onclick="window.location.href='goservice_detail';" style="cursor: pointer;">
                             <td>${status.count}</td>
                             <td>
                                 <c:choose>
@@ -58,6 +58,7 @@
                                 ${post.customerServiceDate}
                             </td>
                         </tr>
+                        
                     </c:forEach>
                 </c:if>
                 <c:if test="${empty posts}">
