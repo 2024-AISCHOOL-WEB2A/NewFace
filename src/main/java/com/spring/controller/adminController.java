@@ -15,6 +15,7 @@ import com.spring.service.BoardService;
 import com.spring.service.CharacterService;
 
 
+
 @Controller
 public class adminController {
 
@@ -36,11 +37,6 @@ public class adminController {
         List<CustomerService> faqs = customerServiceRepository.findByCustomerServiceCategory("FAQ");
         List<CustomerService> requests = customerServiceRepository.findByCustomerServiceCategory("요청");
 
-        System.out.println(notices.toString());
-        System.out.println(faqs.toString());
-        System.out.println(requests.toString());
-
-
         model.addAttribute("topCharacters", topCharacters);
         model.addAttribute("top5Posts", top5Posts);
         model.addAttribute("notices", notices);
@@ -49,6 +45,12 @@ public class adminController {
         
         return "admin";
     }
+
+    @GetMapping("user-list")
+    public String user_list() {
+        return "admin-user-list";
+    }
+    
     
     
 }
