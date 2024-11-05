@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    padding: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 8%;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    grid-template-rows: 20% 20% 30% 30%;
+    gap: 10px;
+    height: 92%;
+}
+
+.dashboard-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#sales-graph {
+    grid-column: 1 / 4;
+}
+
+#subscribers-info, #visitors-info {
+    grid-column: span 1;
+}
+
+#sub-visitor-graph {
+    grid-column: 1 / 4;
+}
+
+#popular-characters {
+    grid-column: 1;
+}
+
+#popular-posts {
+    grid-column: 2;
+}
+
+.notices-section {
+    grid-column: 3;
+    display: flex;
+    justify-content: space-between;
+}
+
+.notices, .faq, .requests {
+    width: 32%;
+    background-color: #d1e7dd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+    font-size: 1rem;
+}

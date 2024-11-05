@@ -19,8 +19,16 @@
     <div class="auth-buttons">
         <!-- 로그인 상태 확인하여 if 조건문으로 버튼 표시 -->
         <c:if test="${not empty sessionScope.loginUser}">
-            <!-- 로그인 된 경우 -->
-            <a href="/payment" id="greeting" class="greet">${sessionScope.loginUser.userNickname}님</a>
+            <!-- user_role이 admin인 경우 -->
+            <c:if test="${sessionScope.loginUser.userRole == 'admin'}">
+                <a href="/admin" class="greet">${sessionScope.loginUser.userNickname}님</a>
+            </c:if>
+
+            <!-- 일반 사용자일 경우 -->
+            <c:if test="${sessionScope.loginUser.userRole != 'admin'}">
+                <a href="/payment" class="greet">${sessionScope.loginUser.userNickname}님</a>
+            </c:if>
+
             <a id="logoutButton" class="logout-btn" href='/logout'>Logout</a>
         </c:if>
 

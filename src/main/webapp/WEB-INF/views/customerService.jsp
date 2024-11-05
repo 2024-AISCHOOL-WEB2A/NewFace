@@ -21,9 +21,9 @@
         <div class="category-filter">
             <select id="categorySelect" onchange="location.href=this.value">
                 <option value="/customerService" ${param.category == null ? 'selected' : ''}>전체</option>
-                <option value="/customerService?category=0" ${param.category == '0' ? 'selected' : ''}>공지</option>
-                <option value="/customerService?category=1" ${param.category == '1' ? 'selected' : ''}>FAQ</option>
-                <option value="/customerService?category=2" ${param.category == '2' ? 'selected' : ''}>요청</option>
+                <option value="/customerService?category=공지" ${param.category == "공지" ? 'selected' : ''}>공지</option>
+                <option value="/customerService?category=FAQ" ${param.category == "FAQ" ? 'selected' : ''}>FAQ</option>
+                <option value="/customerService?category=요청" ${param.category == "요청" ? 'selected' : ''}>요청</option>
             </select>
         </div>
 
@@ -42,13 +42,13 @@
                             <td>${status.count}</td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${post.customerServiceCategory eq '0'}">
+                                    <c:when test="${post.customerServiceCategory eq '공지'}">
                                         <span class="notice-tag">[공지]</span>
                                     </c:when>
-                                    <c:when test="${post.customerServiceCategory eq '1'}">
+                                    <c:when test="${post.customerServiceCategory eq 'FAQ'}">
                                         <span class="faq-tag">[FAQ]</span>
                                     </c:when>
-                                    <c:when test="${post.customerServiceCategory eq '2'}">
+                                    <c:when test="${post.customerServiceCategory eq '요청'}">
                                         <span class="request-tag">[요청]</span>
                                     </c:when>
                                 </c:choose>

@@ -1,19 +1,20 @@
 package com.spring.service;
 
-import java.sql.Timestamp;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import java.io.File;
 import java.io.IOException;
-import org.springframework.stereotype.Service;
-import com.spring.repository.BoardRepository;
+import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.entity.Board;
+import com.spring.repository.BoardRepository;
 
 @Service
 public class BoardService {
@@ -58,5 +59,10 @@ public class BoardService {
 
         System.out.println("Board details before save: " + board);
         return boardRepository.save(board);
+    }
+
+    // 상위 10개의 게시물 조회
+    public List<Board> getTop10Posts() {
+        return boardRepository.findTop10ByOrderByBoardViewCountDesc();
     }
 }
