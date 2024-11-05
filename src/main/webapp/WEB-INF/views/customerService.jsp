@@ -12,10 +12,21 @@
 <body>
     <jsp:include page="common/header.jsp" />
     <div class="content-wrapper">
-        <h2 class="category-title">
-            <img src="image/megaphone.png" alt="customerService Logo" style="width: 40px;">
-            <span># 고객지원</span>
-        </h2>
+        <!-- 배너 섹션 -->
+        <div class="banner-section">
+            <div class="banner-content">
+                <h1 class="banner-title">
+                    NEW FACE 고객센터
+                </h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <img src="image/하츄핑.png" class="floating-item left-item1" alt="캐릭터1">
+            <img src="image/말랑핑.png" class="floating-item left-item2" alt="캐릭터2">
+            <img src="image/쿠로미.png" class="floating-item right-item1" alt="캐릭터3">
+            <img src="image/반짝핑.png" class="floating-item right-item2" alt="캐릭터4">
+        </div>
         
         <!-- 카테고리 필터 -->
         <div class="category-filter">
