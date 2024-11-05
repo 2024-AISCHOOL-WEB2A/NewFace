@@ -19,7 +19,7 @@
                     NEW FACE 고객센터
                 </h1>
             </div>
-        </div>
+        </div>   
 
         <div class="container">
             <img src="image/하츄핑.png" class="floating-item left-item1" alt="캐릭터1">
