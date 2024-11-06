@@ -1,0 +1,98 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "각도 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "각도 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "각도 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "눈 깜빡임"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "입 변형"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "입 여닫기"
+		},
+		{
+			"Id": "ParamCheek2",
+			"GroupId": "",
+			"Name": "눈물"
+		},
+		{
+			"Id": "ParamCheek3",
+			"GroupId": "",
+			"Name": "웃음"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "호흡"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "앞머리"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "리본"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "뒷머리"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part",
+			"Name": "얼굴"
+		},
+		{
+			"Id": "Part6",
+			"Name": "몸"
+		},
+		{
+			"Id": "Part2",
+			"Name": "눈"
+		},
+		{
+			"Id": "Part5",
+			"Name": "입"
+		},
+		{
+			"Id": "Part3",
+			"Name": "기본 눈"
+		}
+	],
+	"CombinedParameters": [
+		[
+			"ParamAngleX",
+			"ParamAngleY"
+		],
+		[
+			"ParamMouthForm",
+			"ParamMouthOpenY"
+		]
+	]
+}
