@@ -75,6 +75,36 @@ public class UserController {
         }
     }
 
+    @PostMapping("/custom_login")
+    public String custom_login(String userId, String userPw, HttpSession session, Model model) {
+        User user = userService.login(userId, userPw);
+
+        if (user != null) {
+            // 로그인 성공
+            session.setAttribute("loginUser", user);
+            return "redirect:/";
+        } else {
+            // 로그인 실패
+            model.addAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
+            return "redirect:/loginForm";
+        }
+    }
+
+    @PostMapping("/sns_login")
+    public String sns_login(String userId, String userPw, HttpSession session, Model model) {
+        User user = userService.login(userId, userPw);
+
+        if (user != null) {
+            // 로그인 성공
+            session.setAttribute("loginUser", user);
+            return "redirect:/";
+        } else {
+            // 로그인 실패
+            model.addAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
+            return "redirect:/loginForm";
+        }
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();

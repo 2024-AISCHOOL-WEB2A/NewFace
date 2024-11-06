@@ -30,7 +30,7 @@
             <div class="logo">
                 <img src="image/logo.png" alt="New Face Logo">
             </div>
-            <form action="/login" method="post">
+            <form action="/custom_login" method="post">
                 <input type="text" name="userId" placeholder="ID" required>
                 <input type="password" name="userPw" placeholder="Password" required>
                 <input type="submit" value="Login">
