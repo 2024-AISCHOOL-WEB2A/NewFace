@@ -1,0 +1,152 @@
+/* 기본 설정---------------------------------------------------- */
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+}
+
+:root {
+    --main-color: #FF3B69;
+    --light-gray: #E6E6E6;
+    --background-color: #FFFF;
+    --text-color: #000000;
+    --font-bold: '메인 폰트 Bold', Arial, sans-serif;
+    --font-light: '메인 폰트 Light', Arial, sans-serif;
+}
+body{
+    width: 100%;
+}
+/* Reset 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 공통 스타일 */
+.main-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Header 스타일------------------------------------------- */
+.header {
+    height: 7vh;
+    background-color: var(--background-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd; /* 아래쪽에 연한 선 추가 */
+}
+
+
+.logo a {
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.navigation .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+}
+
+.navigation .nav-list li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-family: var(--font-bold);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: var(--font-light);
+}
+
+.signup-btn {
+    background-color: white;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    font-family: "Maplestory Bold";
+    
+}
+
+.login-btn {
+    background-color: var(--main-color);
+    font-family: "Maplestory Bold";
+    color: white;
+}
+
+.logout-btn {
+    background-color: var(--main-color);
+    font-family: "Maplestory Bold";
+    color: white;
+}
+
+.active {
+    font-weight: bold;
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.auth-buttons .greet {
+    color: #000000 !important;
+    font-size: 1.2rem;
+    padding: 4px 8px;
+}
+
+
+/* Footer 스타일 ------------------------------------------- */
+.footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-light);
+}
+
+.footer-left {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footer-right .footer-social {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-right .footer-social li a {
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 0.9rem;
+}

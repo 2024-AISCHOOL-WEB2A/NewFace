@@ -1,0 +1,205 @@
+/* 변수 설정 */
+:root {
+    --border-radius: 10px;
+    --transition-speed: 0.3s;
+    --spacing-unit: 20px;
+}
+
+/* 공통 스타일 */
+.contest-section {
+    font-family: 'Maplestory Bold', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.prize, .prize-text {
+    font-family: 'Maplestory Bold', sans-serif;
+}
+
+.prize {
+    text-align: center;
+}
+
+/* 컨테이너 스타일 */
+.contest-container, .board-pagination {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 헤더 스타일 */
+.contest-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    font-size: 2vw;
+    font-family: var(--font-bold);
+    color: black !important; 
+}
+
+/* Prize 섹션 */
+.prize-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.prize {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* 메달 스타일 통합 */
+.medal {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.second-place, .third-place {
+    width: 60px;
+}
+
+.first-place {
+    width: 80px;
+}
+
+/* 이전 Masonry 레이아웃 관련 코드 주석 처리 */
+/* .masonry-grid {
+    columns: 3;
+    column-gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+} */
+
+/* 새로운 Masonry 레이아웃 */
+.grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    width: 32% !important;
+    margin: 0.5%;
+    background-color: #f0f0f0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+.grid-item img,
+.grid-item video {
+    width: 100%;
+    height: auto; /* 자연스러운 높이 유지 */
+    display: block;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    object-fit: cover;
+}
+
+/* 호버 효과 */
+.prize:hover, 
+.grid-item:hover {
+    transform: scale(1.05);
+    transition: transform var(--transition-speed) ease;
+}
+
+/* 비디오 컨트롤 숨기기 */
+.grid-item video::-webkit-media-controls {
+    display: none !important;
+}
+
+/* 페이지네이션 */
+.board-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: var(--spacing-unit);
+}
+
+.page-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    font-family: var(--font-bold);
+    font-size: 15px;
+    color: #666;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+}
+
+.page-number.active {
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* 등록 버튼 */
+.register-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    font-family: var(--font-bold);
+    font-size: 14px;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    margin-left: 16px;
+    background-color: white;
+}
+
+.register-button:hover {
+    background-color: #fff0f3;
+}
+
+/* 반응형 설정 */
+@media (max-width: 1200px) {
+    .grid-item {
+        width: 32% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-item {
+        width: calc(100% - 20px);
+    }
+}

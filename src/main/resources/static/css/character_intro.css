@@ -1,0 +1,159 @@
+/* 기본 설정---------------------------------------------------- */
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Maplestory Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+}
+/* 카테고리 섹션 */
+.category-section {
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0;
+    background-color: #f0f0f0;
+    position: relative;
+    margin: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.category-title {
+    font-size: 2vw;
+    margin-bottom: 1vh;
+    font-family: var(--font-bold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: black;
+}
+
+.title-icon {
+    font-size: 1.5vw;
+}
+
+.category-wrapper {
+    display: flex;
+    gap: 3.5vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh 1vw;
+}
+
+.category-item img {
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 14vw;
+    height: 14vw;
+    object-fit: contain;
+}
+
+.category-item p {
+    font-size: 1.2vw;
+    margin-top: 1vh;
+    font-family: var(--font-bold);
+}
+
+/* 스크롤 시 카테고리 섹션 */
+.category-section.sticky {
+    right: 0; 
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 1vh 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin: 0;
+    flex-direction: row;
+}
+
+.category-section.sticky .category-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-section.sticky .category-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
+
+.category-section.sticky img {
+    width: 4vw;
+    height: 8vh;
+}
+
+.category-section.sticky p {
+    font-size: 1.3vw;
+    margin: 0;
+}
+
+/* 그리드 섹션 */
+.grid-section {
+    margin-top: calc(10vh + 100px); /* sticky 헤더의 높이만큼 여백 추가 */
+    margin-bottom: 10vh;
+    justify-content: center;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+    max-width: 1200px; /* 전체 최대 너비 설정 */
+    width: 100%; /* 화면의 90% 너비만 사용 */
+    margin: 0 auto; /* 가운데 정렬 */
+   
+}
+
+.grid-item {
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.grid-item p {
+    font-size: 1.2vw;
+    font-family: 'Maplestory Light';
+    text-align: center;
+    margin: 0;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,182 @@
+/* 기본 설정---------------------------------------------------- */
+@font-face {
+    font-family: '메인 폰트 Bold';
+    src: url('../fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: '메인 폰트 Light';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Maplestory Bold';
+    src: url('../fonts/Maplestory Light.ttf') format('truetype');
+}
+
+.character-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0vh 10vw;
+    background-color: #fff;
+    height: 90vh;
+}
+
+.character-info {
+    flex: 1;
+    margin-right: 5vw;
+}
+
+.character-info h1 {
+    font-size: 3vw;
+    font-family: 'Maplestory Bold';
+    margin-bottom: 2vh;
+}
+
+.character-info p {
+    font-size: 1.2vw;
+    line-height: 1.6;
+    margin-bottom: 3vh;
+    font-family: '메인 폰트 Light';
+}
+
+.cta-button {
+    background-color: #ff3b69;
+    color: white;
+    border: none;
+    padding: 1vh 2vw;
+    font-size: 1.5vw;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 3vh;
+    width: 100%;  /* 버튼 크기를 table과 동일하게 설정 */
+    font-family: 'Maplestory Bold';
+}
+
+.character-details {
+    width: 100%;  /* 테이블과 버튼의 너비를 동일하게 설정 */
+    border-collapse: collapse;
+    font-size: 1.2vw;
+    border: 1px solid #ddd;  /* 테이블 전체 외곽선 */
+}
+
+/* 각 tr 태그의 아래쪽에 연한 회색 라인 추가 */
+.character-details tr {
+    border-bottom: 1px solid #ddd;  /* 연한 회색 라인 */
+}
+
+.character-details th, .character-details td {
+    padding: 1vh;
+    border: 1px solid #ddd;  /* 셀 테두리 추가 */
+}
+
+/* 성별, 좋아하는 것, 싫어하는 것 CSS */
+.character-details th {
+    text-align: left;
+    color: #888;  /* 연한 색으로 설정 */
+    font-family: var(--font-light);
+}
+
+.character-details td {
+    color: #333;  /* 좀 더 진한 색으로 설정 */
+    font-weight: bold;  /* 진한 폰트 웨이트 적용 */
+    font-family: var(--font-light);
+}
+
+.character-image {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 이미지를 수직 중앙에 배치 */
+    width: 40vw;
+    height: 40vw; /* 정사각형 비율 유지 */
+    overflow: hidden; /* 이미지가 컨테이너를 벗어나면 숨김 */
+}
+
+.character-image img {
+    width: 100%;  /* 컨테이너 크기에 맞추어 너비 조정 */
+    height: 100%; /* 컨테이너 크기에 맞추어 높이 조정 */
+    object-fit: contain; /* 비율을 유지하면서 컨테이너에 꽉 차도록 */
+}
+
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 3vh 2vw;
+    border-radius: 10px;
+    width: 25vw;
+    text-align: center;
+    position: relative;
+    font-family: var(--font-light);
+}
+
+.modal-content h2 {
+    font-size: 1.8vw;
+    color: #333;
+    margin-bottom: 2vh;
+    font-family: var(--font-bold);
+}
+
+.modal-content p {
+    font-size: 1.2vw;
+    color: #666;
+    margin-bottom: 3vh;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    margin-top: 3vh;
+}
+
+.modal-buttons button {
+    padding: 1vh 2vw;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2vw;
+    font-family: var(--font-bold);
+    width: 8vw;
+    transition: opacity 0.2s;
+}
+.modal-content p img  {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+    object-fit: contain;
+}
+
+#confirmPayment {
+    background-color: #ff3b69;  /* 체험하기 버튼과 동일한 색상 */
+    color: white;
+}
+
+#cancelPayment {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.modal-buttons button:hover {
+    opacity: 0.8;
+}
