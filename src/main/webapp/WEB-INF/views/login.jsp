@@ -35,6 +35,22 @@
                 <input type="password" name="userPw" placeholder="Password" required>
                 <input type="submit" value="Login">
             </form>
+
+            
+             <!-- 구분선 -->
+             <div class="divider">
+                <span>또는</span>
+            </div>
+            <div class="social-login">
+            <a href="/oauth2/authorization/google" class="google-login-btn">
+                Google로 계속하기
+            </a>
+            <a href="/oauth2/authorization/naver" class="naver-login-btn">
+                네이버로 계속하기
+            </a>
+            <a class="kakao-login-btn">
+                카카오로 계속하기
+            </a>
         </div>
     </div>
 

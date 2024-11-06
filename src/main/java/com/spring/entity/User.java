@@ -40,4 +40,10 @@ public class User {
     @Column(name = "user_point")
     private int userPoint; 
 
+    @Column(name = "provider")
+    private String provider;    // 어떤 OAuth로 로그인 했는지 구분하기 위한 필드
+    
+    @Column(name = "provider_id")
+    private String providerId;  // OAuth 로그인한 사용자의 식별자 값
+
     }
