@@ -1,6 +1,10 @@
 package com.spring.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.security.core.annotation.AuthenticationPrincipal;
+// import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -8,7 +12,6 @@ import com.spring.entity.User;
 import com.spring.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
-
 
 @Controller
 public class UserController {
@@ -73,5 +76,26 @@ public class UserController {
         session.invalidate();
         return "redirect:/";
     }
-    
+
+    // @GetMapping("/oauth2/success") 소셜로그인 관련
+    // public String oauth2Success(@AuthenticationPrincipal OAuth2User oauth2User, HttpSession session) {
+    //     if (oauth2User != null) {
+    //         try {
+    //             String email;
+    //             Map<String, Object> attributes = oauth2User.getAttributes();
+                
+    //             if (attributes.get("response") != null) {  // 네이버
+    //                 Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+    //                 email = (String) response.get("email");
+    //             } else {  // 구글
+    //                 email = oauth2User.getAttribute("email");
+    //             }
+                
+    //             return "redirect:/";
+    //         } catch (Exception e) {
+    //             return "redirect:/loginForm";
+    //         }
+    //     }
+    //     return "redirect:/loginForm";
+    // }
 }
