@@ -49,7 +49,7 @@
                 <tbody>
                 <c:if test="${not empty posts}">
                     <c:forEach items="${posts}" var="post" varStatus="status">
-                        <tr onclick="window.location.href='goservice_detail';" style="cursor: pointer;">
+                        <tr style="cursor: pointer;" onclick="toggleContent(this);">
                             <td>${status.count}</td>
                             <td>
                                 <c:choose>
@@ -65,11 +65,14 @@
                                 </c:choose>
                                 ${post.customerServiceTitle}
                             </td>
-                            <td class="date">
-                                ${post.customerServiceDate}
+                            <td class="date">${post.customerServiceDate}</td>
+                        </tr>
+                        <!-- 두 번째 tr: 숨겨져 있다가 클릭 시 나타나는 행 -->
+                        <tr class="content-row" style="display: none;">
+                            <td colspan="3">
+                                ${post.customerServiceContent}
                             </td>
                         </tr>
-                        
                     </c:forEach>
                 </c:if>
                 <c:if test="${empty posts}">
@@ -79,6 +82,35 @@
                 </c:if>
             </tbody>
         </table>
+        <div class="button-container">
+            <a href="javascript:void(0)" onclick="checkLoginAndRedirect()" class="register-button">등록하기</a>
+        </div>
+    </div>
     <jsp:include page="common/footer.jsp" />
 </body>
+
+<script>
+    function checkLoginAndRedirect() {
+        const loginUser = '${loginUser}';
+        if(!loginUser) {
+            alert("로그인이 필요한 서비스입니다.");
+            window.location.href = '/loginForm';
+            return;
+        }
+        window.location.href = '/customerService_register';
+    }
+
+    function toggleContent(row) {
+    // 클릭된 <tr>의 다음 형제 요소인 content-row를 찾음
+    const contentRow = row.nextElementSibling;
+    
+    // content-row의 display 스타일을 토글
+    if (contentRow.style.display === 'none' || contentRow.style.display === '') {
+        contentRow.style.display = 'table-row';
+    } else {
+        contentRow.style.display = 'none';
+    }
+}
+
+</script>
 </html>

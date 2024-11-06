@@ -1,0 +1,80 @@
+.container {
+    width: 90%; /* 전체 너비로 확장 */
+    padding: 2% 5%; /* 좌우 여백 추가 */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    font-size: 1.8em;
+    color: #333;
+    text-align: left;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5em;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+}
+
+label {
+    width: 15%; /* 레이블 너비 조정 */
+    font-size: 1em;
+    color: #666;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 80%;
+    padding: 0.8em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+}
+
+
+input[readonly] {
+    background-color: #f1f1f1;
+    color: #777;
+    cursor: not-allowed;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    gap: 1em;
+}
+
+.submit-button, .cancel-button {
+    padding: 0.6em 2em;
+    font-size: 1em;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.submit-button {
+    background-color: #333;
+    color: #fff;
+}
+
+.cancel-button {
+    background-color: #fff;
+    color: #333;
+}

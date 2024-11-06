@@ -37,5 +37,11 @@ public class CustomerServiceController {
     public String goservice_detail() {
         return "customerService_detail";
     }
+
+    @GetMapping("/customerService_register")
+    public String customerService_register() {
+        return "customerService_register";
+    }
+    
     
 }

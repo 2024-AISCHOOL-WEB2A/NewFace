@@ -1,129 +1,137 @@
 /* 컨테이너 스타일 */
 .content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
- }
- 
- /* 타이틀과 아이콘 스타일 */
- .content-wrapper img {
-    width: 40px;
-    height: 40px;
-    vertical-align: middle;
- }
- 
- .category-title {
-    font-size: 2vw;
-    font-family: var(--font-bold);
-    color: black;
-    margin-left: 10px;
-    display: inline-block;
-    vertical-align: middle;
- }
- 
- /* 테이블 기본 스타일 */
- table {
-    width: calc(100% - 200px);
-    border-collapse: collapse;
-    margin: 0 100px 50px 100px;
- }
- 
- th, td {
-    text-align: left;
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    font-family: var(--font-regular);
-    height: 5vh;
-    font-size: 15px;  /* 폰트 크기 조정 */
-    font-weight: 550;  /* 폰트 굵기 조정 */
- }a
- 
- th {
-    background-color: #f8f9fa;
-    border-top: none;
- }
- 
- /* 열 너비 설정 */
- th.sequence, td.sequence {
-    width: 10%;
-    color: #555;
- }
- 
- th.title, td.title {
-    width: 70%;
-    font-style: italic;
- }
- 
- th.date, td.date {
-    width: 20%;
-    color:#999;
-    font-size: 0.9em;
- }
- 
- /* 카테고리 필터 스타일 */
- .category-filter {
-    margin: 20px 100px;
-    display: flex;
-    justify-content: flex-end;  /* 오른쪽 정렬 */
- }
- 
- .category-filter select {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: white;
-    width: 200px;
- }
- 
- .category-filter select:focus {
-    outline: none;
-    border-color: #007bff;
- }
- 
- .category-filter select option {
-    padding: 8px;
- }
- 
- /* 태그 스타일 */
- .notice-tag {
-    color: #ff0000;
-    font-weight: bold;
-    margin-right: 10px;
- }
- 
- .faq-tag {
-    color: #0000ff;
-    font-weight: bold;
-    margin-right: 10px;
- }
- 
- .request-tag {
-    color: #008000;
-    font-weight: bold;
-    margin-right: 10px;
- }
- 
- /* 반응형 스타일 */
- @media (max-width: 768px) {
-    table {
-        width: 90%;
-        margin: 0 5%;
-    }
-    
-    .category-filter {
-        margin: 20px 5%;
-    }
-    
-    th, td {
-        padding: 8px;
-    }
- }
+   max-width: 1200px;
+   margin: 0 auto;
+   text-align: center;
+   padding: 10px 0;
+   border-bottom: 1px solid #ccc;
+}
 
- .banner-section {
+/* 타이틀과 아이콘 스타일 */
+.content-wrapper img {
+   width: 40px;
+   height: 40px;
+   vertical-align: middle;
+}
+
+.category-title {
+   font-size: 2vw;
+   font-family: var(--font-bold);
+   color: black;
+   margin-left: 10px;
+   display: inline-block;
+   vertical-align: middle;
+}
+
+/* 테이블 기본 스타일 */
+table {
+   width: calc(100% - 200px);
+   border-collapse: collapse;
+   margin: 0 100px 50px 100px;
+}
+
+th,
+td {
+   text-align: left;
+   padding: 12px;
+   border-bottom: 1px solid #ddd;
+   font-family: var(--font-regular);
+   height: 5vh;
+   font-size: 15px;
+   /* 폰트 크기 조정 */
+   font-weight: 550;
+   /* 폰트 굵기 조정 */
+}
+
+a th {
+   background-color: #f8f9fa;
+   border-top: none;
+}
+
+/* 열 너비 설정 */
+th.sequence,
+td.sequence {
+   width: 10%;
+   color: #555;
+}
+
+th.title,
+td.title {
+   width: 70%;
+   font-style: italic;
+}
+
+th.date,
+td.date {
+   width: 20%;
+   color: #999;
+   font-size: 0.9em;
+}
+
+/* 카테고리 필터 스타일 */
+.category-filter {
+   margin: 20px 100px;
+   display: flex;
+   justify-content: flex-end;
+   /* 오른쪽 정렬 */
+}
+
+.category-filter select {
+   padding: 8px 16px;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   font-size: 16px;
+   cursor: pointer;
+   background-color: white;
+   width: 200px;
+}
+
+.category-filter select:focus {
+   outline: none;
+   border-color: #007bff;
+}
+
+.category-filter select option {
+   padding: 8px;
+}
+
+/* 태그 스타일 */
+.notice-tag {
+   color: #ff0000;
+   font-weight: bold;
+   margin-right: 10px;
+}
+
+.faq-tag {
+   color: #0000ff;
+   font-weight: bold;
+   margin-right: 10px;
+}
+
+.request-tag {
+   color: #008000;
+   font-weight: bold;
+   margin-right: 10px;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+   table {
+      width: 90%;
+      margin: 0 5%;
+   }
+
+   .category-filter {
+      margin: 20px 5%;
+   }
+
+   th,
+   td {
+      padding: 8px;
+   }
+}
+
+.banner-section {
    width: 100%;
    height: 250px;
    background-image: url('/image/배너4.gif');
@@ -143,7 +151,7 @@
    left: 0;
    right: 0;
    bottom: 0;
-   background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.2));
+   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
 }
 
 .banner-content {
@@ -188,51 +196,90 @@
 
 /* 왼쪽 아이템들 - 테이블 영역을 피해서 배치 */
 .left-item1 {
-   left: 2%;  /* 5%에서 줄임 */
-   top: 30%;  /* 50%에서 위로 올림 */
+   left: 2%;
+   /* 5%에서 줄임 */
+   top: 30%;
+   /* 50%에서 위로 올림 */
    animation: floatingLeft 6s ease-in-out infinite;
 }
 
 .left-item2 {
-   left: 7%;  /* 8%에서 줄임 */
-   top: 70%;  /* 80%에서 위로 올림 */
+   left: 7%;
+   /* 8%에서 줄임 */
+   top: 70%;
+   /* 80%에서 위로 올림 */
    animation: floatingLeft 8s ease-in-out infinite;
 }
 
 /* 오른쪽 아이템들 - 테이블 영역을 피해서 배치 */
 .right-item1 {
-   right: 1%;  /* 2%에서 줄임 */
-   top: 35%;  /* 55%에서 위로 올림 */
+   right: 1%;
+   /* 2%에서 줄임 */
+   top: 35%;
+   /* 55%에서 위로 올림 */
    animation: floatingRight 7s ease-in-out infinite;
 }
 
 .right-item2 {
-   right: 8%;  /* 5%에서 줄임 */
-   top: 75%;  /* 85%에서 위로 올림 */
+   right: 8%;
+   /* 5%에서 줄임 */
+   top: 75%;
+   /* 85%에서 위로 올림 */
    animation: floatingRight 9s ease-in-out infinite;
 }
 
 /* 애니메이션 움직임 범위도 조절 */
 @keyframes floatingLeft {
    0% {
-       transform: translateX(0) translateY(0);
+      transform: translateX(0) translateY(0);
    }
+
    50% {
-       transform: translateX(15px) translateY(-15px);  /* 20px에서 15px로 줄임 */
+      transform: translateX(15px) translateY(-15px);
+      /* 20px에서 15px로 줄임 */
    }
+
    100% {
-       transform: translateX(0) translateY(0);
+      transform: translateX(0) translateY(0);
    }
 }
 
 @keyframes floatingRight {
    0% {
-       transform: translateX(0) translateY(0);
+      transform: translateX(0) translateY(0);
    }
+
    50% {
-       transform: translateX(-15px) translateY(-15px);  /* 20px에서 15px로 줄임 */
+      transform: translateX(-15px) translateY(-15px);
+      /* 20px에서 15px로 줄임 */
    }
+
    100% {
-       transform: translateX(0) translateY(0);
+      transform: translateX(0) translateY(0);
    }
+}
+
+.button-container {
+   display: flex;
+   justify-content: flex-end; /* 오른쪽 정렬 */
+   margin-top: 5px;
+   margin-bottom: 5px;
+   padding-right: 100px;
+}
+
+
+.register-button {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   padding: 8px 16px;
+   color: var(--main-color);
+   border: 1px solid var(--main-color);
+   border-radius: 8px;
+   font-family: var(--font-bold);
+   font-size: 14px;
+   text-decoration: none;
+   transition: all var(--transition-speed) ease;
+   margin-left: 16px;
+   background-color: white;
 }
