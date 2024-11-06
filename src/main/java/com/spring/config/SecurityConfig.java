@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
     
     private final CustomOAuth2UserService customOAuth2UserService;
     private final UserService userService;
@@ -36,6 +37,7 @@ public class SecurityConfig {
                 .loginPage("/loginForm")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
+                .failureUrl("/loginForm?error=true")
                 .permitAll()
             )
             .oauth2Login(oauth2 -> oauth2
@@ -53,9 +55,11 @@ public class SecurityConfig {
                         // 네이버 로그인
                         Map<String, Object> naverResponse = oauth2User.getAttribute("response");
                         email = (String) naverResponse.get("email");
+                        System.out.println("Naver email: " + email);
                     } else {
                         // 구글 로그인
                         email = oauth2User.getAttribute("email");
+                        System.out.println("Google email: " + email);
                     }
             
                     User user = userService.findByUserEmail(email);
