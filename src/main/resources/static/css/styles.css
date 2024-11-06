@@ -47,7 +47,7 @@ body{
 
 /* Header 스타일------------------------------------------- */
 .header {
-    height: 7vh;
+    height: 8vh;
     background-color: var(--background-color);
     padding: 10px;
     display: flex;
@@ -72,9 +72,64 @@ body{
 
 .navigation .nav-list li a {
     text-decoration: none;
-    color: #333;
-    font-size: 1.2rem;
+    color: #555;  /* 회색으로 흐리게 설정 */
+    font-size: 1.1rem;  /* 글자 크기 1rem으로 설정 */
     font-family: var(--font-bold);
+    position: relative;
+    transition: all 0.3s ease;  
+    font-weight: 500; 
+    display: inline-block;
+    transition: all 0.3s ease;
+    text-shadow: none;  
+ }
+
+ /* .navigation .nav-list li a::before {
+    content: '';
+    position: absolute;
+    top: -35px;  
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;  
+    height: 40px; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: all 0.3s ease;
+} */
+
+/* 호버 시 아이콘 나타나면서 위로 올라오는 효과 */
+/* .navigation .nav-list li a:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+} */
+
+/* 각 메뉴별 아이콘 이미지 설정 */
+/* .navigation .nav-list li:nth-child(1) a::before { background-image: url('/image/하츄핑.png'); }
+.navigation .nav-list li:nth-child(2) a::before { background-image: url('/image/뽀로로.png'); }
+.navigation .nav-list li:nth-child(3) a::before { background-image: url('/image/쿠로미.png'); }
+.navigation .nav-list li:nth-child(4) a::before { background-image: url('/image/말랑핑.png'); }
+.navigation .nav-list li:nth-child(5) a::before { background-image: url('/image/푸린.png'); } */
+
+.navigation .nav-list li a:hover {
+    color: var(--main-color);
+    transform: translateY(-2px);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);  /* 살짝 그림자 추가 */
+}
+
+.navigation .nav-list li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: var(--main-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navigation .nav-list li a:hover::after {
+    width: 100%;
 }
 
 .auth-buttons {
@@ -150,3 +205,4 @@ body{
     color: var(--main-color);
     font-size: 0.9rem;
 }
+
