@@ -1,52 +1,18 @@
-
 .container {
-    width: 100%;
+    width: 80%;
     max-width: 1200px;
-    padding: 20px;
+    padding: 2%;
+    margin: 0 auto;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-.header a {
-    text-decoration: none;
-    color: #333;
-    margin: 0 10px;
-    font-size: 1.2em;
-}
-
-.header a.active {
-    color: #ff0077;
-    font-weight: bold;
-}
-
-.auth-buttons a {
-    font-size: 1em;
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: 1px solid #ff0077;
-    color: #ff0077;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-.auth-buttons a.login {
-    background-color: #ff0077;
-    color: #fff;
-}
-
-.notice-container {
+.notice-container, .admin-input-container {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 40px;
+    border-radius: 1%;
+    padding: 2%;
+    margin-top: 5%;
+    text-align: center;
+    width: 100%;
 }
 
 .notice-header {
@@ -54,8 +20,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 1%;
+    margin-bottom: 2%;
 }
 
 .notice-title {
@@ -69,9 +35,77 @@
     color: #aaa;
 }
 
+.notice-content {
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
 .notice-content p {
     font-size: 1em;
     line-height: 1.6em;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 1.5%;
+}
+
+
+/* 관리자 입력 및 버튼 스타일 */
+.admin-input-container {
+    margin-top: 2%;
+}
+
+.admin-input {
+    width: 85%;
+    padding: 1%;
+    font-size: 1em;
+    margin-right: 1%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.admin-submit-button {
+    padding: 1% 2%;
+    font-size: 1em;
+    border: none;
+    background-color: #ff0077;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-comment {
+    font-size: 1em;
+    color: #333;
+}
+
+/* 취소 및 삭제 버튼 그룹 스타일 */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    margin-top: 3%;
+}
+
+.list-button, .cancel-button, .delete-button {
+    padding: 1% 3%;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.list-button {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.cancel-button {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.delete-button {
+    background-color: #ffdddd;
+    color: #333;
 }

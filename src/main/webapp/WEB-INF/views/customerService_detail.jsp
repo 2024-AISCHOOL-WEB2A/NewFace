@@ -29,6 +29,29 @@
                 <p>자세한 내용은 아래와 같습니다.</p>
             </div>
         </div>
+        
+        <!-- 관리자 멘트 입력 및 등록 버튼 (로그인 여부에 따라 표시) -->
+        <div class="admin-input-container">
+
+            <c:if test="${sessionScope.loginUser.userRole == 'admin'}">
+                <input type="text" class="admin-input" placeholder="관리자 멘트를 입력하세요">
+                <button class="admin-submit-button">등록</button>
+            </c:if>
+
+            <!-- 일반 사용자일 경우 -->
+            <c:if test="${sessionScope.loginUser.userRole != 'admin'}">
+                <div class="admin-comment">
+                    관리자 멘트: <span>${empty adminComment ? '' : adminComment}</span>
+                </div>
+            </c:if>
+        </div>
+
+        <!-- 목록/취소/삭제 버튼 -->
+        <div class="button-group">
+            <a href="#" class="list-button">목록</a>
+            <a href="#" class="cancel-button">취소</a>
+            <a href="#" class="delete-button">삭제</a>
+        </div>
     </div>
 
     <jsp:include page="common/footer.jsp" />
