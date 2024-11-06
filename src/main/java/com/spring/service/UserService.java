@@ -1,14 +1,15 @@
 package com.spring.service;
 
 
+import java.sql.Timestamp;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.entity.User;
 import com.spring.repository.UserRepository;
-import java.sql.Timestamp;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -54,7 +55,7 @@ public class UserService {
     } 
 
       // OAuth2 로그인 처리 (신규 추가)
-      public User saveOrUpdateOAuth2User(String provider, String providerId, String email, String name) {
+    public User saveOrUpdateOAuth2User(String provider, String providerId, String email, String name) {
         return userRepository.findByUserEmail(email)
                 .map(existingUser -> {
                     // 기존 회원이면 정보 업데이트

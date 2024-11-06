@@ -31,10 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Security Files ###
-src/main/java/com/spring/config/
-src/main/java/com/spring/service/CustomOAuth2UserService.java
-
-# 민감한 설정 파일
-src/main/resources/application-oauth.properties
