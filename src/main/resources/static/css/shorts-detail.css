@@ -6,7 +6,6 @@
     justify-content: space-between;
     height: calc(100vh - 100px); /* header와 footer를 제외한 공간을 차지 */
     padding: 20px;
-    background: linear-gradient(to right, #fbc8d4, #baade6);
     border-radius: 15px;
     width: 90vw;
     margin: 0 auto;
@@ -37,6 +36,7 @@ video {
 /* 오른쪽 상세 정보 */
 .detail-section {
     width: 30%; /* 오른쪽 정보 영역 */
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

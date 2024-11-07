@@ -35,17 +35,21 @@
                 <c:forEach items="${boards}" var="board">
                     <!-- grid-item class 이름 변경 -->
                     <div class="grid-item">
-                        <c:choose>
-                            <c:when test="${fn:endsWith(board.boardFilePath, '.mp4')}">
-                                <video muted loop autoplay playsinline class="hover-video" onclick="location.href='/pride_board/detail/${board.boardIdx}'">
-                                    <source src="${board.boardFilePath}" type="video/mp4">
-                                </video>
-                            </c:when>
-                            <c:otherwise>
-                                <img src="${board.boardFilePath}" alt="${board.boardFilePath}" onclick="location.href='/pride_board/detail/${board.boardIdx}'">
-                            </c:otherwise>
-                        </c:choose>
+                        <a href="/pride_board/detail/${board.boardIdx}">
+                            <c:choose>
+                                <c:when test="${fn:endsWith(board.boardFilePath, '.mp4')}">
+                                    <video muted loop autoplay playsinline class="hover-video">
+                                        <source src="${board.boardFilePath}" type="video/mp4">
+                                    </video>
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${board.boardFilePath}" alt="${board.boardFilePath}">
+                                </c:otherwise>
+                            </c:choose>
+                        </a>
                     </div>
+                    
+                    
                 </c:forEach>
             </div>
         </section>
