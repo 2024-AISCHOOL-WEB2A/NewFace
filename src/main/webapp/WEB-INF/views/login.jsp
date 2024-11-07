@@ -23,7 +23,8 @@
 
 </head>
 <body>
-    
+    <!--header 위치 -->
+    <jsp:include page="common/header.jsp" />
     
     <div class="container-wrapper1 ">
         <div class="container">
@@ -53,6 +54,9 @@
             </a>
         </div>
     </div>
+
+    <!--footer-->
+    <jsp:include page="common/footer.jsp" />
 
     
 </body>

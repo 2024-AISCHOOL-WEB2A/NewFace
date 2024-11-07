@@ -177,15 +177,19 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-border-bottom-0">
-
-                                        <tr>
-                                            <td class="id">{{ user[0]}}</td>
-                                            <td class="username">{{ user[1]}}</td>
-                                            <td class="phone">{{ user[2]}}</td>
-                                            <td class="smile_point"></td>
-                                            <td class="smile_point"><span class="badge bg-label-warning me-1">{{user[3]}}</span></td>
-                                        </tr>
-
+                                        <c:forEach var="user" items="${users}">
+                                            <tr>
+                                                <td class="id">${user.userId}</td>
+                                                <td class="username">${user.userNickname}</td>
+                                                <td class="phone">${user.userEmail}</td>
+                                                <td class="smile_point">${user.userPoint}</td>
+                                                <td class="status">
+                                                    <span class="badge ${user.userIsActive == 1 ? 'bg-label-success' : 'bg-label-warning'} me-1">
+                                                        ${user.userIsActive == 1 ? '활성' : '탈퇴'}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -195,36 +199,38 @@
 
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
-                                <li class="page-item first">
-                                    <a class="page-link" href="javascript:void(0);"><i
+                                <!-- 첫 페이지로 -->
+                                <li class="page-item first ${currentPage == 1 ? 'disabled' : ''}">
+                                    <a class="page-link" href="user-list?page=1"><i
                                             class="tf-icon bx bx-chevrons-left"></i></a>
                                 </li>
-                                <li class="page-item prev">
-                                    <a class="page-link" href="javascript:void(0);"><i
-                                            class="tf-icon bx bx-chevron-left"></i></a>
+                                <!-- 이전 페이지로 -->
+                                <li class="page-item prev ${currentPage == 1 ? 'disabled' : ''}">
+                                    <a class="page-link" href="user-list?page=${currentPage - 1}">
+                                        <i class="tf-icon bx bx-chevron-left"></i>
+                                    </a>
                                 </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="javascript:void(0);">1</a>
+                                <!-- 페이지 번호 -->
+                                <c:forEach begin="1" end="${totalPages}" var="i">
+                                    <c:if test="${i >= currentPage - 2 && i <= currentPage + 2}">
+                                        <li class="page-item ${currentPage == i ? 'active' : ''}">
+                                            <a class="page-link" href="user-list?page=${i}">${i}</a>
+                                        </li>
+                                    </c:if>
+                                </c:forEach>
+
+                                <!-- 다음 페이지로 -->
+                                <li class="page-item next ${currentPage == totalPages ? 'disabled' : ''}">
+                                    <a class="page-link" href="user-list?page=${currentPage + 1}">
+                                        <i class="tf-icon bx bx-chevron-right"></i>
+                                    </a>
                                 </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0);">5</a>
-                                </li>
-                                <li class="page-item next">
-                                    <a class="page-link" href="javascript:void(0);"><i
-                                            class="tf-icon bx bx-chevron-right"></i></a>
-                                </li>
-                                <li class="page-item last">
-                                    <a class="page-link" href="javascript:void(0);"><i
-                                            class="tf-icon bx bx-chevrons-right"></i></a>
+        
+                                <!-- 마지막 페이지로 -->
+                                <li class="page-item last ${currentPage == totalPages ? 'disabled' : ''}">
+                                    <a class="page-link" href="user-list?page=${totalPages}">
+                                        <i class="tf-icon bx bx-chevrons-right"></i>
+                                    </a>
                                 </li>
                             </ul>
                         </nav>

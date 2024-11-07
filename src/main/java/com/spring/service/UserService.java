@@ -2,6 +2,7 @@ package com.spring.service;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserService {
     public void join(User user) {
 
         user.setUserRole("user");
-        user.setUserIsActive(0);
+        user.setUserIsActive(1);
         user.setUserPoint(0);
         user.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
         user.setUserProfilePicture("default.jpg"); 
@@ -103,6 +104,10 @@ public User findByUserEmail(String email) {
     return userRepository.findByUserEmail(email).orElse(null);
 }
 
+//  관리자 페이지 전체 사용자 목록 조회
+public List<User> getAllUsers() {
+    return userRepository.findAll();
+}
 
 
 }
