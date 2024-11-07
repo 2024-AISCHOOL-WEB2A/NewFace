@@ -41,17 +41,17 @@
         <table>
             <thead>
                 <tr>
-                    <th>순번</th>
-                    <th>제목</th>
-                    <th>날짜</th>
+                    <th class ="sequence">순번</th>
+                    <th class="title">제목</th>
+                    <th class="date">날짜</th>
                 </tr>
             </thead>
                 <tbody>
                 <c:if test="${not empty posts}">
                     <c:forEach items="${posts}" var="post" varStatus="status">
                         <tr style="cursor: pointer;" onclick="toggleContent(this);">
-                            <td>${status.count}</td>
-                            <td>
+                            <td class="sequence">${post.customerServiceIdx}</td>
+                            <td class="title">
                                 <c:choose>
                                     <c:when test="${post.customerServiceCategory eq '공지'}">
                                         <span class="notice-tag">[공지]</span>
@@ -68,8 +68,9 @@
                             <td class="date">${post.customerServiceDate}</td>
                         </tr>
                         <!-- 두 번째 tr: 숨겨져 있다가 클릭 시 나타나는 행 -->
-                        <tr class="content-row" style="display: none;">
-                            <td colspan="3">
+                        <tr class="content-row">
+                            <td></td>
+                            <td colspan="2" class="content-text">
                                 ${post.customerServiceContent}
                             </td>
                         </tr>
@@ -101,16 +102,10 @@
     }
 
     function toggleContent(row) {
-    // 클릭된 <tr>의 다음 형제 요소인 content-row를 찾음
-    const contentRow = row.nextElementSibling;
-    
-    // content-row의 display 스타일을 토글
-    if (contentRow.style.display === 'none' || contentRow.style.display === '') {
-        contentRow.style.display = 'table-row';
-    } else {
-        contentRow.style.display = 'none';
+        const contentRow = row.nextElementSibling;
+        contentRow.classList.toggle('open');
     }
-}
+
 
 </script>
 </html>
