@@ -30,7 +30,7 @@ public class CustomerService {
     @Column(name = "user_idx")
     private Integer userIdx;
     
-    @Column(name = "customer_service_comment", length = 50)
+    @Column(name = "customer_service_comment", nullable = true)
     private String customerServiceComment;
 
     // 날짜 포맷팅을 위한 메서드

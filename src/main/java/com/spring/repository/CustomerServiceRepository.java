@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.entity.CustomerService;
 
+
 @Repository
 public interface CustomerServiceRepository extends JpaRepository<CustomerService, Integer> {
    // 날짜 역순으로 전체 조회
@@ -26,4 +27,5 @@ public interface CustomerServiceRepository extends JpaRepository<CustomerService
 
    // 카테고리로 고객 서비스 항목 검색
    List<CustomerService> findByCustomerServiceCategory(String customerServiceCategory);
+
 }

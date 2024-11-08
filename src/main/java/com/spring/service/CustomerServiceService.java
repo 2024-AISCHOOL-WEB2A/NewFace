@@ -33,4 +33,9 @@ public class CustomerServiceService {
     public List<CustomerService> getNoticesByCategory(String category) {
         return customerServiceRepository.findByCustomerServiceCategory(category);
     }
+
+     // 게시글 저장 메서드 추가
+     public CustomerService savePost(CustomerService post) {
+        return customerServiceRepository.save(post);
+    }
 }

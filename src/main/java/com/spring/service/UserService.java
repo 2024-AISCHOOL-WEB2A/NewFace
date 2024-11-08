@@ -109,5 +109,9 @@ public List<User> getAllUsers() {
     return userRepository.findAll();
 }
 
+public User findByUserId(String userId) {
+    return userRepository.findByUserId(userId)
+        .orElse(null);
+}
 
 }

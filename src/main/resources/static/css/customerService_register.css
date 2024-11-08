@@ -1,4 +1,4 @@
-.container {
+.email-input-wrapper .container {
     width: 90%; /* 전체 너비로 확장 */
     padding: 2% 5%; /* 좌우 여백 추가 */
     background-color: #fff;
@@ -48,7 +48,16 @@ input[readonly] {
 }
 
 textarea {
+    width: 80%;
+    padding: 0.8em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    white-space: pre-line;
+    word-break: break-all;
     resize: vertical;
+    line-height: 1.6;
 }
 
 .form-buttons {
@@ -77,4 +86,15 @@ textarea {
 .cancel-button {
     background-color: #fff;
     color: #333;
+}
+/* 글 내용 줄바꿈을 위한 스타일 추가 */
+.content-text {
+    white-space: pre-line;  
+    word-break: break-all;
+    padding: 20px;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    text-align: left;
+    line-height: 1.6;
 }

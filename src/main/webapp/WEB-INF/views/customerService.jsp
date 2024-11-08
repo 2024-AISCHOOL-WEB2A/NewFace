@@ -91,21 +91,18 @@
 </body>
 
 <script>
-    function checkLoginAndRedirect() {
-        const loginUser = '${loginUser}';
-        if(!loginUser) {
-            alert("로그인이 필요한 서비스입니다.");
-            window.location.href = '/loginForm';
+   function checkLoginAndRedirect() {
+        <c:if test="${sessionScope.loginUser ne null}">
+            window.location.href = '/customerService/write';
             return;
-        }
-        window.location.href = '/customerService_register';
+        </c:if>
+        alert("로그인이 필요한 서비스입니다.");
+        window.location.href = '/loginForm';
     }
 
     function toggleContent(row) {
         const contentRow = row.nextElementSibling;
         contentRow.classList.toggle('open');
     }
-
-
 </script>
 </html>
