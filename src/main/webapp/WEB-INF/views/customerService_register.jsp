@@ -55,7 +55,7 @@
                <!-- 내용 -->
                <div class="form-group">
                    <label for="content">내용</label>
-                   <textarea id="content" name="content" rows="10" required placeholder="내용을 입력하세요" style="white-space: pre-line;">${fn:replace(content, newLine, '<br>')}</textarea>
+                   <textarea id="content" name="content" rows="10" required placeholder="내용을 입력하세요">${content}</textarea>
                </div>
 
                <!-- 카테고리 선택 -->
@@ -102,14 +102,8 @@
                    return false;
                }
            });
-
-           // 줄바꿈 처리
-           $('#content').on('input', function() {
-               // 입력값의 줄바꿈을 <br> 태그로 변환
-               var content = $(this).val().replace(/\n/g, '<br>');
-               $(this).val(content);
-           });
-       });
+        });
+        
    </script>
 </body>
 </html>

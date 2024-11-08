@@ -70,7 +70,7 @@
                         <!-- 두 번째 tr: 숨겨져 있다가 클릭 시 나타나는 행 -->
                         <tr class="content-row">
                             <td></td>
-                            <td colspan="2" class="content-text">
+                            <td colspan="2" class="content-text" style="white-space: pre-line;">
                                 ${post.customerServiceContent}
                             </td>
                         </tr>

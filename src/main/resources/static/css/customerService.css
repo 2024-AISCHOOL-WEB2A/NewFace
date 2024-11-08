@@ -91,6 +91,10 @@ th.date, td.date {
    font-family: 'Gothic', sans-serif; /* 원하는 고딕체 폰트 */
    color: #333333; /* 원하는 색상 코드 */
    font-weight: 300; /* 얇은 글씨 */
+   padding: 20px;
+   background-color: #f9f9f9;
+   white-space: pre-line; /* 줄바꿈 보존 */
+   word-break: break-all; /* 긴 텍스트 줄바꿈 */
 }
 
 
