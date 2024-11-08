@@ -10,12 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
-
 import com.spring.entity.CustomerService;
 import com.spring.entity.User;
 import com.spring.service.CustomerServiceService;
-import com.spring.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,8 +22,7 @@ public class CustomerServiceController {
     @Autowired
     private CustomerServiceService customerServiceService;
 
-    @Autowired
-    private UserService userService;
+   
     
     @GetMapping("/customerService")
     public String customerService(@RequestParam(required = false) String category, Model model) {
@@ -69,10 +65,7 @@ public class CustomerServiceController {
                          HttpSession session) {
         
         User loginUser = (User) session.getAttribute("loginUser");
-        System.out.println("Session User: " + loginUser);  // 로그 추가
-        System.out.println("Title: " + title);  // 로그 추가
-        System.out.println("Content: " + content);  // 로그 추가
-        System.out.println("Category: " + category);  // 로그 추가
+      
         
 
         if (loginUser != null) {

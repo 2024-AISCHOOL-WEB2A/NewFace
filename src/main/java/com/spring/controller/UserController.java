@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.entity.User;
 import com.spring.service.UserService;
@@ -76,7 +77,7 @@ public class UserController {
     }
 
     @PostMapping("/custom_login")
-    public String custom_login(String userId, String userPw, HttpSession session, Model model) {
+    public String custom_login(String userId, String userPw, HttpSession session,  RedirectAttributes redirectAttributes) {
         User user = userService.login(userId, userPw);
 
         if (user != null) {
@@ -85,7 +86,7 @@ public class UserController {
             return "redirect:/";
         } else {
             // 로그인 실패
-            model.addAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
+            redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다.");
             return "redirect:/loginForm";
         }
     }
