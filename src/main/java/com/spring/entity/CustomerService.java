@@ -3,7 +3,12 @@ package com.spring.entity;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
@@ -32,6 +37,9 @@ public class CustomerService {
     
     @Column(name = "customer_service_comment", nullable = true)
     private String customerServiceComment;
+
+    @Column(name = "customer_service_summary", nullable = true, length = 500)
+    private String customerServiceSummary;
 
     // 날짜 포맷팅을 위한 메서드
     public String getFormattedDate() {

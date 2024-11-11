@@ -111,21 +111,24 @@
 			</div>
 			<div class="container">
 
-				<div class="row">
-                    <!-- 반복 -->
+				<div class="scroll-container" style="overflow-x: scroll; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none;">
+					<!-- 스크롤바 숨기기 설정 -->
+					<style>
+						.scroll-container::-webkit-scrollbar {
+							display: none;
+						}
+					</style>
+					<!-- 반복 -->
 					<c:forEach var="character" items="${characters}">
-						<div class="col-md-2">
+						<div class="col-md-2" style="display: inline-block; float: none;">
 							<div class="fh5co-team text-center animate-box">
-								
-										<figure>
-											<img src="${character.characterImage}" alt="${character.characterName}">
-										</figure>
-										<p>${character.characterName}<br> <span class="text-muted">${character.characterCategory}</span></p>
-								
+								<figure>
+									<img src="${character.characterImage}" alt="${character.characterName}">
+								</figure>
+								<p>${character.characterName}<br> <span class="text-muted">${character.characterCategory}</span></p>
 							</div>
 						</div>
 					</c:forEach>
-                    
 				</div>
 			</div>
 		</div>
@@ -146,48 +149,30 @@
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-12">
 						<ul id="fh5co-portfolio-list">
-
-							<li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/1.jfif); ">
-								<a href="#" class="color-3">
-									<div class="case-studies-summary">
-										<span>Creative</span>
-										<h2>Wak in the wooden street</h2>
-									</div>
-								</a>
-							</li>
+							<c:forEach var="board" items="${recsentBoards.content}" varStatus="status">
+								<!-- 처음 4개의 항목만 표시 -->
+								<c:if test="${status.index < 4}">
+									<li class="${status.index == 0 || status.index == 3 ? 'two-third' : 'one-third'} animate-box" 
+										data-animate-effect="fadeIn" 
+										style="background-image: url(${board.boardFilePath});">
+										
+										<a href="${board.boardFilePath}" class="color-${status.index + 3}">
+											<div class="case-studies-summary">
+												<span>${board.user.userNickname}</span>
+												<h2>${board.boardTitle}</h2>
+											</div>
+										</a>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ul>
 						
-							<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/2.jpg); ">
-								<a href="#" class="color-4">
-									<div class="case-studies-summary">
-										<span>Design</span>
-										<h2>Present your product</h2>
-									</div>
-								</a>
-							</li>
-
-							<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
-								<a href="#" class="color-5">
-									<div class="case-studies-summary">
-										<span>Photo</span>
-										<h2>See the horizon</h2>
-									</div>
-								</a>
-							</li>
-							<li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
-								<a href="#" class="color-6">
-									<div class="case-studies-summary">
-										<span>Love</span>
-										<h2>Spend time with your partner</h2>
-									</div>
-								</a>
-							</li>
-						</ul>		
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 text-center animate-box">
-						<a href="#" class="btn btn-primary btn-lg">More Gallery</a>
+						<a href="/pride_board" class="btn btn-primary btn-lg">더보기</a>
 					</div>
 				</div>
 
@@ -201,6 +186,7 @@
 
 		<div id="fh5co-features">
             <div class="container">
+				<!-- Header Section -->
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>고객 지원</h3>
@@ -208,107 +194,88 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="container">
-                <!-- start: 공지 -->
+				<!-- 공지사항 Section -->
 				<div class="row">
-                    <div class="col-md-1">
+					<div class="col-md-1">
 						<div class="feature-left">
 							<span class="icon">
 								<i class="icon-bullhorn"></i>
 							</span>
-                        </div>
-                    </div>
-
-					<div class="col-md-5">
-						<div class="feature-left">
-							<div class="feature-copy">
-								<h3>시스템 정기점검 안내</h3>
-								<p>시스템 정기점검이 예정되어 있습니다. 점검 시간 동안 서비스 이용이 제한될 수 있으니 양해 부탁드립니다.</p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-5">
-						<div class="feature-left">
-							<div class="feature-copy">
-								<h3>캐릭터 업데이트 안내</h3>
-								<p>신규 캐릭터가 추가되었습니다! 다양한 캐릭터를 확인하고 업데이트된 기능을 즐겨보세요.</p>
-							</div>
 						</div>
 					</div>
+					
+					<c:forEach var="support" items="${recentSupports}">
+						<c:if test="${support.customerServiceCategory == '공지'}">
+							<div class="col-md-5">
+								<div class="feature-left">
+									<div class="feature-copy">
+										<h3>${support.customerServiceTitle}</h3>
+										<p>${support.customerServiceSummary}</p>
+									</div>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
 				</div>
-                <!-- end: 공지 -->
-                
-                <!-- start: FAQ -->
+			
+				<!-- FAQ Section -->
 				<div class="row">
 					<div class="col-md-1">
 						<div class="feature-left">
 							<span class="icon">
 								<i class="icon-question"></i>
 							</span>
-                        </div>
-                    </div>
-
-					<div class="col-md-5">
-						<div class="feature-left">
-							<div class="feature-copy">
-								<h3>포인트 충전 방법 안내</h3>
-								<p>포인트 충전은 [마이페이지] > [포인트 충전] 메뉴에서 가능합니다. 다양한 결제 수단을 이용해 충전해 보세요.</p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-5">
-						<div class="feature-left">
-							<div class="feature-copy">
-								<h3>캐릭터 구매 방법 안내</h3>
-								<p>원하는 캐릭터는 [스토어]에서 포인트로 구매할 수 있습니다. 구매 후 즉시 이용 가능합니다.</p>
-							</div>
 						</div>
 					</div>
+					
+					<c:forEach var="support" items="${recentSupports}">
+						<c:if test="${support.customerServiceCategory == 'FAQ'}">
+							<div class="col-md-5">
+								<div class="feature-left">
+									<div class="feature-copy">
+										<h3>${support.customerServiceTitle}</h3>
+										<p>${support.customerServiceSummary}</p>
+									</div>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
 				</div>
-                <!-- end: FAQ -->
-
-                <!-- start: 요청 -->
+			
+				<!-- 요청사항 Section -->
 				<div class="row">
 					<div class="col-md-1">
 						<div class="feature-left">
 							<span class="icon">
 								<i class="icon-pencil"></i>
 							</span>
-                        </div>
-                    </div>
-
-					<div class="col-md-5">
-						<div class="feature-left">
-							<div class="feature-copy">
-								<h3>새로운 기능 제안</h3>
-								<p>새로운 기능에 대한 제안을 환영합니다! 고객센터나 피드백 창구를 통해 의견을 남겨주세요.</p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="col-md-5">
-						<div class="feature-left">
-							<div class="feature-copy">
-								<h3>캐릭터 추가 요청</h3>
-								<p>추가를 원하는 캐릭터가 있다면 언제든지 제안해 주세요! 사용자 의견을 반영하여 업데이트에 반영하겠습니다.</p>
-							</div>
 						</div>
 					</div>
-
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4 text-center animate-box">
-                            <a href="#" class="btn btn-primary btn-lg">더보기</a>
-                        </div>
-                    </div>
-
+					
+					<c:forEach var="support" items="${recentSupports}">
+						<c:if test="${support.customerServiceCategory == '요청'}">
+							<div class="col-md-5">
+								<div class="feature-left">
+									<div class="feature-copy">
+										<h3>${support.customerServiceTitle}</h3>
+										<p>${support.customerServiceSummary}</p>
+									</div>
+								</div>
+							</div>
+						</c:if>
+					</c:forEach>
 				</div>
-                <!-- end: 요청 -->
+			
+				<!-- 더보기 버튼 -->
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4 text-center animate-box">
+						<a href="customerService" class="btn btn-primary btn-lg">더보기</a>
+					</div>
+				</div>
 			</div>
+			
 		</div>
 
 		
@@ -416,6 +383,32 @@
 
 	<!-- jQuery -->
 
+	<script>
+		const scrollContainer = document.querySelector('.scroll-container');
+		const scrollStep = scrollContainer.querySelector('.col-md-2').clientWidth; // 각 div의 너비만큼 스크롤
+		let scrollAmount = 0;
+	
+		function autoScroll() {
+			const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+	
+			// 한 div 너비씩 스크롤
+			scrollAmount += scrollStep;
+	
+			// 끝까지 스크롤하면 처음으로 돌아감
+			if (scrollAmount >= maxScrollLeft) {
+				scrollAmount = 0;
+			}
+	
+			scrollContainer.scrollTo({
+				left: scrollAmount,
+				behavior: 'smooth'
+			});
+		}
+	
+		// 1초마다 한 div 너비만큼 스크롤 이동
+		setInterval(autoScroll, 2000);
+	</script>
+
 
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -440,3 +433,4 @@
 
 	</body>
 </html>
+

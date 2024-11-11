@@ -26,7 +26,7 @@ public class CustomerServiceService {
 
     // 메인_최신 5개 조회
     public List<CustomerService> getRecentPosts() {
-        return customerServiceRepository.findTop5ByOrderByCustomerServiceDateDesc();
+        return customerServiceRepository.findTop2ByCategory();
     }
 
     // 카테고리별 고객 서비스 항목 가져오기
@@ -35,7 +35,7 @@ public class CustomerServiceService {
     }
 
      // 게시글 저장 메서드 추가
-     public CustomerService savePost(CustomerService post) {
+    public CustomerService savePost(CustomerService post) {
         return customerServiceRepository.save(post);
     }
 }

@@ -1,0 +1,73 @@
+/* 전체 컨테이너 스타일 */
+.container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    font-family: '메인 폰트 Light', sans-serif;
+}
+
+/* 로고 스타일 */
+.logo img {
+    width: 150px;
+}
+
+/* 구분선 스타일 */
+.divider::before {
+    background-color: #ddd;
+}
+
+.divider span {
+    background-color: #fff;
+    color: #757575;
+    font-size: 12px;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"], 
+input[type="password"], 
+input[type="submit"] {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Maplestory Bold', sans-serif;
+}
+
+input[type="submit"] {
+    background-color: #FF3B69;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff1f54;
+}
+
+/* 소셜 로그인 버튼 스타일 */
+.google-login-btn {
+    background-color: #fff;
+    color: #757575;
+    border: 1px solid #ddd;
+}
+
+.google-login-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.naver-login-btn {
+    background-color: #03C75A;
+    color: white;
+}
+
+.naver-login-btn:hover {
+    background-color: #02b150;
+}
+
+.kakao-login-btn {
+    background-color: #FEE500;
+    color: #000000;
+}
+
+.kakao-login-btn:hover {
+    background-color: #E6D000;
+}

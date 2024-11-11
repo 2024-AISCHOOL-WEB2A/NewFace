@@ -195,10 +195,11 @@
                         <a href="#" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
                     </div>
                 </div>
-                <jsp:include page="common/footer.jsp" />
+                
 
             </div>
         </div>
+        <jsp:include page="common/footer.jsp" />
         
 
 	

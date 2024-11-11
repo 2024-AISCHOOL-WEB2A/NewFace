@@ -42,7 +42,7 @@ public class HomeController {
         List<Characters> characters = characterService.getRandomCharacters(page, 15);
         model.addAttribute("characters", characters);
 
-        // 고객지원 최신글 5개 조회
+        // 고객지원 카테로기별 2개씩 조회
         List<CustomerService> recentSupports = customerServiceService.getRecentPosts();
         model.addAttribute("recentSupports", recentSupports);
         
