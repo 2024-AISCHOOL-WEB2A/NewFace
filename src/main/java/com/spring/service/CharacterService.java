@@ -44,7 +44,7 @@ public class CharacterService {
     }
 
     // 메인 랜덤 조회
-    public Page<Characters> getRandomCharacters(int page, int size) {
+    public List<Characters> getRandomCharacters(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
         return characterRepository.findRandomCharacters(pageRequest);
     }

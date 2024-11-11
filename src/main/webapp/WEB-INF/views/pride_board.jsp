@@ -2,110 +2,237 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Face - Virtual Idol Experience</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/pride_board.css">
-    <!-- Masonry 라이브러리 추가 -->
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <!-- imagesLoaded 라이브러리 추가 (이미지 로딩 완료 확인용) -->
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-</head>
-<body>
-    <!--header-->
-    <jsp:include page="common/header.jsp" />
 
-    <!-- Contest Gallery Section -->
-    <main>
-        <section class="contest-section">
-            <div class="contest-container">
-                <div class="contest-header">
-                    <img src="image/children.png" alt="Contest Logo" style="width: 40px;">
-                    <span># 자랑 게시판</span>
-                </div>
-            </div>
-        </section>
 
-        <!-- 두 번째 섹션 (Masonry Layout) -->
-        <!-- grid class 이름 변경 -->
-        <section class="masonry-section">
-            <div class="grid">
-                <c:forEach items="${boards}" var="board">
-                    <!-- grid-item class 이름 변경 -->
-                    <div class="grid-item">
-                        <a href="/pride_board/detail/${board.boardIdx}">
-                            <c:choose>
-                                <c:when test="${fn:endsWith(board.boardFilePath, '.mp4')}">
-                                    <video muted loop autoplay playsinline class="hover-video">
-                                        <source src="${board.boardFilePath}" type="video/mp4">
-                                    </video>
-                                </c:when>
-                                <c:otherwise>
-                                    <img src="${board.boardFilePath}" alt="${board.boardFilePath}">
-                                </c:otherwise>
-                            </c:choose>
-                        </a>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Module &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  <!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Superfish -->
+	<link rel="stylesheet" href="css/superfish.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+		<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+
+        <!--start:header-->
+        <jsp:include page="common/header.jsp" />
+        <!-- end:header-top -->
+
+
+		<div id="fh5co-blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                        <h3>자랑 게시판</h3>
                     </div>
-                    
-                    
-                </c:forEach>
-            </div>
-        </section>
-
-        <div class="board-pagination">
-            <c:if test="${!isFirst}">
-                <a href="?page=${currentPage - 1}" class="page-number prev">◀</a>
-            </c:if>
-            
-            <c:forEach begin="0" end="${totalPages - 1}" var="pageNum">
-                <a href="?page=${pageNum}" 
-                class="page-number ${pageNum == currentPage ? 'active' : ''}">${pageNum + 1}</a>
-            </c:forEach>
-            
-            <c:if test="${!isLast}">
-                <a href="?page=${currentPage + 2}" class="page-number next">▶</a>
-            </c:if>
-            <a href="javascript:void(0)" onclick="checkLoginAndRedirect()" class="register-button">등록하기</a>
-        </div>
-
-        <script>
-            function checkLoginAndRedirect() {
-                const loginUser = '${loginUser}';
-                if(!loginUser) {
-                    alert("로그인이 필요한 서비스입니다.");
-                    window.location.href = '/loginForm';
-                    return;
-                }
-                window.location.href = '/pride_board/register';
-            }
-        </script>
+                </div>
         
-        <!-- Masonry 초기화 스크립트 추가 -->
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var grid = document.querySelector('.grid');
+                <div class="row row-bottom-padded-md">
+                    <div class="col-md-12">
+                        <ul id="fh5co-portfolio-list">
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
+                                <a href="#" class="color-5">
+                                    <div class="case-studies-summary">
+                                        <span>Love</span>
+                                        <h2>Spend time with your partner</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
+                                <a href="#" class="color-4">
+                                    <div class="case-studies-summary">
+                                        <span>Photo</span>
+                                        <h2>See the horizon</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
+                                <a href="#" class="color-5">
+                                    <div class="case-studies-summary">
+                                        <span>Love</span>
+                                        <h2>Spend time with your partner</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/1.jfif); ">
+                                <a href="#" class="color-2">
+                                    <div class="case-studies-summary">
+                                        <span>Creative</span>
+                                        <h2>Wak in the wooden street</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/2.jpg); ">
+                                <a href="#" class="color-3">
+                                    <div class="case-studies-summary">
+                                        <span>Design</span>
+                                        <h2>Present your product</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
+                                <a href="#" class="color-4">
+                                    <div class="case-studies-summary">
+                                        <span>Photo</span>
+                                        <h2>See the horizon</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
+                                <a href="#" class="color-5">
+                                    <div class="case-studies-summary">
+                                        <span>Love</span>
+                                        <h2>Spend time with your partner</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/1.jfif); ">
+                                <a href="#" class="color-2">
+                                    <div class="case-studies-summary">
+                                        <span>Creative</span>
+                                        <h2>Wak in the wooden street</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/2.jpg); ">
+                                <a href="#" class="color-3">
+                                    <div class="case-studies-summary">
+                                        <span>Design</span>
+                                        <h2>Present your product</h2>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
+                                <a href="#" class="color-4">
+                                    <div class="case-studies-summary">
+                                        <span>Photo</span>
+                                        <h2>See the horizon</h2>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- 페이징 영역 -->
+                    <div class="col-md-12 text-center">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
             
-            imagesLoaded(grid, function() {
-                var masonry = new Masonry(grid, {
-                    itemSelector: '.grid-item',
-                    columnWidth: '.grid-item',
-                    gutter: 10,  // 간격
-                    percentPosition: true,  // 퍼센트 기반 포지션
-                    fitWidth: true,  // 컨테이너에 맞추기
-                    columns: 3,  // 3열 강제 지정
-                    transitionDuration: 0  // 애니메이션 효과 제거
-                });
+                    <!-- 등록하기 버튼 영역 -->
+                    <div class="col-md-12 text-center">
+                        <a href="#" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
+                    </div>
+                </div>
+                <jsp:include page="common/footer.jsp" />
 
-                // 레이아웃 재계산
-                masonry.layout();
-            });
-        });
-        </script>
-    </main>
+            </div>
+        </div>
+        
 
-    <!-- footer 재사용 -->
-    <jsp:include page="common/footer.jsp" />
-</body>
+	
+
+	</div>
+	<!-- END fh5co-page -->
+
+	</div>
+	<!-- END fh5co-wrapper -->
+
+	<!-- jQuery -->
+
+
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/sticky.js"></script>
+
+	<!-- Stellar -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Superfish -->
+	<script src="js/hoverIntent.js"></script>
+	<script src="js/superfish.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	
+	<!-- Main JS -->
+	<script src="js/main.js"></script>
+
+	</body>
 </html>
+

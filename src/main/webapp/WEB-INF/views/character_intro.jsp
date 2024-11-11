@@ -2,103 +2,181 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/character_intro.css">
-</head>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Module &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
 
-<body>
-    <!--header 위치 -->
-    <jsp:include page="common/header.jsp" />
+  <!-- 
+	//////////////////////////////////////////////////////
 
-    <main class="character-gallery">
-        <!-- 카테고리 section-->
-        <section class="category-section">
-            <h2 class="category-title">
-                <span class="title-icon">🎥 </span> # 캐릭터 소개
-            </h2>
-            <div class="category-wrapper">
-                <c:forEach items="${characters}" var="character">
-                    <div class="category-item" style="cursor: pointer;" onclick="loadCategory('${character.characterCategory}')">
-                        <img src="${character.characterImage}" alt="${character.characterName}">
-                        <p>${character.characterCategory}</p>
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Superfish -->
+	<link rel="stylesheet" href="css/superfish.css">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+		<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+
+        <!--start:header-->
+        <jsp:include page="common/header.jsp" />
+        <!-- end:header-top -->
+
+
+		<div id="fh5co-blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                        <h3>캐릭터 소개</h3>
                     </div>
-                </c:forEach>
-            </div>
-        </section>
-
-        <!-- grid section-->
-        <!--첫페이지 들어오자마자 하츄핑 보이게 수정-->
-        <section class="grid-section">
-            <div class="grid-container">
-                <c:forEach items="${categoryCharacters}" var="character">
-                    <div class="grid-item" onclick="location.href='/character_intro/detail/${character.characterIdx}'">
-                        <img src="${character.characterImage}" alt="${character.characterName}">
-                        <p>${character.characterName}</p>
-                    </div>
-                </c:forEach>
-            </div>
-        </section>
-
-
-        <!--footer 위치 -->
-        <jsp:include page="common/footer.jsp" />
+                </div>
         
-    </main>
+                <!-- 캐릭터 카테고리 -->
+                <div class="row animate-box" style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;">
+                    <!-- 반복 -->
+					<div class="col-md-3" class="fh5co-section-gray">
+						<div class="fh5co-team text-center animate-box">
+							<figure>
+								<img src="images/person_1.jpg" alt="user">
+							</figure>
+							<p>Jean Doe, XYZ Co.</p>
+						</div>
+					</div>
+					<div class="col-md-3" class="fh5co-section-gray">
+						<div class="fh5co-team text-center animate-box">
+							<figure>
+								<img src="images/person_1.jpg" alt="user">
+							</figure>
+							<p>Jean Doe, XYZ Co.</p>
+						</div>
+					</div>
+                    <div class="col-md-3" class="fh5co-section-gray">
+						<div class="fh5co-team text-center animate-box">
+							<figure>
+								<img src="images/person_1.jpg" alt="user">
+							</figure>
+							<p>Jean Doe, XYZ Co.</p>
+						</div>
+					</div>
+                    <div class="col-md-3" class="fh5co-section-gray">
+						<div class="fh5co-team text-center animate-box">
+							<figure>
+								<img src="images/person_1.jpg" alt="user">
+							</figure>
+							<p>Jean Doe, XYZ Co. </p>
+						</div>
+					</div>
+				</div>
+                <!-- 캐릭터 카테고리 끝 -->
+        
+                <div class="container">
+                    <div class="row row-bottom-padded-md">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="fh5co-blog animate-box">
+                                <a href="#"><img class="img-responsive" src="images/cover_bg_2.jpg" alt=""></a>
+                                <div class="blog-text">
+                                    <div class="prod-title">
+                                        <h3><a href="#">Web Design for the Future</a></h3>
+                                        <p><a href="#">더보기...</a></p>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- 추가 콘텐츠는 여기서 계속 반복됩니다 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
-    <script>
+	
 
-        window.addEventListener('scroll', function () {
-            var categorySection = document.querySelector('.category-section');
-            var sticky = categorySection.offsetTop;
-            var gridSection = document.querySelector('.grid-section');
+        <jsp:include page="common/footer.jsp" />
+	</div>
+	<!-- END fh5co-page -->
 
-            if (window.pageYOffset > sticky) {
-                categorySection.classList.add('sticky');
-                // sticky 적용 시 본문 여백 추가
-                gridSection.style.marginTop = categorySection.offsetHeight + 'px';
-            } else {
-                categorySection.classList.remove('sticky');
-                // sticky 해제 시 본문 여백 원래대로
-                gridSection.style.marginTop = '10vh';
-            }
+	</div>
+	<!-- END fh5co-wrapper -->
 
-        });
+	<!-- jQuery -->
 
-    </script>
 
-    <script>
-    function loadCategory(category) {
-        console.log("Category clicked:", category);  // 클릭 확인용 로그
-        fetch('/character_intro/ajax/' + category)  // fetch → ajax요청을 보내는 JavaScript 내장 함수 1. 서버에 요청 보냄
-            .then(response => response.json())  // 2. 서버 응답을 json으로 변환
-            .then(data => {  // 3. 변환된 json 데이터로 작업
-                console.log("Received data:", data);  // 데이터 확인용 로그
-                const container = document.querySelector('.grid-container');  // 4. html 컨테이너 찾기
-                container.innerHTML = '';  // 5. 기존 내용 비우기
-                
-                data.forEach(character => {  // 6. 새로운 데이터로 화면 갱신
-                    const div = document.createElement('div');
-                    div.className = 'grid-item';
-                    div.onclick = function() {  // 클릭 시 상세페이지로 이동
-                        console.log('Character ID:', character.characterIdx);
-                        location.href = `/character_intro/detail/\${character.characterIdx}`;  // 이스케이프 처리
-                    };
-                    div.innerHTML = `
-                        <img src="\${character.characterImage}" alt="\${character.characterName}">
-                        <p>\${character.characterName}</p>
-                    `;
-                    container.appendChild(div);
-                });
-            })
-            .catch(error => console.error('Error:', error));
-    }
-    </script>
-</body>
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/sticky.js"></script>
 
+	<!-- Stellar -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Superfish -->
+	<script src="js/hoverIntent.js"></script>
+	<script src="js/superfish.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	
+	<!-- Main JS -->
+	<script src="js/main.js"></script>
+
+	</body>
 </html>
+

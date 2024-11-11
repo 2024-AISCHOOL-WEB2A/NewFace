@@ -2,7 +2,6 @@ package com.spring.repository;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,5 +21,5 @@ public interface CharacterRepository extends JpaRepository<Characters, Long> {
     @Query(value = "SELECT * FROM tb_character ORDER BY RAND()", 
         countQuery = "SELECT count(*) FROM tb_character",
         nativeQuery = true)
-    Page<Characters> findRandomCharacters(Pageable pageable);
+    List<Characters> findRandomCharacters(Pageable pageable);
 }
