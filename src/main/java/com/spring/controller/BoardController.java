@@ -92,7 +92,7 @@ public class BoardController {
         model.addAttribute("boardIdx", boardIdx);
         // model.addAttribute("board", board);  // 필요한 경우, 조회한 데이터도 추가 가능
 
-        return "shorts-detail"; // shorts-detail.jsp로 이동
+        return "pride_board_detail"; // shorts-detail.jsp로 이동
     }
 
 }
