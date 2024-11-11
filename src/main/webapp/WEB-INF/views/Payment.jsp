@@ -13,6 +13,7 @@
    <!-- iamport.payment.js -->
    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
    <link rel="stylesheet" href="css/Payment.css">
+   <link rel="stylesheet" href="css/style.css">
    <link rel="stylesheet" href="css/styles.css">
    <!-- 포트원 SDK -->
    <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
