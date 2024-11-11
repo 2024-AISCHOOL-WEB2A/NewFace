@@ -109,7 +109,7 @@
                                 <div class="mb-4">
                                     <input type="password" class="form-control" name="userPw" placeholder="Password" required style="padding: 1rem;">
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 py-3" style="margin-top: 30px; max-width: 500px;">Login</button>
+                                <button type="submit" class="btn btn-primary w-100 py-3" style="margin-top: 30px; max-width:300px;">Login</button>
                             </form>
                     
                             <!-- 구분선 섹션 -->
@@ -118,10 +118,10 @@
                             </div>
                     
                             <!-- 소셜 로그인 버튼 섹션 -->
-                            <div class="d-flex flex-column align-items-center" style="width: 100%; max-width: 500px;">
-                                <a href="/oauth2/authorization/google" class="btn btn-outline-secondary w-100 py-3 mb-3" style="padding: 15px;">Google로 계속하기</a>
-                                <a href="/oauth2/authorization/naver" class="btn btn-success w-100 py-3 mb-3" style="padding: 15px;">Naver로 계속하기</a>
-                                <a href="/oauth2/authorization/kakao" class="btn btn-warning w-100 py-3" style="padding: 15px;">Kakao로 계속하기</a>
+                            <div class="d-flex flex-column align-items-center" style="width: 100%; max-width: 500px; flex-direction: column; display: flex;">
+                                <a href="/oauth2/authorization/google" class="btn btn-outline-secondary py-3 mb-3" style="margin:1px 80px 1px 80px; border: 1px solid lightgray;">Google로 계속하기</a>
+                                <a href="/oauth2/authorization/naver" class="btn btn-success py-3 mb-3" style="margin:1px 80px 1px 80px;">Naver로 계속하기</a>
+                                <a href="/oauth2/authorization/kakao" class="btn btn-warning py-3" style="margin:1px 80px 1px 80px;">Kakao로 계속하기</a>
                             </div>
                             
                         </div>

@@ -90,87 +90,36 @@
                 <div class="row row-bottom-padded-md">
                     <div class="col-md-12">
                         <ul id="fh5co-portfolio-list">
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
-                                <a href="#" class="color-5">
-                                    <div class="case-studies-summary">
-                                        <span>Love</span>
-                                        <h2>Spend time with your partner</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
-                                <a href="#" class="color-4">
-                                    <div class="case-studies-summary">
-                                        <span>Photo</span>
-                                        <h2>See the horizon</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
-                                <a href="#" class="color-5">
-                                    <div class="case-studies-summary">
-                                        <span>Love</span>
-                                        <h2>Spend time with your partner</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/1.jfif); ">
-                                <a href="#" class="color-2">
-                                    <div class="case-studies-summary">
-                                        <span>Creative</span>
-                                        <h2>Wak in the wooden street</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/2.jpg); ">
-                                <a href="#" class="color-3">
-                                    <div class="case-studies-summary">
-                                        <span>Design</span>
-                                        <h2>Present your product</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
-                                <a href="#" class="color-4">
-                                    <div class="case-studies-summary">
-                                        <span>Photo</span>
-                                        <h2>See the horizon</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="two-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/4.jpg) ">
-                                <a href="#" class="color-5">
-                                    <div class="case-studies-summary">
-                                        <span>Love</span>
-                                        <h2>Spend time with your partner</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/1.jfif); ">
-                                <a href="#" class="color-2">
-                                    <div class="case-studies-summary">
-                                        <span>Creative</span>
-                                        <h2>Wak in the wooden street</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/2.jpg); ">
-                                <a href="#" class="color-3">
-                                    <div class="case-studies-summary">
-                                        <span>Design</span>
-                                        <h2>Present your product</h2>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(uploads/images/3.jfif); "> 
-                                <a href="#" class="color-4">
-                                    <div class="case-studies-summary">
-                                        <span>Photo</span>
-                                        <h2>See the horizon</h2>
-                                    </div>
-                                </a>
-                            </li>
+                            <c:forEach var="board" items="${boards}" varStatus="status" begin="0" end="9">
+                                <c:choose>
+                                    <c:when test="${status.index == 0 || status.index == 9}">
+                                        <!-- 0번과 9번 인덱스일 때의 스타일 -->
+                                        <li class="two-third animate-box" data-animate-effect="fadeIn" 
+                                            style="background-image: url(${board.boardFilePath});">
+                                            <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
+                                                <div class="case-studies-summary">
+                                                    <span>${board.boardUpdatedAt}</span>
+                                                    <h2>${board.boardTitle}</h2>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- 나머지 인덱스일 때의 스타일 -->
+                                        <li class="one-third animate-box" data-animate-effect="fadeIn" 
+                                            style="background-image: url(${board.boardFilePath});">
+                                            <a href="/pride_board/detail/${board.boardIdx}" class="color-3">
+                                                <div class="case-studies-summary">
+                                                    <span>${board.boardUpdatedAt}</span>
+                                                    <h2>${board.boardTitle}</h2>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                         </ul>
+                        
                     </div>
                 </div>
 
@@ -179,22 +128,35 @@
                     <div class="col-md-12 text-center">
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
-                                <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                                <!-- 이전 페이지 버튼 -->
+                                <li class="<c:if test='${isFirst}'>disabled</c:if>">
+                                    <a href="?page=${currentPage - 1}" aria-label="Previous" <c:if test="${isFirst}">style="pointer-events: none;"</c:if>>
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                
+                                <!-- 동적 페이지 번호 -->
+                                <c:forEach begin="0" end="${totalPages - 1}" var="page">
+                                    <li class="<c:if test='${page == currentPage}'>active</c:if>">
+                                        <a href="?page=${page}">${page + 1}</a>
+                                    </li>
+                                </c:forEach>
+                
+                                <!-- 다음 페이지 버튼 -->
+                                <li class="<c:if test='${isLast}'>disabled</c:if>">
+                                    <a href="?page=${currentPage + 1}" aria-label="Next" <c:if test="${isLast}">style="pointer-events: none;"</c:if>>
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
-            
-                    <!-- 등록하기 버튼 영역 -->
-                    <div class="col-md-12 text-center">
-                        <a href="#" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
-                    </div>
                 </div>
+                <!-- 등록하기 버튼 영역 -->
+                <div class="col-md-12 text-center">
+                    <a href="/pride_board/register" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
+                </div>
+                
                 
 
             </div>

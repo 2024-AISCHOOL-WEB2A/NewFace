@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,4 +66,11 @@ public class BoardService {
     public List<Board> getTop10Posts() {
         return boardRepository.findTop10ByOrderByBoardViewCountDesc();
     }
+
+    //idx별 board 값 가져오기
+    public Board findById(Long boardIdx) {
+        Optional<Board> boardOptional = boardRepository.findById(boardIdx);
+        return boardOptional.orElse(null); // 데이터가 없으면 null 반환
+    }
+    
 }

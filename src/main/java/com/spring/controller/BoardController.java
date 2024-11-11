@@ -88,11 +88,17 @@ public class BoardController {
 
         System.out.println("detail =-------------------------");
         System.out.println("boardIdx :" + boardIdx);
+
+        Board board_idx = boardService.findById(boardIdx);
+
+        System.out.println(board_idx.toString());
+
+
         // 조회한 데이터를 모델에 추가
-        model.addAttribute("boardIdx", boardIdx);
+        model.addAttribute("boardIdx", board_idx);
         // model.addAttribute("board", board);  // 필요한 경우, 조회한 데이터도 추가 가능
 
-        return "shorts-detail"; // shorts-detail.jsp로 이동
+        return "pride_board_detail"; // pride_board_detail.jsp로 이동
     }
 
 }

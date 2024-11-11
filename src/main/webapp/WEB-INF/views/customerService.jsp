@@ -80,7 +80,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-                        <h3>자랑 게시판</h3>
+                        <h3>고객지원</h3>
                     </div>
                 </div>
         
@@ -107,39 +107,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="toggleDetails(this)">
-                                    <td style="text-align: center;">1</td>
-                                    <td><span class="text-danger">[공지]</span> 시스템 정기점검 안내</td>
-                                    <td>2024-10-25T03:41:02</td>
-                                </tr>
-                                <tr style="display: none;">
-                                    <td></td>
-                                    <td colspan="2">시스템 정기점검 안내의 상세 내용이 여기에 표시됩니다.</td>
-                                </tr>
-                                <tr onclick="toggleDetails(this)">
-                                    <td style="text-align: center;">2</td>
-                                    <td><span class="text-danger">[공지]</span> 캐릭터 업데이트 안내</td>
-                                    <td>2024-10-25T03:41:02</td>
-                                </tr>
-                                <tr style="display: none;">
-                                    <td colspan="3">캐릭터 업데이트 안내의 상세 내용이 여기에 표시됩니다.</td>
-                                </tr>
-                                <tr onclick="toggleDetails(this)">
-                                    <td style="text-align: center;">4</td>
-                                    <td><span class="text-primary">[FAQ]</span> 포인트 충전 방법 안내</td>
-                                    <td>2024-10-25T03:41:02</td>
-                                </tr>
-                                <tr style="display: none;">
-                                    <td colspan="3">포인트 충전 방법 안내의 상세 내용이 여기에 표시됩니다.</td>
-                                </tr>
-                                <tr onclick="toggleDetails(this)">
-                                    <td style="text-align: center;">7</td>
-                                    <td><span class="text-success">[요청]</span> 새로운 기능 제안</td>
-                                    <td>2024-10-25T03:41:02</td>
-                                </tr>
-                                <tr style="display: none;">
-                                    <td colspan="3">새로운 기능 제안의 상세 내용이 여기에 표시됩니다.</td>
-                                </tr>
+                                <c:forEach var="post" items="${posts}" varStatus="status">
+                                    <!-- 클릭 시 상세 내용 표시용 행 -->
+                                    <tr onclick="toggleDetails(this)">
+                                        <td style="text-align: center;">${status.index + 1}</td>
+                                        
+                                        <!-- 카테고리에 따라 색상 지정 -->
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${post.customerServiceCategory == '공지'}">
+                                                    <span class="text-danger">[공지]</span>
+                                                </c:when>
+                                                <c:when test="${post.customerServiceCategory == 'FAQ'}">
+                                                    <span style="color: blue;">[FAQ]</span>
+                                                </c:when>
+                                                <c:when test="${post.customerServiceCategory == '요청'}">
+                                                    <span style="color: green;">[요청]</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span>[${post.customerServiceCategory}]</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            ${post.customerServiceTitle}
+                                        </td>
+                                        
+                                        <td>${post.customerServiceDate}</td>
+                                    </tr>
+                                    
+                                    <!-- 상세 내용 행, 기본적으로 숨김 -->
+                                    <tr style="display: none;">
+                                        <td></td>
+                                        <td colspan="2">${post.customerServiceContent}</td>
+                                    </tr>
+                                </c:forEach>
+
                                 <!-- 추가 항목을 같은 형식으로 작성 -->
                             </tbody>
                         </table>
@@ -165,7 +166,7 @@
             
                     <!-- 등록하기 버튼 영역 -->
                     <div class="col-md-12 text-center">
-                        <a href="#" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
+                        <a href="/customerService/write" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
                     </div>
                 </div>
 
