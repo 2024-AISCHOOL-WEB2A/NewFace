@@ -48,17 +48,17 @@
 	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="/css/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="/css/icomoon.css">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	<!-- Superfish -->
-	<link rel="stylesheet" href="css/superfish.css">
+	<link rel="stylesheet" href="/css/superfish.css">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 
 
 	<!-- Modernizr JS -->
@@ -88,61 +88,37 @@
         
                 <!-- 캐릭터 카테고리 -->
                 <div class="row animate-box" style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;">
-                    <!-- 반복 -->
-					<div class="col-md-3" class="fh5co-section-gray">
-						<div class="fh5co-team text-center animate-box">
-							<figure>
-								<img src="images/person_1.jpg" alt="user">
-							</figure>
-							<p>Jean Doe, XYZ Co.</p>
-						</div>
-					</div>
-					<div class="col-md-3" class="fh5co-section-gray">
-						<div class="fh5co-team text-center animate-box">
-							<figure>
-								<img src="images/person_1.jpg" alt="user">
-							</figure>
-							<p>Jean Doe, XYZ Co.</p>
-						</div>
-					</div>
-                    <div class="col-md-3" class="fh5co-section-gray">
-						<div class="fh5co-team text-center animate-box">
-							<figure>
-								<img src="images/person_1.jpg" alt="user">
-							</figure>
-							<p>Jean Doe, XYZ Co.</p>
-						</div>
-					</div>
-                    <div class="col-md-3" class="fh5co-section-gray">
-						<div class="fh5co-team text-center animate-box">
-							<figure>
-								<img src="images/person_1.jpg" alt="user">
-							</figure>
-							<p>Jean Doe, XYZ Co. </p>
-						</div>
-					</div>
-				</div>
-                <!-- 캐릭터 카테고리 끝 -->
-        
-                <div class="container">
-                    <div class="row row-bottom-padded-md">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="fh5co-blog animate-box">
-                                <a href="#"><img class="img-responsive" src="images/cover_bg_2.jpg" alt=""></a>
-                                <div class="blog-text">
-                                    <div class="prod-title">
-                                        <h3><a href="#">Web Design for the Future</a></h3>
-                                        <p><a href="#">더보기...</a></p>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <!-- 추가 콘텐츠는 여기서 계속 반복됩니다 -->
-                    </div>
-                </div>
+                    <c:forEach items="${characters}" var="character">
+					<div class="col-md-3 fh5co-section-gray">
+						<div class="fh5co-team text-center" animate-box onclick="loadCategory('${character.characterCategory}')">
+				<figure>
+                    <img src="${character.characterImage}" alt="${character.characterName}">
+                </figure>
+                <p>${character.characterCategory}</p>
             </div>
         </div>
+    </c:forEach>
+</div>
+                <!-- 캐릭터 카테고리 끝 -->
         
+                <div class="grid-container row row-bottom-padded-md">
+					<c:forEach items="${categoryCharacters}" var="character">
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<div class="fh5co-blog animate-box">
+								<a href="/character_intro/detail/${character.characterIdx}">
+									<img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}">
+									<div class="blog-text">
+										<div class="prod-title">
+											<h3>${character.characterName}</h3>
+											<p><a href="/character_intro/detail/${character.characterIdx}">더보기...</a></p>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+
 
 	
 
@@ -156,26 +132,78 @@
 	<!-- jQuery -->
 
 
-	<script src="js/jquery.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/sticky.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/sticky.js"></script>
 
 	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
 	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+	<script src="/js/hoverIntent.js"></script>
+	<script src="/js/superfish.js"></script>
 	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/magnific-popup-options.js"></script>
 	
 	<!-- Main JS -->
-	<script src="js/main.js"></script>
+	<script src="/js/main.js"></script>
+
+	<script>
+		function loadCategory(category) {
+    console.log("Category clicked:", category);
+    fetch('/character_intro/ajax/' + category)
+        .then(response => response.json())
+        .then(data => {
+            // 받아온 데이터 구조 자세히 출력
+            console.log("전체 데이터:", data);
+            data.forEach(character => {
+                console.log("캐릭터 정보:", {
+                    id: character.characterIdx,
+                    name: character.characterName,
+                    image: character.characterImage,
+                    category: character.characterCategory
+                });
+            });
+
+            const container = document.querySelector('.row.row-bottom-padded-md');
+            
+            if (!container) {
+                console.error("Container not found!");
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            data.forEach(character => {
+                const cardHTML = `
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="fh5co-blog animate-box">
+                            <a href="/character_intro/detail/${character.characterIdx}">
+                                <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}">
+                            </a>
+                            <div class="blog-text">
+                                <div class="prod-title">
+                                    <h3>${character.characterName}</h3>
+                                    <p><a href="/character_intro/detail/${character.characterIdx}">더보기... (ID: ${character.characterIdx})</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+		</script>
+	
 
 	</body>
 </html>
