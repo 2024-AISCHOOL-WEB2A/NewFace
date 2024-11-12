@@ -74,7 +74,8 @@
 		<div id="fh5co-page">
 	
 		<div class="fh5co-hero">
-			<div class="fh5co-overlay"></div>
+			<div class="fh5co-overlay" style="background-color: transparent;"></div>
+
 			<div class="fh5co-cover text-center" data-stellar-background-ratio="0.5">
                 <video autoplay loop muted playsinline class="background-video">
                     <source src="/image/main1.mp4" type="video/mp4">

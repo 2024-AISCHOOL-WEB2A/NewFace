@@ -153,21 +153,29 @@
     border-bottom: none;
 }
 
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('/fonts/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 .item-title {
     width: 30%;
-    font-family: var(--font-light);
+    font-family: 'GmarketSansBold', sans-serif; /* 폰트 적용 */
 }
 
 .item-date {
     width: 30%;
     color: #666;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
+    font-family: 'GmarketSansBold', sans-serif; /* 폰트 적용 */
 }
 
 .item-amount {
     width: 20%;
     text-align: right;
-    font-family: var(--font-light);
+    font-family: 'GmarketSansBold', sans-serif; /* 폰트 적용 */
 }
 
 .item-amount.negative {
@@ -181,7 +189,7 @@
 .item-total {
     width: 20%;
     text-align: right;
-    font-family: var(--font-light);
+    font-family: 'GmarketSansBold', sans-serif; /* 폰트 적용 */
 }
 
 /* 모달 스타일 */

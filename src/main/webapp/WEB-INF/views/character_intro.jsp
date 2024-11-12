@@ -60,6 +60,25 @@
    <link rel="stylesheet" href="/css/magnific-popup.css">
 
    <link rel="stylesheet" href="/css/style.css">
+   <style>
+    .image-container {
+        width: 100%;
+        height: 200px; /* 고정 높이 설정으로 이미지가 잘 보이게 함 */
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+		background-color: white;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* 이미지 비율 유지 */
+    }
+</style>
 
 
    <!-- Modernizr JS -->
@@ -89,24 +108,24 @@
                </div>
                <!-- 캐릭터 카테고리 -->
                <div class="row animate-box"
-                  style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;">
-                  <c:forEach items="${characters}" var="character">
-                     <div class="col-md-3 fh5co-section-gray">
-                        <div class="fh5co-team text-center animate-box"
-                           onclick="loadCategory('${character.characterCategory}')">
-                           <figure>
-                              <img src="${character.characterImage}" alt="${character.characterName}">
-                           </figure>
-                           <p>${character.characterCategory}</p>
-                        </div>
-                     </div>
-                  </c:forEach>
-               </div>
+     style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px; color: white !important;">
+    <c:forEach items="${characters}" var="character">
+        <div class="col-md-3 fh5co-section-gray">
+			<div class="fh5co-team text-center animate-box"
+				 onclick="loadCategory('${character.characterCategory}')">
+				<div class="image-container">
+					<img src="${character.characterImage}" alt="${character.characterName}">
+				</div>
+				<p>${character.characterCategory}</p>
+			</div>
+		</div>
+    </c:forEach>
+</div>
 
                <!-- 캐릭터 목록 -->
                <div class="row row-bottom-padded-md">
                   <c:forEach items="${categoryCharacters}" var="character">
-                     <div class="col-lg-3 col-md-4 col-sm-6">
+                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <div class="fh5co-blog animate-box">
                            <a href="/character_intro/detail/${character.characterIdx}">
                               <img class="img-responsive" src="${character.characterImage}"
@@ -114,9 +133,6 @@
                               <div class="blog-text">
                                  <div class="prod-title">
                                     <h3>${character.characterName}</h3>
-                                    <p><a
-                                          href="/character_intro/detail/${character.characterIdx}">더보기...</a>
-                                    </p>
                                  </div>
                               </div>
                            </a>
@@ -127,9 +143,10 @@
 
 
 
-               <jsp:include page="common/footer.jsp" />
+              
             </div>
             <!-- END fh5co-page -->
+			<jsp:include page="common/footer.jsp" />
 
          </div>
          <!-- END fh5co-wrapper -->
@@ -190,7 +207,7 @@
 
                      data.forEach(character => {
                         const card =
-                           '<div class="col-lg-3 col-md-4 col-sm-6">' +
+                           '<div class="col-lg-2 col-md-4 col-sm-6">' +
                            '<div class="fh5co-blog animate-box fadeInUp animated">' +
                            '<a href="/character_intro/detail/' + character.characterIdx + '">' +
                            '<img class="img-responsive" src="' + character.characterImage + '" alt="' + character.characterName + '">' +
