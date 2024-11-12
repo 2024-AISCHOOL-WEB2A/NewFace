@@ -61,24 +61,76 @@
 
    <link rel="stylesheet" href="/css/style.css">
    <style>
-    .image-container {
-        width: 100%;
-        height: 200px; /* 고정 높이 설정으로 이미지가 잘 보이게 함 */
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-		background-color: white;
-    }
+      .image-container {
+         /* 고정 높이 설정으로 이미지가 잘 보이게 함 */
+         overflow: hidden;
+         border-radius: 8px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: white;
+      }
 
-    .image-container img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain; /* 이미지 비율 유지 */
-    }
-</style>
+      .image-container img {
+         max-width: 100%;
+         max-height: 100%;
+         object-fit: contain;
+         /* 이미지 비율 유지 */
+      }
+
+      .fh5co-section-gray {
+      display: flex;
+      align-items: center;
+      width: 23%;
+      padding: 10px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+   }
+
+   /* 카테고리별 hover 색상 */
+   /* 카테고리별 hover 색상 */
+   .category-캐치티니핑:hover {
+      background-color: #ff69b4; /* 캐치! 티니핑 */
+      transform: scale(1.1);
+   }
+   .category-캐치티니핑:hover .text-content p {
+      color: white !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+   }
+
+   .category-뽀롱뽀롱뽀로로:hover {
+      background-color: #87ceeb; /* 뽀롱뽀롱 뽀로로 */
+      transform: scale(1.1);
+   }
+   .category-뽀롱뽀롱뽀로로:hover .text-content p {
+      color: white !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+   }
+
+   .category-브레드이발소:hover {
+      background-color: #90ee90; /* 브레드이발소 */
+      transform: scale(1.1);
+   }
+   .category-브레드이발소:hover .text-content p {
+      color: white !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+   }
+
+   .category-산리오:hover {
+      background-color: violet; /* 산리오 */
+      transform: scale(1.1);
+   }
+   .category-산리오:hover .text-content p {
+      color: rgb(255, 255, 255) !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+}
+   </style>
 
 
    <!-- Modernizr JS -->
@@ -107,20 +159,22 @@
                   </div>
                </div>
                <!-- 캐릭터 카테고리 -->
-               <div class="row animate-box"
-     style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px; color: white !important;">
-    <c:forEach items="${characters}" var="character">
-        <div class="col-md-3 fh5co-section-gray">
-			<div class="fh5co-team text-center animate-box"
-				 onclick="loadCategory('${character.characterCategory}')">
-				<div class="image-container">
-					<img src="${character.characterImage}" alt="${character.characterName}">
-				</div>
-				<p>${character.characterCategory}</p>
-			</div>
-		</div>
-    </c:forEach>
-</div>
+               <ul class="row animate-box" style="display: flex; flex-wrap: wrap; gap: 20px; padding: 10px;">
+                  <c:forEach items="${characters}" var="character">
+                     <%-- 특수문자와 공백 제거하여 CSS 클래스 이름 생성 --%>
+                     <c:set var="cleanCategory" value="${fn:replace(fn:replace(character.characterCategory, ' ', ''), '!', '')}" />
+                     <li class="fh5co-section-gray category-${cleanCategory}" onclick="loadCategory('${character.characterCategory}')">
+                        <div class="image-container" style="margin-right: 15px;">
+                           <img src="${character.characterImage}" alt="${character.characterName}" style="width: 60px; height: 60px; border-radius: 50%;">
+                        </div>
+                        <div class="text-content">
+                           <p style="margin: 0; font-size: 16px; color: #666;">${character.characterCategory}</p>
+                        </div>
+                     </li>
+                  </c:forEach>
+               </ul>
+               
+               
 
                <!-- 캐릭터 목록 -->
                <div class="row row-bottom-padded-md">
@@ -143,10 +197,10 @@
 
 
 
-              
+
             </div>
             <!-- END fh5co-page -->
-			<jsp:include page="common/footer.jsp" />
+            <jsp:include page="common/footer.jsp" />
 
          </div>
          <!-- END fh5co-wrapper -->

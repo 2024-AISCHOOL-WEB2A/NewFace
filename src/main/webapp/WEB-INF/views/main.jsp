@@ -60,6 +60,23 @@
 	
 	<link rel="stylesheet" href="/css/style.css">
 
+	<style>
+		.image-container {
+			width: 100%; /* 원하는 너비 */
+			height: 300px; /* 원하는 높이 */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+	
+		.image-container img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain; /* 비율을 유지하며 컨테이너 안에 맞춤 */
+		}
+	</style>
+
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -196,7 +213,7 @@
 				</div>
 			</div>
 			
-			<div class="container">
+			<div class="container animate-box">
 				<!-- 공지사항 Section -->
 				<div class="row">
 					<div class="col-md-1">
@@ -296,7 +313,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container ">
 				<div class="row text-center">
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
