@@ -371,7 +371,7 @@
 		</div>
 
 		<!-- fh5co-blog-section -->
-		<jsp:include page="common/footer.jsp" />
+		<jsp:include page="common/footer_main.jsp" />
 
 	
 

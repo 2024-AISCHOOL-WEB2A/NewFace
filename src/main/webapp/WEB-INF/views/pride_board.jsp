@@ -162,6 +162,19 @@
             </div>
         </div>
         <jsp:include page="common/footer.jsp" />
+
+        <style>
+            /* 활성화된 페이지 버튼의 배경색과 글씨색 변경 */
+            .pagination .active a {
+                background-color: #FF3B69;; /* 원하는 색상으로 변경 */
+                color: #fff !important; /* 글씨 색상 */
+                border-color: #FF3B69;; /* 경계선 색상 */
+            }
+
+            .pagination a {
+                color: black !important; /* 글씨 색상 */
+            }
+        </style>
         
 
 	
