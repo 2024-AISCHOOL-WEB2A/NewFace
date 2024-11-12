@@ -1,8 +1,10 @@
 package com.spring.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.entity.User;
 import com.spring.service.UserService;
@@ -44,14 +47,18 @@ public class UserController {
 
     // 회원가입 처리
     @PostMapping("/join")
-    public String join(User user, Model model) {
+    @ResponseBody // AJAX 응답을 위해 필요
+    public ResponseEntity<?> join(User user) {
         try {
             userService.join(user);
-            model.addAttribute("message", "회원가입이 완료되었습니다.");
-            return "redirect:/loginForm";
+            return ResponseEntity.ok()
+                    .body(Map.of("success", true,
+                            "message", "회원가입이 완료되었습니다.",
+                            "nickname", user.getUserNickname()));
         } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "redirect:/joinForm";
+            return ResponseEntity.badRequest()
+                    .body(Map.of("success", false,
+                            "message", e.getMessage()));
         }
     }
 
@@ -76,7 +83,9 @@ public class UserController {
     }
 
     @PostMapping("/custom_login")
-    public String custom_login(String userId, String userPw, HttpSession session, Model model) {
+    public String custom_login(String userId, String userPw,
+            HttpSession session,
+            RedirectAttributes redirectAttributes) {
         User user = userService.login(userId, userPw);
 
         if (user != null) {
@@ -85,8 +94,8 @@ public class UserController {
             return "redirect:/";
         } else {
             // 로그인 실패
-            model.addAttribute("error", "아이디 또는 비밀번호가 일치하지 않습니다.");
-            return "redirect:/loginForm";
+            redirectAttributes.addFlashAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다.");
+            return "redirect:/loginForm"; // 로그인 폼 페이지로 리다이렉트
         }
     }
 
@@ -96,7 +105,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/oauth2/success") 
+    @GetMapping("/oauth2/success")
     public String oauth2Success(@AuthenticationPrincipal OAuth2User oauth2User, HttpSession session) {
         if (oauth2User != null) {
             try {
