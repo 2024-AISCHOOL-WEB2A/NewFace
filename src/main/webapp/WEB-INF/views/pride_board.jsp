@@ -154,7 +154,7 @@
                 </div>
                 <!-- 등록하기 버튼 영역 -->
                 <div class="col-md-12 text-center">
-                    <a href="/pride_board/register" class="btn btn-primary" role="button" style="margin-top: 20px;">등록하기</a>
+                    <a href="javascript:void(0)" class="btn btn-primary" role="button" style="margin-top: 20px;" onclick="checkLoginAndRedirect()">등록하기</a>
                 </div>
                 
                 
@@ -208,6 +208,22 @@
 	
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+    
+    <!--글등록 전 로그인확인-->
+    <script>
+       function checkLoginAndRedirect() {
+    const loginUser = '${loginUser}';
+    
+    if(!loginUser) {
+        alert("로그인이 필요한 서비스입니다.");
+        window.location.href = '/loginForm';
+        return false; // 함수 실행 중단
+    }
+    
+    // 로그인이 되어있는 경우에만 글등록 페이지로 이동
+    window.location.href = '/pride_board/register';
+}
+    </script>
 
 	</body>
 </html>
