@@ -86,39 +86,41 @@
                     </div>
                 </div>
         
-                <!-- 캐릭터 카테고리 -->
-                <div class="row animate-box" style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;">
-                    <c:forEach items="${characters}" var="character">
-					<div class="col-md-3 fh5co-section-gray">
-						<div class="fh5co-team text-center" animate-box onclick="loadCategory('${character.characterCategory}')">
-				<figure>
-                    <img src="${character.characterImage}" alt="${character.characterName}">
-                </figure>
-                <p>${character.characterCategory}</p>
-            </div>
-        </div>
-    </c:forEach>
-</div>
-                <!-- 캐릭터 카테고리 끝 -->
-        
-                <div class="grid-container row row-bottom-padded-md">
-					<c:forEach items="${categoryCharacters}" var="character">
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<div class="fh5co-blog animate-box">
-								<a href="/character_intro/detail/${character.characterIdx}">
-									<img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}">
-									<div class="blog-text">
-										<div class="prod-title">
-											<h3>${character.characterName}</h3>
-											<p><a href="/character_intro/detail/${character.characterIdx}">더보기...</a></p>
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-					</c:forEach>
+        <!-- 캐릭터 카테고리 -->
+		<div class="row animate-box" style="border-radius: 5px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); margin: 10px;">
+			<c:forEach items="${characters}" var="character">
+				<div class="col-md-3 fh5co-section-gray">
+					<div class="fh5co-team text-center animate-box" 
+						onclick="loadCategory('${character.characterCategory}')" 
+						style="cursor: pointer;">  <!-- cursor: pointer 추가 -->
+						<figure>
+							<img src="${character.characterImage}" alt="${character.characterName}">
+						</figure>
+						<p>${character.characterCategory}</p>
+					</div>
 				</div>
+			</c:forEach>
+		</div>
+		<!-- 캐릭터 카테고리 끝 -->
 
+		<!-- 캐릭터 목록 -->
+		<div class="row row-bottom-padded-md">
+			<c:forEach items="${categoryCharacters}" var="character">
+				<div class="col-lg-3 col-md-4 col-sm-6">
+					<div class="fh5co-blog animate-box">
+						<a href="/character_intro/detail/${character.characterIdx}">
+							<img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}">
+							<div class="blog-text">
+								<div class="prod-title">
+									<h3>${character.characterName}</h3>
+									<p><a href="/character_intro/detail/${character.characterIdx}">더보기...</a></p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
 
 	
 
@@ -154,22 +156,28 @@
 	<script src="/js/main.js"></script>
 
 	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+    // 모든 캐릭터 카테고리 요소에 클릭 이벤트 추가
+    const categoryItems = document.querySelectorAll('.fh5co-team');
+    
+    categoryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // 클릭된 요소의 카테고리명 가져오기
+            const category = item.querySelector('p').textContent;
+            console.log("Clicked category:", category);
+            loadCategory(category);
+        });
+    });
+});
+
 		function loadCategory(category) {
     console.log("Category clicked:", category);
-    fetch('/character_intro/ajax/' + category)
+    
+    fetch('/character_intro/ajax/' + encodeURIComponent(category))
         .then(response => response.json())
         .then(data => {
-            // 받아온 데이터 구조 자세히 출력
-            console.log("전체 데이터:", data);
-            data.forEach(character => {
-                console.log("캐릭터 정보:", {
-                    id: character.characterIdx,
-                    name: character.characterName,
-                    image: character.characterImage,
-                    category: character.characterCategory
-                });
-            });
-
+            console.log("Received data:", data);
+            
             const container = document.querySelector('.row.row-bottom-padded-md');
             
             if (!container) {
@@ -177,21 +185,23 @@
                 return;
             }
             
+            // 기존 내용 비우기
             container.innerHTML = '';
             
+            // JSP와 동일한 구조로 HTML 생성
             data.forEach(character => {
                 const cardHTML = `
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="fh5co-blog animate-box">
                             <a href="/character_intro/detail/${character.characterIdx}">
                                 <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}">
-                            </a>
-                            <div class="blog-text">
-                                <div class="prod-title">
-                                    <h3>${character.characterName}</h3>
-                                    <p><a href="/character_intro/detail/${character.characterIdx}">더보기... (ID: ${character.characterIdx})</a></p>
+                                <div class="blog-text">
+                                    <div class="prod-title">
+                                        <h3>${character.characterName}</h3>
+                                        <p><a href="/character_intro/detail/${character.characterIdx}">더보기...</a></p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 `;
@@ -203,7 +213,6 @@
         });
 }
 		</script>
-	
 
 	</body>
 </html>
