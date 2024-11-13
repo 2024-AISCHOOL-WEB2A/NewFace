@@ -160,7 +160,7 @@
          <!-- end:header-top -->
 
 
-         <div id="fh5co-blog-section">
+         <div id="fh5co-blog-section" style="padding: 3em 0;">
             <div class="container">
                <div class="row">
                   <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -168,7 +168,7 @@
                   </div>
                </div>
                <!-- 캐릭터 카테고리 -->
-               <ul class="row animate-box" style="display: flex; flex-wrap: wrap; gap: 20px; padding: 10px;">
+               <ul class="row animate-box" style="display: flex; flex-wrap: wrap; gap: 20px; padding: 10px; margin-top: 50px;">
                   <c:forEach items="${characters}" var="character">
                      <c:set var="cleanCategory" value="${fn:replace(fn:replace(character.characterCategory, ' ', ''), '!', '')}" />
                      <li class="fh5co-section-gray category-${cleanCategory}" onclick="loadCategory('${character.characterCategory}')">
@@ -188,21 +188,19 @@
                <div class="row row-bottom-padded-md">
                   <c:forEach items="${categoryCharacters}" var="character">
                      <div class="col-lg-2 col-md-4 col-sm-6">
-                        <div class="fh5co-blog animate-box" >
+                        <div class="fh5co-blog animate-box">
                            <a href="/character_intro/detail/${character.characterIdx}">
                               <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">
-                              <div class="blog-text" style="padding: 0px 30px !important;">
-                                 <div class="prod-title" style="text-align: center;">
-                                    <h3 style="margin: 10px;">${character.characterName}</h3>
+                              <div class="blog-text" style="padding: 0px 15px !important;">
+                                 <div class="prod-title" style="text-align: center; display: flex; justify-content: center;">
+                                    <h3 style="margin: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${character.characterName}</h3>
                                  </div>
                               </div>
                            </a>
                         </div>
                      </div>
-                     
-                     
                   </c:forEach>
-               </div>
+               </div>               
 
 
 
@@ -275,9 +273,9 @@
                               '<div class="fh5co-blog animate-box fadeInUp animated">' +
                                  '<a href="/character_intro/detail/' + character.characterIdx + '">' +
                                     '<img class="img-responsive" src="' + character.characterImage + '" alt="' + character.characterName + '" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">' +
-                                    '<div class="blog-text" style="padding: 0px 30px !important;">' +
-                                       '<div class="prod-title">' +
-                                          '<h3 style="margin: 10px;">' + character.characterName + '</h3>' +
+                                    '<div class="blog-text" style="padding: 0px 15px !important;">' +
+                                       '<div class="prod-title" style="text-align: center; display: flex; justify-content: center;">' +
+                                          '<h3 style="margin: 10px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + character.characterName + '</h3>' +
                                        '</div>' +
                                     '</div>' +
                                  '</a>' +

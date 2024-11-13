@@ -145,7 +145,7 @@
                 }
 
                 .form-container .form-submit-btn:hover {
-                    background-color: #313131;
+                    transform: scale(1.05); /* 살짝 확대 */
                 }
 
                 .form-container .link {
@@ -240,7 +240,6 @@
 
                 .modal-body {
                     text-align: center;
-                    margin-bottom: 20px;
                 }
 
                 .modal-footer {
@@ -319,22 +318,24 @@
                 </div>
 
 
-
-                <jsp:include page="common/footer.jsp" />
                 <!-- END fh5co-page -->
 
                 <!-- Modal -->
                 <div id="modal" class="modal">
                     <div class="modal-content">
-                        <div class="modal-body">
-                            <p id="modal-message"></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button id="confirm-btn" class="btn confirm">확인</button>
-                            <button id="cancel-btn" class="btn cancel">취소</button>
-                        </div>
+                       <!-- 모달 제목 -->
+                       <div class="modal-header" style="text-align: center;">
+                          <h2>회원가입 완료</h2> <!-- 대제목 -->
+                       </div>
+                       <div class="modal-body">
+                          <p id="modal-message" style="margin: 10px 0px;"></p>
+                       </div>
+                       <div class="modal-footer">
+                          <button id="confirm-btn" class="btn confirm">확인</button>
+                          <button id="cancel-btn" class="btn cancel">취소</button>
+                       </div>
                     </div>
-                </div>
+                 </div>
 
                 <!-- END fh5co-wrapper -->
 
@@ -475,7 +476,7 @@
                         const confirmBtn = document.getElementById('confirm-btn');
                         const cancelBtn = document.getElementById('cancel-btn');
 
-                        modalMessage.innerHTML = nickname + "님 회원가입을 축하합니다!<br>로그인으로 이동하시려면 확인을 눌러주세요";
+                        modalMessage.innerHTML = nickname + "님 회원가입을 축하합니다!<br>로그인으로 이동하시려면 확인을 눌러주세요.";
                         modal.style.display = "block";
 
                         // 확인 버튼 클릭 시
