@@ -79,7 +79,7 @@
         <!-- end:header-top -->
 
 
-		<div id="fh5co-blog-section">
+		<div id="fh5co-blog-section" style="padding: 3em 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
         
-                <div class="row row-bottom-padded-md">
+                <div class="row row-bottom-padded-md" style="margin-top: 50px">
                     <div class="col-md-12">
                         <ul id="fh5co-portfolio-list">
                             <c:forEach var="board" items="${boards}" varStatus="status" begin="0" end="9">

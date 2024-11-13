@@ -59,6 +59,12 @@
     <link rel="stylesheet" href="/css/superfish.css">
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="/css/magnific-popup.css">
+    <!-- toastui-editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
+    <!-- toastui-editor JS -->
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
 
     <link rel="stylesheet" href="/css/style.css">
 

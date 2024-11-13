@@ -134,7 +134,6 @@
 
                 </div>
             </div>
-            <jsp:include page="common/footer.jsp" />
 
             <div id="paymentModal" class="modal">
                 <div class="modal-content">
