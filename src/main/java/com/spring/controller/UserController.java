@@ -1,10 +1,11 @@
 package com.spring.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Base64;
+
 import com.spring.entity.User;
 import com.spring.service.UserService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
+@PreAuthorize("isAuthenticated()")  // 클래스 레벨에서 인증 체크
 public class UserController {
 
     @Autowired
@@ -130,55 +132,59 @@ public class UserController {
 
     @PostMapping("/user/updateProfile")
     @ResponseBody
-    public Map<String, Object> updateProfile(
+    public ResponseEntity<?> updateProfile(
             @RequestParam(required = false) MultipartFile profileImage,
             @RequestParam String userNickname,
+            @RequestParam int userIdx,
             HttpSession session) {
-        Map<String, Object> response = new HashMap<>();
 
         try {
-            User loginUser = (User) session.getAttribute("loginUser");
-            if (loginUser == null) {
-                response.put("success", false);
-                response.put("error", "로그인 정보를 찾을 수 없습니다.");
-                return response;
-            }
+            System.out.println("=== Update Profile Start ===");
+            System.out.println("UserIdx: " + userIdx);
+            System.out.println("New Nickname: " + userNickname);
+            System.out.println("Image present: " + (profileImage != null));
+
+            User loginUser = userService.getUserById(userIdx);
+            System.out.println("Found user: " + loginUser.getUserId());
 
             loginUser.setUserNickname(userNickname);
             User updatedUser = userService.updateProfile(loginUser, profileImage);
-            session.setAttribute("loginUser", updatedUser); // 세션 정보 업데이트
+            System.out.println("Profile updated");
 
-            response.put("success", true);
+            session.setAttribute("loginUser", updatedUser);
+            System.out.println("=== Update Profile End ===");
+
+            return ResponseEntity.ok()
+                    .body(Map.of("success", true));
+
         } catch (Exception e) {
-            response.put("success", false);
-            response.put("error", e.getMessage());
-            e.printStackTrace(); // 에러 로그 확인용
+            System.out.println("Error updating profile: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.badRequest()
+                    .body(Map.of("success", false, "error", e.getMessage()));
         }
-
-        return response;
     }
 
     @PostMapping("/user/delete")
     @ResponseBody
-    public Map<String, Object> deleteAccount(HttpSession session) {
-        Map<String, Object> response = new HashMap<>();
-
+    public ResponseEntity<?> deleteAccount(HttpSession session) {
         try {
             User loginUser = (User) session.getAttribute("loginUser");
-            if (loginUser != null) {
-                userService.deleteUser(loginUser.getUserIdx());
-                session.invalidate(); // 세션 종료
-                response.put("success", true);
-            } else {
-                response.put("success", false);
-                response.put("error", "로그인 정보를 찾을 수 없습니다.");
+            if(loginUser == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("success", false, "error", "로그인이 필요합니다."));
             }
-        } catch (Exception e) {
-            response.put("success", false);
-            response.put("error", e.getMessage());
-            e.printStackTrace(); // 에러 로그 확인용
-        }
 
-        return response;
+            userService.deleteUser(loginUser.getUserIdx());
+            session.invalidate();
+            
+            return ResponseEntity.ok()
+                .body(Map.of("success", true));
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest()
+                .body(Map.of("success", false, "error", e.getMessage()));
+        }
     }
 }

@@ -46,7 +46,7 @@ public class UserService {
         user.setUserIsActive(1);
         user.setUserPoint(0);
         user.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
-        user.setUserProfilePicture("default.jpg"); 
+        user.setUserProfilePicture("/image/default.png"); 
         
         userRepository.save(user);
     }
@@ -89,7 +89,7 @@ public class UserService {
                     newUser.setUserIsActive(1);
                     newUser.setUserPoint(0);
                     newUser.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
-                    newUser.setUserProfilePicture("default.jpg");
+                    newUser.setUserProfilePicture("/image/default.png");
                     
                     return userRepository.save(newUser);
                 });
@@ -128,7 +128,7 @@ public User findByUserId(String userId) {
         BufferedImage originalImage = ImageIO.read(file.getInputStream());
         
         // 이미지 크기 제한
-        int maxSize = 300;
+        int maxSize = 200;
         int width = originalImage.getWidth();
         int height = originalImage.getHeight();
         
@@ -142,11 +142,11 @@ public User findByUserId(String userId) {
         resizedImage.getGraphics().drawImage(originalImage, 0, 0, width, height, null);
         
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                // JPEG 품질 설정 (0.0 ~ 1.0)
+        // JPEG 품질 설정 (0.0 ~ 1.0)
         ImageWriter writer = ImageIO.getImageWritersByFormatName("jpg").next();
         ImageWriteParam param = writer.getDefaultWriteParam();
         param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-        param.setCompressionQuality(0.6f); // 60% 품질
+        param.setCompressionQuality(0.3f); // 30% 품질
         
         ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
         writer.setOutput(ios);
@@ -157,18 +157,10 @@ public User findByUserId(String userId) {
         
         return baos.toByteArray();
     }
-    
-    // 일반 유저 정보 업데이트
-    @Transactional
-    public User updateUser(User user) {
-        return userRepository.save(user);
-    }
 
     // 프로필 업데이트 메소드 추가
     @Transactional
     public User updateProfile(User user, MultipartFile profileImage) throws IOException {
-        System.out.println("User ID: " + user.getUserIdx());  // 로그 추가
-        System.out.println("New Nickname: " + user.getUserNickname());  // 로그 추가
         String profilePicture = user.getUserProfilePicture(); // 기존 이미지 유지
     
         if (profileImage != null && !profileImage.isEmpty()) {

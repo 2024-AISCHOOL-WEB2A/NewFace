@@ -85,7 +85,8 @@
 
                             <div class="content-container">
                                 <div class="profile-section" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
-                                    <div class="circle-image"></div>
+                                    <img class="circle-image"
+                                        src="${empty user.userProfilePicture || user.userProfilePicture eq 'default.jpg' ? '/image/default.png' : user.userProfilePicture}" alt="프로필 이미지">
                                     <h2 class="username">${user.userNickname}님</h2>
                                     <button class="edit-btn">수정</button>
                                     <p class="email">${user.userEmail}</p>
@@ -181,10 +182,12 @@
                             <div class="edit-profile-body">
                                 <form id="profileEditForm" method="post" enctype="multipart/form-data">
                                     <div class="profile-edit-section">
-                                        <input type="hidden" name="userIdx" value="${user.userIdx}"> 
+                                        <input type="hidden" name="userIdx" value="${user.userIdx}">
                                         <!-- 프로필 이미지 영역 -->
                                         <div class="profile-image-upload">
-                                            <img id="profilePreview" src="${user.userProfilePicture != null ? user.userProfilePicture : '/image/default-profile.png'}" alt="프로필 이미지">
+                                            <img id="profilePreview"
+                                                src="${user.userProfilePicture != null ? user.userProfilePicture : '/image/default-profile.png'}"
+                                                alt="프로필 이미지">
                                             <input type="file" id="profileImage" name="profileImage" accept="image/*">
                                             <label for="profileImage" class="upload-btn">이미지 수정</label>
                                         </div>
@@ -192,17 +195,20 @@
                                         <!-- 개인정보 입력 영역 -->
                                         <div class="edit-form-group">
                                             <label for="userId">아이디</label>
-                                            <input type="text" id="userId" value="${user.userId}" readonly class="readonly-input">
+                                            <input type="text" id="userId" value="${user.userId}" readonly
+                                                class="readonly-input">
                                         </div>
 
                                         <div class="edit-form-group">
                                             <label for="nickname">닉네임</label>
-                                            <input type="text" id="nickname" name="userNickname" value="${user.userNickname}">
+                                            <input type="text" id="nickname" name="userNickname"
+                                                value="${user.userNickname}">
                                         </div>
 
                                         <div class="edit-form-group">
                                             <label for="userEmail">이메일</label>
-                                            <input type="email" id="userEmail" value="${user.userEmail}" readonly class="readonly-input">
+                                            <input type="email" id="userEmail" value="${user.userEmail}" readonly
+                                                class="readonly-input">
                                         </div>
 
                                         <!-- 버튼 영역 -->
@@ -389,28 +395,25 @@
                             profileForm.onsubmit = function (e) {
                                 e.preventDefault();
                                 const formData = new FormData(this);
-                                console.log('FormData content:');
-                                for (let pair of formData.entries()) {
-                                console.log(pair[0] + ': ' + pair[1]);  // formData 내용 확인
-                                }
 
                                 $.ajax({
                                     url: '/user/updateProfile',
                                     type: 'POST',
                                     data: formData,
-                                    processData: false,
-                                    contentType: false,
+                                    processData: false,  // FormData를 처리하지 않도록 설정
+                                    contentType: false,  // 컨텐츠 타입을 설정하지 않도록 설정
                                     success: function (response) {
+                                        console.log('Response:', response);  // 응답 확인을 위한 로그
                                         alert('프로필이 성공적으로 수정되었습니다.');
                                         location.reload();
                                     },
                                     error: function (error) {
-                                        console.log('Success:', response);  // 로그 추가
                                         console.error('Error:', error);
                                         alert('프로필 수정에 실패했습니다.');
                                     }
                                 });
                             };
+
 
                             // 회원 탈퇴
                             deleteAccountBtn.onclick = function () {
@@ -418,19 +421,29 @@
                                     $.ajax({
                                         url: '/user/delete',
                                         type: 'POST',
-                                        success: function (response) {
-                                            alert('회원탈퇴가 완료되었습니다.');
-                                            window.location.href = '/';
+                                        beforeSend: function (xhr) {
+                                            xhr.setRequestHeader("X-CSRF-TOKEN", $("meta[name='_csrf']").attr("content"));
                                         },
-                                        error: function (error) {
-                                            console.error('Error:', error);
-                                            alert('회원탈퇴에 실패했습니다.');
+                                        success: function (response) {
+                                            if (response.success) {
+                                                alert('회원탈퇴가 완료되었습니다.');
+                                                window.location.href = '/';
+                                            } else {
+                                                alert(response.error || '회원탈퇴에 실패했습니다.');
+                                            }
+                                        },
+                                        error: function (xhr) {
+                                            if (xhr.status === 401) {
+                                                window.location.href = '/loginForm';
+                                            } else {
+                                                alert('회원탈퇴 처리 중 오류가 발생했습니다.');
+                                            }
                                         }
                                     });
                                 }
-                            };
+                            }
                         }
-                    );
+                        );
                     </script>
 
 
