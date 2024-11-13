@@ -352,16 +352,18 @@ figure {
 }
 
 .sf-menu a {
-	color: rgba(0,0,0,.5);
-	padding: .75em 1em!important;
+	color: rgba(0, 0, 0, 0.8);
+	padding: 0.75em 1em !important;
 	font-weight: normal;
 	border-left: none;
-	border-top: none; 
 	border-top: none;
 	text-decoration: none;
-	zoom: 1; 
+	font-family: 'SUIT-Regular', sans-serif;
+	font-weight: bold;
+	font-size: 30px;
+	zoom: 1;
 	font-size: 16px;
-	border-bottom: none!important;
+	border-bottom: none !important;
 
 	&:hover,&:focus{
 		color: $brand-primary!important;
@@ -1099,7 +1101,6 @@ figure {
 	}
 	
 	span{
-		font-style: italic;
 		color: lighten($brand-black, 70%);
 	}
 }

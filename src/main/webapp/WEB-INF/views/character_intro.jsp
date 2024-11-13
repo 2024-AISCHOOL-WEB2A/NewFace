@@ -90,7 +90,6 @@
    }
 
    /* 카테고리별 hover 색상 */
-   /* 카테고리별 hover 색상 */
    .category-캐치티니핑:hover {
       background-color: #ff69b4; /* 캐치! 티니핑 */
       transform: scale(1.1);
@@ -130,6 +129,16 @@
       font-size: 18px !important;
       font-weight: bold !important;
 }
+
+.col-lg-2:hover {
+      transform: scale(1.05); /* 살짝 확대 */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+
+   /* 텍스트 색상 변경 */
+   .col-lg-2:hover .fh5co-blog {
+      box-shadow: 0px 4px 12px #a5318e33; /* 그림자 추가 */
+   }
    </style>
 
 
@@ -161,7 +170,6 @@
                <!-- 캐릭터 카테고리 -->
                <ul class="row animate-box" style="display: flex; flex-wrap: wrap; gap: 20px; padding: 10px;">
                   <c:forEach items="${characters}" var="character">
-                     <%-- 특수문자와 공백 제거하여 CSS 클래스 이름 생성 --%>
                      <c:set var="cleanCategory" value="${fn:replace(fn:replace(character.characterCategory, ' ', ''), '!', '')}" />
                      <li class="fh5co-section-gray category-${cleanCategory}" onclick="loadCategory('${character.characterCategory}')">
                         <div class="image-container" style="margin-right: 15px;">
@@ -180,18 +188,19 @@
                <div class="row row-bottom-padded-md">
                   <c:forEach items="${categoryCharacters}" var="character">
                      <div class="col-lg-2 col-md-4 col-sm-6">
-                        <div class="fh5co-blog animate-box">
+                        <div class="fh5co-blog animate-box" >
                            <a href="/character_intro/detail/${character.characterIdx}">
-                              <img class="img-responsive" src="${character.characterImage}"
-                                 alt="${character.characterName}">
-                              <div class="blog-text">
-                                 <div class="prod-title">
-                                    <h3>${character.characterName}</h3>
+                              <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">
+                              <div class="blog-text" style="padding: 0px 30px !important;">
+                                 <div class="prod-title" style="text-align: center;">
+                                    <h3 style="margin: 10px;">${character.characterName}</h3>
                                  </div>
                               </div>
                            </a>
                         </div>
                      </div>
+                     
+                     
                   </c:forEach>
                </div>
 
@@ -200,10 +209,11 @@
 
             </div>
             <!-- END fh5co-page -->
-            <jsp:include page="common/footer.jsp" />
+            
 
          </div>
          <!-- END fh5co-wrapper -->
+         <jsp:include page="common/footer.jsp" />
 
          <!-- jQuery -->
 
@@ -262,17 +272,16 @@
                      data.forEach(character => {
                         const card =
                            '<div class="col-lg-2 col-md-4 col-sm-6">' +
-                           '<div class="fh5co-blog animate-box fadeInUp animated">' +
-                           '<a href="/character_intro/detail/' + character.characterIdx + '">' +
-                           '<img class="img-responsive" src="' + character.characterImage + '" alt="' + character.characterName + '">' +
-                           '<div class="blog-text">' +
-                           '<div class="prod-title">' +
-                           '<h3>' + character.characterName + '</h3>' +
-                           '<p><a href="/character_intro/detail/' + character.characterIdx + '">더보기...</a></p>' +
-                           '</div>' +
-                           '</div>' +
-                           '</a>' +
-                           '</div>' +
+                              '<div class="fh5co-blog animate-box fadeInUp animated">' +
+                                 '<a href="/character_intro/detail/' + character.characterIdx + '">' +
+                                    '<img class="img-responsive" src="' + character.characterImage + '" alt="' + character.characterName + '" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">' +
+                                    '<div class="blog-text" style="padding: 0px 30px !important;">' +
+                                       '<div class="prod-title">' +
+                                          '<h3 style="margin: 10px;">' + character.characterName + '</h3>' +
+                                       '</div>' +
+                                    '</div>' +
+                                 '</a>' +
+                              '</div>' +
                            '</div>';
 
                         container.insertAdjacentHTML('beforeend', card);

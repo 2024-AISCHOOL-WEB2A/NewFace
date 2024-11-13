@@ -101,9 +101,9 @@
                     <div class="container">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="animate-box">
-                                <h2>나만의 이야기를 펼칠 <br>새로운 캐릭터를 만나보세요!</h2>
+                                <h2 style="font-family: 'SUIT-Regular', sans-serif;">나만의 이야기를 펼칠 <br>새로운 캐릭터를 만나보세요!</h2>
                                 <p></p>
-                                <p><a class="btn btn-primary btn-lg custom-btn" href="#">Get Started</a></p>
+                                <p style="font-family: 'SUIT-Regular', sans-serif;"><a class="btn btn-primary btn-lg custom-btn" href="#">Get Started</a></p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
 								<figure>
 									<img src="${character.characterImage}" alt="${character.characterName}">
 								</figure>
-								<p>${character.characterName}<br> <span class="text-muted">${character.characterCategory}</span></p>
+								<p style="font-family: 'SUIT-Regular', sans-serif;">${character.characterName}<br> <span class="text-muted">${character.characterCategory}</span></p>
 							</div>
 						</div>
 					</c:forEach>
@@ -207,13 +207,13 @@
 				<!-- Header Section -->
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>고객 지원</h3>
+						<h3 style="font-family: 'SUIT-Regular', sans-serif;">고객 지원</h3>
 						<p>공지사항, FAQ, 요청사항을 통해 소통하며 더 나은 서비스를 제공하겠습니다!</p>
 					</div>
 				</div>
 			</div>
 			
-			<div class="container animate-box">
+			<div class="container animate-box" style="margin-top: 50px;">
 				<!-- 공지사항 Section -->
 				<div class="row">
 					<div class="col-md-1">
@@ -410,7 +410,7 @@
 			const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
 	
 			// 한 div 너비씩 스크롤
-			scrollAmount += scrollStep;
+			scrollAmount += scrollStep + 7;
 	
 			// 끝까지 스크롤하면 처음으로 돌아감
 			if (scrollAmount >= maxScrollLeft) {

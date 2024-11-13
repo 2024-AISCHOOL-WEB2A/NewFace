@@ -11,7 +11,7 @@
             <!-- START #fh5co-menu-wrap -->
             <nav id="fh5co-menu-wrap" role="navigation">
                 <ul class="sf-menu" id="fh5co-primary-menu">
-                    <li><a href="/" class="<%= request.getRequestURI().equals(" /") ? "active" : "" %>">홈</a></li>
+                    <li><a href="/" class="<%= request.getRequestURI().equals(" /") ? "active" : "" %>">HOME</a></li>
                     <li><a href="/start_virtual" class="<%= request.getRequestURI().contains(" start_virtual")
                             ? "active" : "" %>">게임하기</a></li>
                     <li><a href="/character_intro" class="<%= request.getRequestURI().contains(" character_intro")
