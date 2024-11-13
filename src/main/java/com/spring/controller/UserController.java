@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Base64;
 import com.spring.entity.User;
 import com.spring.service.UserService;
-
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -125,5 +126,59 @@ public class UserController {
             }
         }
         return "redirect:/loginForm";
+    }
+
+    @PostMapping("/user/updateProfile")
+    @ResponseBody
+    public Map<String, Object> updateProfile(
+            @RequestParam(required = false) MultipartFile profileImage,
+            @RequestParam String userNickname,
+            HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            User loginUser = (User) session.getAttribute("loginUser");
+            if (loginUser == null) {
+                response.put("success", false);
+                response.put("error", "로그인 정보를 찾을 수 없습니다.");
+                return response;
+            }
+
+            loginUser.setUserNickname(userNickname);
+            User updatedUser = userService.updateProfile(loginUser, profileImage);
+            session.setAttribute("loginUser", updatedUser); // 세션 정보 업데이트
+
+            response.put("success", true);
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("error", e.getMessage());
+            e.printStackTrace(); // 에러 로그 확인용
+        }
+
+        return response;
+    }
+
+    @PostMapping("/user/delete")
+    @ResponseBody
+    public Map<String, Object> deleteAccount(HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            User loginUser = (User) session.getAttribute("loginUser");
+            if (loginUser != null) {
+                userService.deleteUser(loginUser.getUserIdx());
+                session.invalidate(); // 세션 종료
+                response.put("success", true);
+            } else {
+                response.put("success", false);
+                response.put("error", "로그인 정보를 찾을 수 없습니다.");
+            }
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("error", e.getMessage());
+            e.printStackTrace(); // 에러 로그 확인용
+        }
+
+        return response;
     }
 }

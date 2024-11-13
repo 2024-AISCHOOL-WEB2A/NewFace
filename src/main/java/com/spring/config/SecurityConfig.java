@@ -31,6 +31,8 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/user/updateProfile").authenticated()  
+                .requestMatchers("/user/delete").authenticated() 
                 .requestMatchers("/**").permitAll()
             )
             .formLogin(formLogin -> formLogin
