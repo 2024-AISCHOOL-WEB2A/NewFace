@@ -145,7 +145,7 @@
                 }
 
                 .form-container .form-submit-btn:hover {
-                    background-color: #313131;
+                    transform: scale(1.05); /* 살짝 확대 */
                 }
 
                 .form-container .link {
@@ -219,58 +219,65 @@
                 /*모달관련*/
                 /* Modal Styles */
                 .modal-overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    z-index: 1000;
-                    justify-content: center;
-                    align-items: center;
-                }
+    display: none; /* 기본적으로 숨겨진 상태 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
 
-                .modal-container {
-                    background-color: #fff;
-                    padding: 20px;
-                    border-radius: 8px;
-                    width: 90%;
-                    max-width: 400px;
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                }
+.modal-container {
+    background-color: #fff;
+    padding: 20px 30px; /* 패딩을 넉넉하게 */
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 더 부드러운 그림자 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
 
-                .modal-title {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 15px;
-                    color: #FF3B69;
-                }
+.modal-title {
+    font-size: 20px; /* 폰트 크기 살짝 키움 */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #FF3B69; /* 제목 색상 */
+}
 
-                .modal-content {
-                    margin-bottom: 20px;
-                }
+.modal-content {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333; /* 내용 색상 */
+}
 
-                .modal-buttons {
-                    display: flex;
-                    justify-content: flex-end;
-                }
+.modal-buttons {
+    display: flex;
+    justify-content: center; /* 버튼 가운데 정렬 */
+}
 
-                .modal-button {
-                    padding: 8px 20px;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                }
+.modal-button {
+    padding: 10px 25px; /* 버튼 크기를 더 넉넉하게 */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-                .confirm-button {
-                    background-color: #FF3B69;
-                    color: white;
-                }
+.confirm-button {
+    background-color: #FF3B69;
+    color: white;
+    transition: background-color 0.3s ease; /* 부드러운 호버 효과 */
+}
 
-                .confirm-button:hover {
-                    background-color: #e63461;
-                }
+.confirm-button:hover {
+    background-color: #e63461;
+}
+
             </style>
             <!-- FOR IE9 below -->
             <!--[if lt IE 9]>
@@ -336,8 +343,6 @@
                 </div>
 
 
-
-                <jsp:include page="common/footer.jsp" />
                 <!-- END fh5co-page -->
 
             </div>
@@ -345,8 +350,12 @@
             <!-- 모달 추가 -->
             <div id="errorModal" class="modal-overlay">
                 <div class="modal-container">
-                    <div class="modal-title">아이디 비밀번호 확인</div>
-                    <div class="modal-content" id="modalMessage"></div>
+                    <div class="modal-title">
+                        <h2>로그인 오류</h2> <!-- 대제목 추가 -->
+                    </div>
+                    <div id="modalMessage" style="margin-bottom: 30px;">
+                        아이디 또는 비밀번호가 일치하지 않습니다.
+                    </div>
                     <div class="modal-buttons">
                         <button class="modal-button confirm-button" onclick="closeModal()">확인</button>
                     </div>

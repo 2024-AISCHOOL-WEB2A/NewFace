@@ -76,7 +76,7 @@
         <!-- end:header-top -->
 
 
-		<div id="fh5co-blog-section">
+		<div id="fh5co-blog-section" style="padding: 3em 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -110,28 +110,28 @@
                                 <c:forEach var="post" items="${posts}" varStatus="status">
                                     <!-- 클릭 시 상세 내용 표시용 행 -->
                                     <tr onclick="toggleDetails(this)">
-                                        <td style="text-align: center;">${status.index + 1}</td>
+                                        <td style="text-align: center; padding: 20px;">${status.index + 1}</td>
                                         
                                         <!-- 카테고리에 따라 색상 지정 -->
-                                        <td>
+                                        <td style="padding: 20px;">
                                             <c:choose>
                                                 <c:when test="${post.customerServiceCategory == '공지'}">
-                                                    <span class="text-danger">[공지]</span>
+                                                    <span style="color: red; font-weight: bold;">[공지]</span>
                                                 </c:when>
                                                 <c:when test="${post.customerServiceCategory == 'FAQ'}">
-                                                    <span style="color: blue;">[FAQ]</span>
+                                                    <span style="color: blue;font-weight: bold;">[FAQ]</span>
                                                 </c:when>
                                                 <c:when test="${post.customerServiceCategory == '요청'}">
-                                                    <span style="color: green;">[요청]</span>
+                                                    <span style="color: green;font-weight: bold;">[요청]</span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <span>[${post.customerServiceCategory}]</span>
+                                                    <span >[${post.customerServiceCategory}]</span>
                                                 </c:otherwise>
                                             </c:choose>
-                                            ${post.customerServiceTitle}
+                                            <span style="color: black; font-weight: bold;">${post.customerServiceTitle}</span>
                                         </td>
                                         
-                                        <td>${post.customerServiceDate}</td>
+                                        <td style="padding: 20px;">${post.customerServiceDate}</td>
                                     </tr>
                                     
                                     <!-- 상세 내용 행, 기본적으로 숨김 -->

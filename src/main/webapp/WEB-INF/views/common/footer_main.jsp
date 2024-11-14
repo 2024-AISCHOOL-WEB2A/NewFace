@@ -14,11 +14,11 @@
                         <a href="#"><i class="icon-dribbble2"></i></a>
                         <a href="#"><i class="icon-youtube"></i></a>
                     </p>
-                    <h3>NEW FACE</h3>
+                    <h3 style="color: white;">NEW FACE</h3>
                     <p>광주 동구 제봉로92(대성학원 1-3층)<br>
                         062 - 710 - 3257~9
                     </p>
-                    <h4>OUR CONTACT</h4>
+                    <h4 style="color: white;">OUR CONTACT</h4>
                 </div>
             </div>
             <div class="row text-center">
