@@ -1,0 +1,26 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "dosrhd님.moc3",
+		"Textures": [
+			"dosrhd님.4096/texture_00.png"
+		],
+		"Physics": "dosrhd님.physics3.json",
+		"DisplayInfo": "dosrhd님.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+                "ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}

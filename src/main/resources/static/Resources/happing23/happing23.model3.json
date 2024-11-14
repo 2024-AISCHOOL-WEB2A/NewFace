@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "happing23.moc3",
+		"Textures": [
+			"happing23.2048/texture_00.png"
+		],
+		"DisplayInfo": "happing23.cdi3.json"
+	}
+}
