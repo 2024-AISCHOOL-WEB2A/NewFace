@@ -80,7 +80,7 @@
             <!-- end:header-top -->
 
 
-            <div id="fh5co-blog-section">
+            <div id="fh5co-blog-section" style="padding: 100px 0 !important;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">

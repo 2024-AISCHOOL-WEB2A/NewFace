@@ -154,7 +154,7 @@
         <!-- end: 캐릭터 도감-->
 
         <!--start:자랑 게시판-->
-        <div id="fh5co-portfolio" class="fh5co-section-gray">
+        <div id="fh5co-portfolio" class="fh5co-section-gray" style="padding: 5em 0;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -164,7 +164,7 @@
 				</div>
 
 				
-				<div class="row row-bottom-padded-md">
+				<div class="row row-bottom-padded-md" style="margin-top: 30px;">
 					<div class="col-md-12">
 						<ul id="fh5co-portfolio-list">
 							<c:forEach var="board" items="${recsentBoards.content}" varStatus="status">
@@ -202,7 +202,7 @@
 
 		
 
-		<div id="fh5co-features">
+		<div id="fh5co-features" style="padding: 5em;">
             <div class="container">
 				<!-- Header Section -->
 				<div class="row">
@@ -304,7 +304,7 @@
 		
 		<!-- fh5co-content-section -->
 
-		<div id="fh5co-services-section" class="fh5co-section-gray">
+		<div id="fh5co-services-section" class="fh5co-section-gray" style="padding: 5em;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -313,47 +313,47 @@
 					</div>
 				</div>
 			</div>
-			<div class="container ">
+			<div class="container " style="margin-top: 30px;">
 				<div class="row text-center">
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
 							<span><i class="icon-book"></i></span>
-							<h3>어린이 교육</h3>
+							<h3 style="color: #3f3f3f;">어린이 교육</h3>
 							<p>인기 캐릭터를 활용해 아이들의 학습 동기를 높입니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
 							<span><i class="icon-map-marker"></i></span>
-							<h3>지자체 마스코트</h3>
+							<h3 style="color: #3f3f3f;">지자체 마스코트</h3>
 							<p>버추얼 캐릭터로 지역 행사 및 관광을 홍보하고 이미지 제고에 기여합니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
 							<span><i class="icon-share"></i></span>
-							<h3>플랫폼 연결</h3>
+							<h3 style="color: #3f3f3f;">플랫폼 연결</h3>
 							<p>버추얼 캐릭터를 다양한 플랫폼과 콘텐츠로 확장합니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
 							<span><i class="icon-briefcase"></i></span>
-							<h3>기업 마케팅</h3>
+							<h3 style="color: #3f3f3f;">기업 마케팅</h3>
 							<p>버추얼 캐릭터를 통해 소비자와의 상호작용을 극대화하여 브랜드 인지도를 높입니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
 							<span><i class="icon-video"></i></span>
-							<h3>실시간 방송 및 이벤트</h3>
+							<h3 style="color: #3f3f3f;">실시간 방송 및 이벤트</h3>
 							<p>실시간으로 상호작용할 수 있는 버추얼 캐릭터를 활용해 온라인 방송을 진행합니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
 							<span><i class="icon-thumbs-up"></i></span>
-							<h3>소셜 미디어 홍보</h3>
+							<h3 style="color: #3f3f3f;">소셜 미디어 홍보</h3>
 							<p>버추얼 캐릭터를 소셜 미디어에서 활용해 콘텐츠의 접근성을 향상시킵니다.</p>
 						</div>
 					</div>
@@ -363,7 +363,7 @@
 
 		<!-- END What we do -->
 
-        <div id="fh5co-feature-product">
+        <div id="fh5co-feature-product" style="padding: 5em;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">

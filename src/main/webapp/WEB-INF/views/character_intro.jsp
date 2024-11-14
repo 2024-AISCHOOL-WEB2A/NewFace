@@ -60,6 +60,8 @@
    <link rel="stylesheet" href="/css/magnific-popup.css">
 
    <link rel="stylesheet" href="/css/style.css">
+
+   <link href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css" rel="stylesheet">
    <style>
       .image-container {
          /* 고정 높이 설정으로 이미지가 잘 보이게 함 */
@@ -139,6 +141,41 @@
    .col-lg-2:hover .fh5co-blog {
       box-shadow: 0px 4px 12px #a5318e33; /* 그림자 추가 */
    }
+
+   @font-face {
+    font-family: 'BMJUA';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'seolleimcool-SemiBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Binggrae';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'netmarbleB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
    </style>
 
 
@@ -176,7 +213,7 @@
                            <img src="${character.characterImage}" alt="${character.characterName}" style="width: 60px; height: 60px; border-radius: 50%;">
                         </div>
                         <div class="text-content">
-                           <p style="margin: 0; font-size: 16px; color: #666;">${character.characterCategory}</p>
+                           <p style="margin: 0; font-size: 20px; color: #000000; font-family: BMJUA !important;">${character.characterCategory}</p>
                         </div>
                      </li>
                   </c:forEach>
@@ -193,7 +230,7 @@
                               <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">
                               <div class="blog-text" style="padding: 0px 15px !important;">
                                  <div class="prod-title" style="text-align: center; display: flex; justify-content: center;">
-                                    <h3 style="margin: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${character.characterName}</h3>
+                                    <h3 style="margin: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family:NanumSquareRound; font-weight: 300; font-size: 15px; color: #323232;">${character.characterName}</h3>
                                  </div>
                               </div>
                            </a>

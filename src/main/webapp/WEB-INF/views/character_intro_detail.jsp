@@ -61,6 +61,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/character_intro_detail.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         .container_character {
@@ -107,31 +108,49 @@
             <div >
                 <div class="container container_character">
                     <div class="character-info">
-                        <h1>${character.characterName}</h1>
+                        <h1 style="color: #3f3f3f;">${character.characterName}</h1>
                         <p>${character.characterDescription}</p>
                         <button class="cta-button">체험하기 ➔</button>
-                        <table class="character-details">
+
+                        <div class="card p-3" style="border: 1px solid #f1f1f1; border-radius: 8px;">
+                            <table class="table table-borderless mb-0" style="font-family:  'Maplestory Bold';">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" style="color: #6c757d; font-weight: 400; font-size: 15px;">성별</th>
+                                        <td style="color: #7e7e7e; font-size: 15px;">
+                                            여성
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: #6c757d; font-weight: 400; font-size: 15px;">좋아하는 것</th>
+                                        <td style="color: #7e7e7e; font-size: 15px;">딸기 생크림 케이크</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="color: #6c757d; font-weight: 400; font-size: 15px;">싫어하는 것</th>
+                                        <td style="color: #7e7e7e; font-size: 15px;">신맛나는 것</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <table class="table table-borderless table-sm character-details" style="color: #6c757d;">
                             <tr>
-                                <th>성별</th>
+                                <th scope="row">성별</th>
                                 <td>${character.characterGender}</td>
                             </tr>
                             <tr>
-                                <th>좋아하는것</th>
+                                <th scope="row">좋아하는 것</th>
                                 <td>${character.characterLikes}</td>
                             </tr>
                             <tr>
-                                <th>싫어하는것</th>
+                                <th scope="row">싫어하는 것</th>
                                 <td>${character.characterNolike}</td>
                             </tr>
-                        </table>
+                        </table> -->
                     </div>
 
                     <div class="character-image">
                         <img src="${character.characterImage}" alt="${character.characterName}">
                     </div>
-
-
-
                 </div>
             </div>
 
