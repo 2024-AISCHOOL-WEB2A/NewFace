@@ -1,14 +1,23 @@
 package com.spring.service;
 
-
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.web.multipart.MultipartFile;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import com.spring.entity.User;
 import com.spring.repository.UserRepository;
 
@@ -37,7 +46,7 @@ public class UserService {
         user.setUserIsActive(1);
         user.setUserPoint(0);
         user.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
-        user.setUserProfilePicture("default.jpg"); 
+        user.setUserProfilePicture("/image/default.png"); 
         
         userRepository.save(user);
     }
@@ -80,7 +89,7 @@ public class UserService {
                     newUser.setUserIsActive(1);
                     newUser.setUserPoint(0);
                     newUser.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
-                    newUser.setUserProfilePicture("default.jpg");
+                    newUser.setUserProfilePicture("/image/default.png");
                     
                     return userRepository.save(newUser);
                 });
@@ -113,5 +122,68 @@ public User findByUserId(String userId) {
     return userRepository.findByUserId(userId)
         .orElse(null);
 }
+
+ // 이미지 압축 유틸리티 메소드 추가
+    private byte[] compressImage(MultipartFile file) throws IOException {
+        BufferedImage originalImage = ImageIO.read(file.getInputStream());
+        
+        // 이미지 크기 제한
+        int maxSize = 200;
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+        
+        if (width > maxSize || height > maxSize) {
+            double ratio = (double) maxSize / Math.max(width, height);
+            width = (int) (width * ratio);
+            height = (int) (height * ratio);
+        }
+        
+        BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        resizedImage.getGraphics().drawImage(originalImage, 0, 0, width, height, null);
+        
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        // JPEG 품질 설정 (0.0 ~ 1.0)
+        ImageWriter writer = ImageIO.getImageWritersByFormatName("jpg").next();
+        ImageWriteParam param = writer.getDefaultWriteParam();
+        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+        param.setCompressionQuality(0.3f); // 30% 품질
+        
+        ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
+        writer.setOutput(ios);
+        writer.write(null, new IIOImage(resizedImage, null, null), param);
+        
+        writer.dispose();
+
+        
+        return baos.toByteArray();
+    }
+
+    // 프로필 업데이트 메소드 추가
+    @Transactional
+    public User updateProfile(User user, MultipartFile profileImage) throws IOException {
+        String profilePicture = user.getUserProfilePicture(); // 기존 이미지 유지
+    
+        if (profileImage != null && !profileImage.isEmpty()) {
+            byte[] compressedImageBytes = compressImage(profileImage);
+            String base64Image = Base64.getEncoder().encodeToString(compressedImageBytes);
+            profilePicture = "data:image/jpeg;base64," + base64Image;
+        }
+        
+        // 특정 필드만 업데이트하는 repository 메소드 사용
+        userRepository.updateProfileInfo(user.getUserIdx(), user.getUserNickname(), profilePicture);
+        
+        // 업데이트된 사용자 정보 반환
+        return userRepository.findById(user.getUserIdx())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    // 회원 탈퇴 메소드 추가 (status 변경 방식)
+    @Transactional
+    public void deleteUser(int userIdx) {
+        User user = userRepository.findById(userIdx)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setUserIsActive(0); // 비활성화 처리
+        userRepository.save(user);
+    }
 
 }
