@@ -318,12 +318,12 @@ h2 {
 .tutorial-footer {
     position: absolute;
     bottom: 30px;
-    left: 20px;
-    right: 20px;
+    left: 10px;
+    right: 10px;
     display: flex;
     justify-content: space-between; /* 양 끝에 배치 */
     align-items: center;
-    padding-right: 70px;
+    padding-right: 50px;
     padding-left: 50px;
 }
 
