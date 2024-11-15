@@ -165,7 +165,7 @@
     <canvas class="output_canvas" width="1280px" height="720px"></canvas>
   </div>
   <div id="tutorialModal" class="tutorial-modal hidden">
-    <div class="tutorial-content" style="justify-content: center;">
+    <div class="tutorial-content">
       <img src="Resources/tutorial.jpg" alt="튜토리얼 이미지" class="tutorial-image">
   
       <!-- 하단 오른쪽의 체크박스와 닫기 버튼 -->
