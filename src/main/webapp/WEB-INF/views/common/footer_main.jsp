@@ -25,8 +25,7 @@
                 <div class="col-xs-2">
                     <p>
                         범형철<br>
-                        TEL.010-1234-1234<br>
-                        MAIL.
+                        bhc8884@daum.net
                     </p>
                 </div>
                 <div class="col-xs-2">
@@ -38,15 +37,13 @@
                 <div class="col-xs-2">
                     <p>
                         이기주<br>
-                        TEL.010-1234-1234<br>
-                        MAIL.
+                        rlwn3434@gmail.com
                     </p>
                 </div>
                 <div class="col-xs-2">
                     <p>
                         정은경<br>
-                        TEL.010-1234-1234<br>
-                        MAIL.
+                        jek9141@naver.com
                     </p>
                 </div>
             </div>

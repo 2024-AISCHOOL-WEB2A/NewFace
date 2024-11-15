@@ -222,81 +222,46 @@
 						<p>공지사항, FAQ, 요청사항을 통해 소통하며 더 나은 서비스를 제공하겠습니다!</p>
 					</div>
 				</div>
-			</div>
-			
-			<div class="container animate-box" style="margin-top: 50px;">
-				<!-- 공지사항 Section -->
-				<div class="row">
-					<div class="col-md-1">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-bullhorn"></i>
-							</span>
-						</div>
-					</div>
-					
-					<c:forEach var="support" items="${recentSupports}">
-						<c:if test="${support.customerServiceCategory == '공지'}">
-							<div class="col-md-5">
+		
+				<!-- Dynamic Sections -->
+				<div class="container animate-box" style="margin-top: 50px;">
+					<c:forEach var="category" items="${['공지', 'FAQ', '요청']}">
+						<div class="row">
+							<!-- Icon Section -->
+							<div class="col-md-1">
 								<div class="feature-left">
-									<div class="feature-copy">
-										<h3>${support.customerServiceTitle}</h3>
-										<p>${support.customerServiceSummary}</p>
-									</div>
+									<span class="icon">
+										<c:choose>
+											<c:when test="${category == '공지'}">
+												<i class="icon-bullhorn" aria-label="공지"></i>
+											</c:when>
+											<c:when test="${category == 'FAQ'}">
+												<i class="icon-question" aria-label="FAQ"></i>
+											</c:when>
+											<c:when test="${category == '요청'}">
+												<i class="icon-pencil" aria-label="요청"></i>
+											</c:when>
+										</c:choose>
+									</span>
 								</div>
 							</div>
-						</c:if>
-					</c:forEach>
-				</div>
-			
-				<!-- FAQ Section -->
-				<div class="row">
-					<div class="col-md-1">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-question"></i>
-							</span>
-						</div>
-					</div>
-					
-					<c:forEach var="support" items="${recentSupports}">
-						<c:if test="${support.customerServiceCategory == 'FAQ'}">
-							<div class="col-md-5">
-								<div class="feature-left">
-									<div class="feature-copy">
-										<h3>${support.customerServiceTitle}</h3>
-										<p>${support.customerServiceSummary}</p>
+		
+							<!-- Content Section -->
+							<c:forEach var="support" items="${recentSupports}">
+								<c:if test="${support.customerServiceCategory == category}">
+									<div class="col-md-5">
+										<div class="feature-left">
+											<div class="feature-copy">
+												<h3>${support.customerServiceTitle}</h3>
+												<p>${support.customerServiceSummary}</p>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</c:if>
-					</c:forEach>
-				</div>
-			
-				<!-- 요청사항 Section -->
-				<div class="row">
-					<div class="col-md-1">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-pencil"></i>
-							</span>
+								</c:if>
+							</c:forEach>
 						</div>
-					</div>
-					
-					<c:forEach var="support" items="${recentSupports}">
-						<c:if test="${support.customerServiceCategory == '요청'}">
-							<div class="col-md-5">
-								<div class="feature-left">
-									<div class="feature-copy">
-										<h3>${support.customerServiceTitle}</h3>
-										<p>${support.customerServiceSummary}</p>
-									</div>
-								</div>
-							</div>
-						</c:if>
 					</c:forEach>
 				</div>
-			
 				<!-- 더보기 버튼 -->
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 text-center animate-box">
@@ -307,12 +272,6 @@
 			
 		</div>
 
-		
-		
-		
-
-		
-		
 		<!-- fh5co-content-section -->
 
 		<div id="fh5co-services-section" class="fh5co-section-gray" style="padding: 5em;">
@@ -385,8 +344,14 @@
 
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-12 text-center animate-box">
-						<p><img src="images/cover_bg_1.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive img-rounded"></p>
+						<p>
+							<video autoplay muted loop class="img-responsive img-rounded">
+								<source src="image/main_sample.webm" type="video/webm">
+								Your browser does not support the video tag.
+							</video>
+						</p>
 					</div>
+					
 					
 				</div>
 				
