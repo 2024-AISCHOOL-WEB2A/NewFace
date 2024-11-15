@@ -87,8 +87,7 @@
                                 <div class="profile-section" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
                                     <img class="circle-image"
                                         src="${empty user.userProfilePicture || user.userProfilePicture eq 'default.jpg' ? '/image/default.png' : user.userProfilePicture}" alt="프로필 이미지">
-                                    <h2 class="username">${user.userNickname}님</h2>
-                                    <button class="edit-btn">수정</button>
+                                    <h2 class="username">${user.userNickname} 님</h2>
                                     <p class="email">${user.userEmail}</p>
 
                                     <div class="button-section">
@@ -96,7 +95,9 @@
                                             <img src="/image/happy.png" alt="포인트 아이콘">
                                             <span class="point-amount">${currentTotal}</span>
                                         </div>
-                                        <button class="charge-button">충전하기</button>
+                                        <button class="charge-button" style="margin-bottom: 10px;">충전하기</button>
+                                        <button class="charge-button" id="edit-btn" style="background-color: white; border:1px solid#FF3B69; color: #FF3B69;">수정하기</button>
+
                                     </div>
                                 </div>
 
@@ -139,7 +140,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                    </div> 
 
                     <!-- 충전 모달 -->
                     <div class="modal" id="chargeModal">
@@ -342,7 +343,7 @@
                         document.addEventListener('DOMContentLoaded', function () {
                             const chargeModal = document.getElementById('chargeModal');
                             const profileEditModal = document.getElementById('editProfileModal');
-                            const profileEditBtn = document.querySelector('.profile-section .edit-btn');
+                            const profileEditBtn = document.getElementById('edit-btn');
                             const profileCloseBtn = profileEditModal.querySelector('.close');
                             const profileForm = document.getElementById('profileEditForm');
                             const profileImageInput = document.getElementById('profileImage');

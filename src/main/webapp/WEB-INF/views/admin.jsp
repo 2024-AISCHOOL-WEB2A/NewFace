@@ -53,7 +53,7 @@
                     <!-- 브랜드 로고 -->
                     <a href="/" class="app-brand-link">
                         <span class="app-brand-logo demo">
-                            <img src="image/logo.png" width="150" />
+                            <h1 id="fh5co-logo" style="margin-bottom: 25px;"><a href="/">New Face</a></h1>
                         </span>
                     </a>
                 </div>
@@ -153,7 +153,7 @@
                                                     </div>
                                                 </div>
                                                 <span class=" d-block mb-1">가입자 수</span>
-                                                <h3 class="card-title text-nowrap mb-2">14,857</h3>
+                                                <h3 class="card-title text-nowrap mb-2">157</h3>
                                                 <small class="text-primary"><i class="bx bx-up-arrow-alt"></i>
                                                     +14.82%</small>
                                             </div>
@@ -185,7 +185,7 @@
                                                     </div>
                                                 </div>
                                                 <span class="d-block mb-1">방문자 수</span>
-                                                <h3 class="card-title mb-2">14,857</h3>
+                                                <h3 class="card-title mb-2">1,717</h3>
                                                 <small class="text-success"><i class="bx bx-up-arrow-alt"></i>
                                                     +28.14%</small>
                                             </div>

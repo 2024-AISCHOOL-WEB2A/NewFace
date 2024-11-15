@@ -60,6 +60,8 @@
 	
 	<link rel="stylesheet" href="/css/style.css">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 	<style>
 		.image-container {
 			width: 100%; /* 원하는 너비 */
@@ -103,7 +105,7 @@
                             <div class="animate-box">
                                 <h2 style="font-family: 'SUIT-Regular', sans-serif;">나만의 이야기를 펼칠 <br>새로운 캐릭터를 만나보세요!</h2>
                                 <p></p>
-                                <p style="font-family: 'SUIT-Regular', sans-serif;"><a class="btn btn-primary btn-lg custom-btn" href="#">Get Started</a></p>
+                                <p style="font-family: BMJUA !important;"><a class="btn btn-primary btn-lg custom-btn" href="/start_virtual" style="font-family: BMJUA !important;">get start</a></p>
                             </div>
                         </div>
                     </div>
@@ -139,12 +141,16 @@
 					<!-- 반복 -->
 					<c:forEach var="character" items="${characters}">
 						<div class="col-md-2" style="display: inline-block; float: none;">
-							<div class="fh5co-team text-center animate-box">
-								<figure>
-									<img src="${character.characterImage}" alt="${character.characterName}">
+							<div class="fh5co-team text-center animate-box" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+								<figure style="display: flex; justify-content: center;">
+									<img src="${character.characterImage}" alt="${character.characterName}" style="border: 1px solid rgb(220, 220, 220); width: 140px; height: 140px; object-fit: contain;">
 								</figure>
-								<p style="font-family: 'SUIT-Regular', sans-serif;">${character.characterName}<br> <span class="text-muted">${character.characterCategory}</span></p>
+								<p style="font-family: 'SUIT-Regular', sans-serif; text-align: center;">
+									${character.characterName}<br> 
+									<span class="text-muted">${character.characterCategory}</span>
+								</p>
 							</div>
+							
 						</div>
 					</c:forEach>
 				</div>
@@ -159,7 +165,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>자랑 게시판</h3>
-						<p>우리 아이의 특별한 순간을 기록하고 공유해보세요! <br>체험 사진을 업로드하고, 만든 작품을 자랑할 수 있는 공간이 마련되어 있습니다. <br>소중한 추억을 나누고 교류하며 아이의 성장을 응원하는 커뮤니티에 참여해보세요!</p>
+						<p>우리 아이의 특별한 순간을 기록하고 공유해보세요! <br>소중한 추억을 나누고 교류하며 아이의 성장을 응원하는 커뮤니티에 참여해보세요!</p>
 					</div>
 				</div>
 
@@ -172,7 +178,10 @@
 								<c:if test="${status.index < 4}">
 									<li class="${status.index == 0 || status.index == 3 ? 'two-third' : 'one-third'} animate-box" 
 										data-animate-effect="fadeIn" 
-										style="background-image: url(${board.boardFilePath});">
+										style="position: relative; overflow: hidden; 
+											background: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), 
+														url(${board.boardFilePath});
+											background-size: cover; background-position: center;">
 										
 										<a href="${board.boardFilePath}" class="color-${status.index + 3}">
 											<div class="case-studies-summary">
@@ -181,6 +190,8 @@
 											</div>
 										</a>
 									</li>
+
+
 								</c:if>
 							</c:forEach>
 						</ul>
@@ -317,42 +328,42 @@
 				<div class="row text-center">
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
-							<span><i class="icon-book"></i></span>
+							<span class="fa-solid fa-book" style="font-size: 2em; color: #FF3366;"></span>
 							<h3 style="color: #3f3f3f;">어린이 교육</h3>
 							<p>인기 캐릭터를 활용해 아이들의 학습 동기를 높입니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
-							<span><i class="icon-map-marker"></i></span>
+							<span class="fa-solid fa-map-marker-alt" style="font-size: 2em; color: #FF3366;"></span>
 							<h3 style="color: #3f3f3f;">지자체 마스코트</h3>
 							<p>버추얼 캐릭터로 지역 행사 및 관광을 홍보하고 이미지 제고에 기여합니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
-							<span><i class="icon-share"></i></span>
+							<span class="fa-solid fa-share-alt" style="font-size: 2em; color: #FF3366;"></span>
 							<h3 style="color: #3f3f3f;">플랫폼 연결</h3>
 							<p>버추얼 캐릭터를 다양한 플랫폼과 콘텐츠로 확장합니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
-							<span><i class="icon-briefcase"></i></span>
+							<span class="fa-solid fa-briefcase" style="font-size: 2em; color: #FF3366;"></span>
 							<h3 style="color: #3f3f3f;">기업 마케팅</h3>
 							<p>버추얼 캐릭터를 통해 소비자와의 상호작용을 극대화하여 브랜드 인지도를 높입니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
-							<span><i class="icon-video"></i></span>
+							<span class="fa-solid fa-video" style="font-size: 2em; color: #FF3366;"></span>
 							<h3 style="color: #3f3f3f;">실시간 방송 및 이벤트</h3>
 							<p>실시간으로 상호작용할 수 있는 버추얼 캐릭터를 활용해 온라인 방송을 진행합니다.</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<div class="service animate-box">
-							<span><i class="icon-thumbs-up"></i></span>
+							<span class="fa-solid fa-thumbs-up" style="font-size: 2em; color: #FF3366;"></span>
 							<h3 style="color: #3f3f3f;">소셜 미디어 홍보</h3>
 							<p>버추얼 캐릭터를 소셜 미디어에서 활용해 콘텐츠의 접근성을 향상시킵니다.</p>
 						</div>

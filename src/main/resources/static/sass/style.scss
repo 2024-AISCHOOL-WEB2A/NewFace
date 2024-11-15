@@ -81,6 +81,17 @@ $form-group-margin-bottom: 30px;
 	font-style: normal;
 }
 
+
+/*폰트*/
+
+@font-face {
+    font-family: 'Paperlogy-8ExtraBold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
 @mixin icomoon() {
 	
 	font-family: 'icomoon';
@@ -124,7 +135,9 @@ body {
 	&.fh5co-offcanvas {
 		overflow: hidden;
 	}
+	font-family:'Paperlogy-8ExtraBold';
 }
+
 a {
 	color: $brand-primary;
 	@include transition(.5s, ease);
@@ -669,6 +682,7 @@ figure {
 		font-weight: 300;
 		// letter-spacing: 2px;
 		position: relative;
+		font-family: 'Paperlogy-8ExtraBold';
 	}
 	p {
 		font-size: 20px;
@@ -1132,7 +1146,6 @@ figure {
 	
 
 	.blog-text {
-		margin-bottom: 30px;
 		position: relative;
 		background: $brand-white;
 		width: 100%;
@@ -1141,7 +1154,6 @@ figure {
 		// margin-top: -5em;
 		-webkit-box-shadow: 0px 10px 20px -12px rgba(0,0,0,0.18);
 		-moz-box-shadow: 0px 10px 20px -12px rgba(0,0,0,0.18);
-		box-shadow: 0px 10px 20px -12px rgba(0,0,0,0.18);
 
 		span{
 			display: inline-block;

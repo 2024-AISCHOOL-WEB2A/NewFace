@@ -95,7 +95,7 @@
                                     <c:when test="${status.index == 0 || status.index == 9}">
                                         <!-- 0번과 9번 인덱스일 때의 스타일 -->
                                         <li class="two-third animate-box" data-animate-effect="fadeIn" 
-                                            style="background-image: url(${board.boardFilePath});">
+                                            style="background-image: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), url(${board.boardFilePath});">
                                             <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
                                                 <div class="case-studies-summary">
                                                     <span>${board.boardUpdatedAt}</span>
@@ -103,18 +103,20 @@
                                                 </div>
                                             </a>
                                         </li>
+
                                     </c:when>
                                     <c:otherwise>
                                         <!-- 나머지 인덱스일 때의 스타일 -->
                                         <li class="one-third animate-box" data-animate-effect="fadeIn" 
-                                            style="background-image: url(${board.boardFilePath});">
-                                            <a href="/pride_board/detail/${board.boardIdx}" class="color-3">
+                                            style="background-image: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), url(${board.boardFilePath});">
+                                            <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
                                                 <div class="case-studies-summary">
                                                     <span>${board.boardUpdatedAt}</span>
                                                     <h2>${board.boardTitle}</h2>
                                                 </div>
                                             </a>
                                         </li>
+
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>

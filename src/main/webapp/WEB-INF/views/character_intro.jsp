@@ -225,12 +225,12 @@
                <div class="row row-bottom-padded-md">
                   <c:forEach items="${categoryCharacters}" var="character">
                      <div class="col-lg-2 col-md-4 col-sm-6">
-                        <div class="fh5co-blog animate-box">
+                        <div class="fh5co-blog animate-box" style="border: 1px solid rgb(189, 189, 189); border-radius: 10px; overflow: hidden; margin-bottom: 30px;">
                            <a href="/character_intro/detail/${character.characterIdx}">
-                              <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">
-                              <div class="blog-text" style="padding: 0px 15px !important;">
+                              <img class="img-responsive" src="${character.characterImage}" alt="${character.characterName}" style="width: 165px; height: 165px; object-fit: contain; background-color: #ffffff;">
+                              <div class="blog-text" style="padding: 0px 15px !important; background-color: transparent; margin-bottom: 10PX;">
                                  <div class="prod-title" style="text-align: center; display: flex; justify-content: center;">
-                                    <h3 style="margin: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family:NanumSquareRound; font-weight: 300; font-size: 15px; color: #323232;">${character.characterName}</h3>
+                                       <h3 style="margin: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family:NanumSquareRound; font-weight: 300; font-size: 15px; color: #323232;">${character.characterName}</h3>
                                  </div>
                               </div>
                            </a>
@@ -307,10 +307,10 @@
                      data.forEach(character => {
                         const card =
                            '<div class="col-lg-2 col-md-4 col-sm-6">' +
-                              '<div class="fh5co-blog animate-box fadeInUp animated">' +
+                              '<div class="fh5co-blog animate-box fadeInUp animated"  style="border: 1px solid rgb(189, 189, 189); border-radius: 10px; overflow: hidden; margin-bottom: 30px;">' +
                                  '<a href="/character_intro/detail/' + character.characterIdx + '">' +
                                     '<img class="img-responsive" src="' + character.characterImage + '" alt="' + character.characterName + '" style="width: 165px; height: 165px; object-fit: contain; border-radius: 5px; background-color: #ffffff;">' +
-                                    '<div class="blog-text" style="padding: 0px 15px !important;">' +
+                                    '<div class="blog-text" style="padding: 0px 15px !important; background-color: transparent; margin-bottom: 10PX;">' +
                                        '<div class="prod-title" style="text-align: center; display: flex; justify-content: center;">' +
                                           '<h3 style="margin: 10px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + character.characterName + '</h3>' +
                                        '</div>' +
@@ -318,7 +318,6 @@
                                  '</a>' +
                               '</div>' +
                            '</div>';
-
                         container.insertAdjacentHTML('beforeend', card);
                      });
 

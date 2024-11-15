@@ -35,7 +35,7 @@
   <!-- 슬라이드 메뉴 -->
   <div class="slide-menu" id="slide-menu">
     <button class="close-slide-button" id="close-slide-menu">X</button>
-    <h2>슬라이드 메뉴</h2>
+    <h2>캐릭터/배경 변경</h2>
 
     <!-- 탭 메뉴 -->
     <div class="tab-menu">
@@ -88,7 +88,7 @@
       </div>
       <style>
         .main-background {
-          background: white;
+          background: rgb(255, 255, 255);
           width: 100px;
           height: 100px;
           border-radius: 8px;
@@ -144,7 +144,7 @@
       <i class="fas fa-microphone"></i>
     </button>
     <button class="control-button" id="modelSizeUpButton">
-      <i class="fas fa-robot"></i>
+      <i class="fas fa-search icon-expand"></i>
     </button>
     <button class="control-button">
       <i class="fas fa-tv"></i>
@@ -235,14 +235,14 @@
 
       // 배경 변경 로직
       const backgrounds = [
-        { type: 'color', value: 'rgb(255, 255, 255)' },
+        { type: 'color', value: 'rgb(116, 116, 116)' },
         { type: 'gradient', value: 'linear-gradient(135deg, #baade6, #fbc8d4)' },
         { type: 'image', value: 'url("Resources/background_full/back_gif1.webp")' },
         { type: 'image', value: 'url("Resources/background_full/back_gif2.webp")' },
         { type: 'image', value: 'url("Resources/background_full/back_gif3.webp")' },
         { type: 'image', value: 'url("Resources/background_full/back_gif4.webp")' },
         { type: 'image', value: 'url("Resources/background_full/back_gif5.webp")' },
-        { type: 'image', value: 'url("Resources/background_full/back_gif6.webp")' }
+        { type: 'image', value: 'url("Resources/background_full/back1.png")' }
       ];
 
       const backgroundItems = document.querySelectorAll('#background-section .grid-item');
