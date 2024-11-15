@@ -88,7 +88,7 @@
       </div>
       <style>
         .main-background {
-          background: rgb(255, 255, 255);
+          background: rgb(222, 222, 222);
           width: 100px;
           height: 100px;
           border-radius: 8px;
@@ -96,34 +96,25 @@
       </style>
       <!-- 그라데이션 배경 -->
       <div class="grid-item">
-        <div class="gradient-background"></div>
-      </div>
-
-      <style>
-        .gradient-background {
-          background: linear-gradient(135deg, #baade6, #fbc8d4);
-          width: 100px;
-          height: 100px;
-          border-radius: 8px;
-        }
-      </style>
-      <div class="grid-item">
         <img src="Resources/background_small/back_gif1.webp" alt="배경 3">
       </div>
       <div class="grid-item">
-        <img src="Resources/background_small/back_gif2.webp" alt="배경 4">
+        <img src="Resources/background_small/back1.webp" alt="배경 3">
       </div>
       <div class="grid-item">
-        <img src="Resources/background_small/back_gif3.webp" alt="배경 5">
+        <img src="Resources/background_small/back2.webp" alt="배경 4">
       </div>
       <div class="grid-item">
-        <img src="Resources/background_small/back_gif4.webp" alt="배경 6">
+        <img src="Resources/background_small/back3.webp" alt="배경 5">
       </div>
       <div class="grid-item">
-        <img src="Resources/background_small/back_gif5.webp" alt="배경 7">
+        <img src="Resources/background_small/back4.webp" alt="배경 6">
       </div>
       <div class="grid-item">
-        <img src="Resources/background_small/back_gif6.webp" alt="배경 8">
+        <img src="Resources/background_small/back5.webp" alt="배경 7">
+      </div>
+      <div class="grid-item">
+        <img src="Resources/background_small/back6.webp" alt="배경 8">
       </div>
     </div>
 
@@ -235,14 +226,14 @@
 
       // 배경 변경 로직
       const backgrounds = [
-        { type: 'color', value: 'rgb(116, 116, 116)' },
-        { type: 'gradient', value: 'linear-gradient(135deg, #baade6, #fbc8d4)' },
+        { type: 'color', value: 'rgb(222, 222, 222)' },
         { type: 'image', value: 'url("Resources/background_full/back_gif1.webp")' },
-        { type: 'image', value: 'url("Resources/background_full/back_gif2.webp")' },
-        { type: 'image', value: 'url("Resources/background_full/back_gif3.webp")' },
-        { type: 'image', value: 'url("Resources/background_full/back_gif4.webp")' },
-        { type: 'image', value: 'url("Resources/background_full/back_gif5.webp")' },
-        { type: 'image', value: 'url("Resources/background_full/back1.png")' }
+        { type: 'image', value: 'url("Resources/background_full/back1.webp")' },
+        { type: 'image', value: 'url("Resources/background_full/back2.webp")' },
+        { type: 'image', value: 'url("Resources/background_full/back3.webp")' },
+        { type: 'image', value: 'url("Resources/background_full/back4.webp")' },
+        { type: 'image', value: 'url("Resources/background_full/back5.webp")' },
+        { type: 'image', value: 'url("Resources/background_full/back6.webp")' }
       ];
 
       const backgroundItems = document.querySelectorAll('#background-section .grid-item');

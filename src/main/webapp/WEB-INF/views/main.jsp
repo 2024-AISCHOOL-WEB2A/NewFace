@@ -103,7 +103,7 @@
                     <div class="container">
                         <div class="col-md-10 col-md-offset-1">
                             <div class="animate-box">
-                                <h2 style="font-family: 'SUIT-Regular', sans-serif;">나만의 이야기를 펼칠 <br>새로운 캐릭터를 만나보세요!</h2>
+                                <h2 >나만의 이야기를 펼칠 <br>새로운 캐릭터를 만나보세요!</h2>
                                 <p></p>
                                 <p style="font-family: BMJUA !important;"><a class="btn btn-primary btn-lg custom-btn" href="/start_virtual" style="font-family: BMJUA !important;">get start</a></p>
                             </div>
