@@ -354,13 +354,6 @@
 					
 					
 				</div>
-				
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<a href="https://vimeo.com/channels/staffpicks/93951774" class="link-watch popup-vimeo btn btn-primary"><i class="icon-play3"></i> Watch our video</a>
-					</div>
-				</div>
-				
 			</div>
 		</div>
 

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -10,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Module &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+    <title>NEW FACE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -62,6 +64,45 @@
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
 
+    <style>
+        .container_1 {
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 30px;
+        }
+        .media {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #FF3B69;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -77,46 +118,55 @@
             <!-- end:header-top -->
 
             <div class="container py-5" style="margin-bottom: 100px; margin-top: 50px;">
-                <div class="row" style="align-items: stretch; display: flex;">
-                    <!-- 2/3 비율: 비디오 또는 이미지 영역 -->
-                    <div class="col-md-8 mb-4 d-flex justify-content-center align-items-center">
-                        <div class="media-container bg-dark rounded overflow-hidden d-flex justify-content-center align-items-center"
-                            style="width: 100%; height: 500px; max-width: 600px; max-height: 400px; position: relative;">
-                            <c:choose>
-                                <c:when test="${boardIdx.boardFilePath.endsWith('.mp4')}">
-                                    <!-- 비디오인 경우 -->
-                                    <video controls
-                                        style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                        <source src="${boardIdx.boardFilePath}" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </c:when>
-                                <c:otherwise>
-                                    <!-- 이미지인 경우 -->
-                                    <img src="${boardIdx.boardFilePath}" alt="Media Image"
-                                        style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
+
+                <div class="container_1">
+                    <!-- 제목 -->
+                    <div class="title">${boardIdx.boardTitle}</div>
+            
+                    <!-- 작성자, 작성일, 조회수 -->
+                    <div class="meta">
+                        작성자: ${boardIdx.user.userNickname} | 작성일: ${boardIdx.boardUpdatedAt} | 조회수: ${boardIdx.boardViewCount}
                     </div>
-
-
-
-
-                    <!-- 1/3 비율: 상세 정보 및 댓글 -->
-                    <div class="col-md-4 shadow" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                        <div class="detail-header mb-4">
-                            <h2 class="h4 mb-2 text-dark">${boardIdx.boardTitle}</h2>
-                            <p class="text-muted small mb-0">조회수 <span id="views">${boardIdx.boardViewCount}</span>회 ·
-                                <span id="time">${boardIdx.boardUpdatedAt}</span></p>
-                            <p class="text-muted small" id="channel">${boardIdx.user.userNickname}</p>
-                        </div>
-
-                        <div class="interaction p-3 bg-light rounded">
-                            <p class="mb-0 text-dark">${boardIdx.boardContent}</p>
-                        </div>
+            
+                    <!-- 본문 내용 -->
+                    <div class="content">
+                        ${boardIdx.boardContent}
                     </div>
+            
+                    <!-- 이미지나 동영상 -->
+                    <div class="media">
+                        <c:choose>
+                            <c:when test="${fn:endsWith(boardIdx.boardFilePath, '.jpg') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.jpeg') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.png') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.gif') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.webp') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.jfif')}">
+                                <img src="${boardIdx.boardFilePath}" alt="첨부 이미지" style="max-width: 100%; height: auto;">
+                            </c:when>
+                            <c:when test="${fn:endsWith(boardIdx.boardFilePath, '.mp4') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.avi') 
+                                            or fn:endsWith(boardIdx.boardFilePath, '.mov')}">
+                                <video controls style="max-width: 100%; height: auto;">
+                                    <source src="${boardIdx.boardFilePath}" type="video/mp4">
+                                    동영상을 지원하지 않는 브라우저입니다.
+                                </video>
+                            </c:when>
+                            <c:otherwise>
+                                <p>첨부된 이미지나 동영상이 없습니다.</p>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    
+            
+                    <!-- 목록으로 돌아가기 버튼 -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="/pride_board" class="btn">목록으로 돌아가기</a>
+                    </div>
+                    
                 </div>
+
+
             </div>
 
 

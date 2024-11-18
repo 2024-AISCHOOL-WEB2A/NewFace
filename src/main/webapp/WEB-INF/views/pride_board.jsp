@@ -12,7 +12,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Module &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+	<title>NEW FACE</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -92,23 +92,68 @@
                         <ul id="fh5co-portfolio-list">
                             <c:forEach var="board" items="${boards}" varStatus="status" begin="0" end="9">
                                 <c:choose>
-                                    <c:when test="${status.index == 0 || status.index == 9}">
-                                        <!-- 0번과 9번 인덱스일 때의 스타일 -->
-                                        <li class="two-third animate-box" data-animate-effect="fadeIn" 
-                                            style="background-image: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), url(${board.boardFilePath});">
-                                            <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
-                                                <div class="case-studies-summary">
-                                                    <span>${board.boardUpdatedAt}</span>
-                                                    <h2>${board.boardTitle}</h2>
-                                                </div>
-                                            </a>
-                                        </li>
-
+                                    <c:when test="${fn:endsWith(board.boardFilePath, '.jpg') 
+                                                    or fn:endsWith(board.boardFilePath, '.jpeg') 
+                                                    or fn:endsWith(board.boardFilePath, '.png') 
+                                                    or fn:endsWith(board.boardFilePath, '.gif') 
+                                                    or fn:endsWith(board.boardFilePath, '.webp') 
+                                                    or fn:endsWith(board.boardFilePath, '.jfif')}">
+                                        <c:choose>
+                                            <c:when test="${status.index == 0 || status.index == 9}">
+                                                <li class="two-third animate-box" data-animate-effect="fadeIn" 
+                                                    style="background-image: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), url(${board.boardFilePath});">
+                                                    <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
+                                                        <div class="case-studies-summary">
+                                                            <span>${board.boardUpdatedAt}</span>
+                                                            <h2>${board.boardTitle}</h2>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="one-third animate-box" data-animate-effect="fadeIn" 
+                                                    style="background-image: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), url(${board.boardFilePath});">
+                                                    <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
+                                                        <div class="case-studies-summary">
+                                                            <span>${board.boardUpdatedAt}</span>
+                                                            <h2>${board.boardTitle}</h2>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:when>
+                        
+                                    <c:when test="${fn:endsWith(board.boardFilePath, '.mp4') 
+                                                    or fn:endsWith(board.boardFilePath, '.avi') 
+                                                    or fn:endsWith(board.boardFilePath, '.mov')}">
+                                        <c:choose>
+                                            <c:when test="${status.index == 0 || status.index == 9}">
+
+                                                <li class="two-third animate-box" data-animate-effect="fadeIn">
+                                                    <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
+                                                        <div class="case-studies-summary">
+                                                            <span>${board.boardUpdatedAt}</span>
+                                                            <h2>${board.boardTitle}</h2>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li class="one-third animate-box" data-animate-effect="fadeIn">
+                                                    <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
+                                                        <div class="case-studies-summary">
+                                                            <span>${board.boardUpdatedAt}</span>
+                                                            <h2>${board.boardTitle}</h2>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:when>
+                                    
                                     <c:otherwise>
-                                        <!-- 나머지 인덱스일 때의 스타일 -->
-                                        <li class="one-third animate-box" data-animate-effect="fadeIn" 
-                                            style="background-image: linear-gradient(to top, rgba(73, 73, 73, 0.9), rgba(0, 0, 0, 0) 30%), url(${board.boardFilePath});">
+                                        <li class="one-third animate-box" data-animate-effect="fadeIn">
                                             <a href="/pride_board/detail/${board.boardIdx}" class="color-2">
                                                 <div class="case-studies-summary">
                                                     <span>${board.boardUpdatedAt}</span>
@@ -116,11 +161,12 @@
                                                 </div>
                                             </a>
                                         </li>
-
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
                         </ul>
+                        
+                        
                         
                     </div>
                 </div>
