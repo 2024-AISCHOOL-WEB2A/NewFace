@@ -118,16 +118,16 @@
                                     <tr>
                                         <th scope="row" style="color: #6c757d; font-weight: 400; font-size: 15px;">성별</th>
                                         <td style="color: #7e7e7e; font-size: 15px;">
-                                            여성
+                                            ${character.characterGender}
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row" style="color: #6c757d; font-weight: 400; font-size: 15px;">좋아하는 것</th>
-                                        <td style="color: #7e7e7e; font-size: 15px;">딸기 생크림 케이크</td>
+                                        <td style="color: #7e7e7e; font-size: 15px;">${character.characterLikes}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row" style="color: #6c757d; font-weight: 400; font-size: 15px;">싫어하는 것</th>
-                                        <td style="color: #7e7e7e; font-size: 15px;">신맛나는 것</td>
+                                        <td style="color: #7e7e7e; font-size: 15px;">${character.characterNolike}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -155,7 +155,7 @@
             </div>
 
             <div id="paymentModal" class="modal">
-                <div class="modal-content">
+                <div class="modal-content" style="width: fit-content;">
                     <h2>결제 확인</h2>
                     <p>${character.characterName} 캐릭터를 1일 동안 <br>이용하시겠습니까?</p>
                     <p><img src="/image/happy.png">필요 스마일: 30P</p>
@@ -231,7 +231,7 @@
                 .then(rentalStatus => {
                     if (rentalStatus.isRented) {
                         alert('이미 대여 중인 캐릭터입니다.\n만료일: ' + rentalStatus.endDate);
-                        window.location.href = '/characterExperience?characterIdx=${character.characterIdx}';
+                        window.location.href = '/start_virtual';
                     } else {
                         modal.style.display = 'block';
                     }
@@ -260,7 +260,7 @@
                 .then(result => {
                     if (result === 'success') {
                         alert('캐릭터 구매가 완료되었습니다.');
-                        window.location.href = '/characterExperience?characterIdx=${character.characterIdx}';
+                        window.location.href = '/start_virtual';
                     } else {
                         alert(result);
                     }
