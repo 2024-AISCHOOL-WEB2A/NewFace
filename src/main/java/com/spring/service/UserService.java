@@ -47,22 +47,15 @@ public class UserService {
         user.setUserPoint(0);
         user.setUserSignupDate(new Timestamp(System.currentTimeMillis()));
         user.setUserProfilePicture("/image/default.png"); 
-        
-        userRepository.save(user);
+        // 암호화된 비밀번호로 저장하도록 SQL 쿼리 수정
+        userRepository.saveWithEncryption(user);
+        // userRepository.save(user);
     }
 
     // 로그인 처리
     public User login(String userId, String userPw) {
-        // 아이디로 사용자 찾기
-        Optional<User> user = userRepository.findByUserId(userId);
-        
-        // 사용자가 존재하고 비밀번호가 일치하면 해당 사용자 정보 반환
-        if(user.isPresent() && user.get().getUserPw().equals(userPw)) {
-            return user.get();
-        }
-        
-        return null;
-    } 
+        return userRepository.findByUserIdAndEncryptedPw(userId, userPw).orElse(null);
+    }
 
       // OAuth2 로그인 처리 (신규 추가)
     public User saveOrUpdateOAuth2User(String provider, String providerId, String email, String name) {
