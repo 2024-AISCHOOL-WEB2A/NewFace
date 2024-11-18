@@ -94,6 +94,10 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -154,21 +158,6 @@
                 </div>
             </div>
 
-            <div id="paymentModal" class="modal">
-                <div class="modal-content" style="width: fit-content;">
-                    <h2>결제 확인</h2>
-                    <p>${character.characterName} 캐릭터를 1일 동안 <br>이용하시겠습니까?</p>
-                    <p><img src="/image/happy.png">필요 스마일: 30P</p>
-                    <div class="modal-buttons">
-                        <button id="confirmPayment">확인</button>
-                        <button id="cancelPayment">취소</button>
-                    </div>
-                </div>
-            </div>
-
-
-
-
         </div>
         <!-- END fh5co-page -->
 
@@ -208,80 +197,112 @@
             });
         });
 
-        // 모달 관련 요소들
-        const modal = document.getElementById('paymentModal');
         const ctaButton = document.querySelector('.cta-button');
-        const confirmBtn = document.getElementById('confirmPayment');
-        const cancelBtn = document.getElementById('cancelPayment');
+console.log(ctaButton);
 
-        // 체험하기 버튼 클릭 시
-        ctaButton.addEventListener('click', () => {
-            const isLoggedIn = document.querySelector('.greet') !== null;
+if (!ctaButton) {
+    console.error('ctaButton을 찾을 수 없습니다. HTML 구조를 확인하세요.');
+}
 
-            if (!isLoggedIn) {
-                alert('로그인이 필요한 서비스입니다.');
-                window.location.href = '/loginForm';
-                return;
-            }
+// 체험하기 버튼 클릭 시
+ctaButton.addEventListener('click', () => {
+    const isLoggedIn = document.querySelector('.greet') !== null;
 
+    if (!isLoggedIn) {
+        alert('로그인이 필요한 서비스입니다.');
+        window.location.href = '/loginForm';
+        return;
+    }
 
-            // 렌탈 상태 확인
-            fetch(`/checkRentalStatus?characterIdx=${character.characterIdx}&userId=${sessionScope.loginUser.userIdx}`)
-                .then(response => response.json())
-                .then(rentalStatus => {
-                    if (rentalStatus.isRented) {
-                        alert('이미 대여 중인 캐릭터입니다.\n만료일: ' + rentalStatus.endDate);
-                        window.location.href = '/start_virtual';
-                    } else {
-                        modal.style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('처리 중 오류가 발생했습니다.');
+    // 렌탈 상태 확인
+    fetch(`/checkRentalStatus?characterIdx=${character.characterIdx}&userId=${sessionScope.loginUser.userIdx}`)
+        .then(response => response.json())
+        .then(rentalStatus => {
+            if (rentalStatus.isRented) {
+                Swal.fire({
+                    title: '이미 대여 중입니다.',
+                    html: '해당 캐릭터는 이미 대여 중입니다.<br>만료일:' + rentalStatus.endDate,
+                    icon: 'info',
+                    confirmButtonColor: '#FF3B69',
+                    confirmButtonText: '확인'
+                }).then(() => {
+                    window.location.href = '/start_virtual';
                 });
-        });
-
-
-        // 확인 버튼 클릭 시
-        confirmBtn.addEventListener('click', () => {
-            fetch('/point/use', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    userId: '${sessionScope.loginUser.userIdx}',
-                    characterIdx: '${character.characterIdx}',
-                    points: 30
-                })
-            })
-                .then(response => response.text())
-                .then(result => {
-                    if (result === 'success') {
-                        alert('캐릭터 구매가 완료되었습니다.');
-                        window.location.href = '/start_virtual';
-                    } else {
-                        alert(result);
+            } else {
+                // SweetAlert2 모달 띄우기
+                Swal.fire({
+                    title: '결제 확인',
+                    html: `
+                        <p>${character.characterName} 캐릭터를 1일 동안<br>이용하시겠습니까?</p>
+                        <p><img src="/image/happy.png" style="vertical-align: middle; width: 20px; margin-right: 5px;">필요 스마일: 30P</p>
+                    `,
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#FF3B69',
+                    cancelButtonColor: '#d3d3d3',
+                    confirmButtonText: '확인',
+                    cancelButtonText: '취소',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // 확인 버튼 클릭 시 결제 처리
+                        fetch('/point/use', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams({
+                                userId: '${sessionScope.loginUser.userIdx}',
+                                characterIdx: '${character.characterIdx}',
+                                points: 30
+                            })
+                        })
+                            .then(response => response.text())
+                            .then(result => {
+                                if (result === 'success') {
+                                    Swal.fire({
+                                        title: '구매 완료',
+                                        text: '캐릭터 구매가 완료되었습니다.',
+                                        icon: 'success',
+                                        confirmButtonColor: '#FF3B69',
+                                        confirmButtonText: '확인'
+                                    }).then(() => {
+                                        window.location.href = '/start_virtual';
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: '구매 실패',
+                                        text: result,
+                                        icon: 'error',
+                                        confirmButtonColor: '#FF3B69',
+                                        confirmButtonText: '확인'
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    title: '오류',
+                                    text: '처리 중 오류가 발생했습니다.',
+                                    icon: 'error',
+                                    confirmButtonColor: '#FF3B69',
+                                    confirmButtonText: '확인'
+                                });
+                            });
                     }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('처리 중 오류가 발생했습니다.');
                 });
-        });
-
-        // 취소 버튼 클릭 시
-        cancelBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        // 모달 외부 클릭 시 닫기
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: '오류',
+                text: '렌탈 상태 확인 중 오류가 발생했습니다.',
+                icon: 'error',
+                confirmButtonColor: '#FF3B69',
+                confirmButtonText: '확인'
+            });
         });
+});
     </script>
 
 </body>

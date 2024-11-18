@@ -217,7 +217,7 @@
                 }
 
                 /*모달창*/
-                .modal {
+                /* .modal {
                     display: none;
                     position: fixed;
                     z-index: 1000;
@@ -268,12 +268,16 @@
 
                 .btn:hover {
                     opacity: 0.9;
-                }
+                } */
+
             </style>
             <!-- FOR IE9 below -->
             <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
 
         </head>
 
@@ -440,13 +444,19 @@
                         }
 
                         // 폼 제출 전 검증
-                        $("#joinForm").submit(function (e) {
-                            e.preventDefault();
+                        $("#joinForm").submit(function(e) {
+                        e.preventDefault();
 
-                            if (!isIdValid || !isEmailValid) {
-                                alert("아이디와 이메일을 확인해주세요.");
-                                return false;
-                            }
+                        if (!isIdValid || !isEmailValid) {
+                            Swal.fire({
+                                title: '입력 오류',
+                                text: '아이디와 이메일을 확인해주세요.',
+                                icon: 'error',
+                                confirmButtonColor: '#FF3B69',
+                                confirmButtonText: '확인'
+                            });
+                            return false;
+                        }
 
                             const nickname = $("#userNickname").val();
 
@@ -455,15 +465,27 @@
                                 url: "/join",
                                 type: "POST",
                                 data: $(this).serialize(),
-                                success: function (response) {
+                                success: function(response) {
                                     if (response.success) {
                                         showSuccessModal(response.nickname);
                                     } else {
-                                        alert(response.message);
+                                        Swal.fire({
+                                            title: '오류',
+                                            text: response.message,
+                                            icon: 'error',
+                                            confirmButtonColor: '#FF3B69',
+                                            confirmButtonText: '확인'
+                                        });
                                     }
                                 },
-                                error: function (error) {
-                                    alert("회원가입 중 오류가 발생했습니다.");
+                                error: function(error) {
+                                    Swal.fire({
+                                        title: '오류',
+                                        text: '회원가입 중 오류가 발생했습니다.',
+                                        icon: 'error',
+                                        confirmButtonColor: '#FF3B69',
+                                        confirmButtonText: '확인'
+                                    });
                                 }
                             });
                         });
@@ -471,13 +493,22 @@
 
                     // 회원가입 성공 모달 표시 함수
                     function showSuccessModal(nickname) {
-                        const modal = document.getElementById('modal');
-                        const modalMessage = document.getElementById('modal-message');
-                        const confirmBtn = document.getElementById('confirm-btn');
-                        const cancelBtn = document.getElementById('cancel-btn');
-
-                        modalMessage.innerHTML = nickname + "님 회원가입을 축하합니다!<br>로그인으로 이동하시려면 확인을 눌러주세요.";
-                        modal.style.display = "block";
+                        Swal.fire({
+                            title: '회원가입 완료',
+                            html: nickname + '님 회원가입을 축하합니다!<br>로그인으로 이동하시려면 확인을 눌러주세요.',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#FF3B69',
+                            cancelButtonColor: '#6c757d',
+                            confirmButtonText: '확인',
+                            cancelButtonText: '취소',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/loginForm";
+                            } else {
+                                window.location.href = "/";
+                            }
+                        });
 
                         // 확인 버튼 클릭 시
                         confirmBtn.onclick = function () {
@@ -501,27 +532,26 @@
                     }
 
                     // 페이지 로드 시 에러/메시지 처리
-                    window.onload = function () {
+                    window.onload = function() {
                         const message = "${message}";
                         const error = "${error}";
 
                         if (message || error) {
-                            const modal = document.getElementById('modal');
-                            const modalMessage = document.getElementById('modal-message');
-                            const confirmBtn = document.getElementById('confirm-btn');
-
                             function addLineBreaks(text) {
                                 return text.replace(/:\s*/g, ':<br>');
                             }
 
-                            modal.style.display = "block";
-                            modalMessage.innerHTML = addLineBreaks(message || error);
-                            confirmBtn.onclick = function () {
-                                modal.style.display = "none";
-                                if (message) {
+                            Swal.fire({
+                                title: error ? '오류' : '알림',
+                                html: addLineBreaks(message || error),
+                                icon: error ? 'error' : 'success',
+                                confirmButtonColor: '#FF3B69',
+                                confirmButtonText: '확인'
+                            }).then((result) => {
+                                if (result.isConfirmed && message) {
                                     window.location.href = "/loginForm";
                                 }
-                            };
+                            });
                         }
                     };
                 </script>

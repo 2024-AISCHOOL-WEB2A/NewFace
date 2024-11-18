@@ -106,7 +106,7 @@
 
 
 /* 모달 스타일 */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -168,7 +168,7 @@
 }
 
 #confirmPayment {
-    background-color: #ff3b69;  /* 체험하기 버튼과 동일한 색상 */
+    background-color: #ff3b69;  
     color: white;
 }
 
@@ -179,4 +179,4 @@
 
 .modal-buttons button:hover {
     opacity: 0.8;
-}
+} */

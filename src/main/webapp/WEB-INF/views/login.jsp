@@ -218,14 +218,14 @@
 
                 /*모달관련*/
                 /* Modal Styles */
-                .modal-overlay {
-    display: none; /* 기본적으로 숨겨진 상태 */
+                /* .modal-overlay {
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
     justify-content: center;
     align-items: center;
@@ -233,34 +233,34 @@
 
 .modal-container {
     background-color: #fff;
-    padding: 20px 30px; /* 패딩을 넉넉하게 */
+    padding: 20px 30px; 
     border-radius: 8px;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 더 부드러운 그림자 */
-    text-align: center; /* 텍스트 가운데 정렬 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
 }
 
 .modal-title {
-    font-size: 20px; /* 폰트 크기 살짝 키움 */
+    font-size: 20px; 
     font-weight: bold;
     margin-bottom: 15px;
-    color: #FF3B69; /* 제목 색상 */
+    color: #FF3B69; 
 }
 
 .modal-content {
     font-size: 16px;
     margin-bottom: 20px;
-    color: #333; /* 내용 색상 */
+    color: #333; 
 }
 
 .modal-buttons {
     display: flex;
-    justify-content: center; /* 버튼 가운데 정렬 */
+    justify-content: center;
 }
 
 .modal-button {
-    padding: 10px 25px; /* 버튼 크기를 더 넉넉하게 */
+    padding: 10px 25px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -271,11 +271,26 @@
 .confirm-button {
     background-color: #FF3B69;
     color: white;
-    transition: background-color 0.3s ease; /* 부드러운 호버 효과 */
+    transition: background-color 0.3s ease;
 }
 
 .confirm-button:hover {
     background-color: #e63461;
+} */
+
+.custom-confirm-button {
+        background-color: #FF3B69; /* 버튼 배경 색 */
+        color: white; /* 버튼 텍스트 색 */
+        border: none;
+        border-radius: 5px;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+.custom-confirm-button:hover {
+    background-color: #e63461; /* 호버 시 색상 */
 }
 
             </style>
@@ -284,6 +299,11 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+        <!-- SweetAlert2 CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <!-- SweetAlert2 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+        
         </head>
 
         <body>
@@ -348,10 +368,10 @@
             </div>
 
             <!-- 모달 추가 -->
-            <div id="errorModal" class="modal-overlay">
+            <!-- <div id="errorModal" class="modal-overlay">
                 <div class="modal-container">
                     <div class="modal-title">
-                        <h2>로그인 오류</h2> <!-- 대제목 추가 -->
+                        <h2>로그인 오류</h2> 
                     </div>
                     <div id="modalMessage" style="margin-bottom: 30px;">
                         아이디 또는 비밀번호가 일치하지 않습니다.
@@ -360,7 +380,7 @@
                         <button class="modal-button confirm-button" onclick="closeModal()">확인</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- END fh5co-wrapper -->
 
             <!-- jQuery -->
@@ -389,12 +409,20 @@
             <script src="js/main.js"></script>
 
             <script>
-                window.onload = function () {
-                    var loginError = "${loginError}";
-                    if (loginError && loginError.trim() !== "") {
-                        showModal(loginError);
-                    }
-                };
+            window.onload = function () {
+                var loginError = "${loginError}";
+                if (loginError && loginError.trim() !== "") {
+                    Swal.fire({
+                        title: '로그인 오류',
+                        text: '아이디 또는 비밀번호가 일치하지 않습니다.',
+                        icon: 'error',
+                        confirmButtonText: '확인',
+                        customClass: {
+                            confirmButton: 'custom-confirm-button'
+                        }
+                    });
+                }
+            };
 
                 function showModal(message) {
                     const modal = document.getElementById('errorModal');
