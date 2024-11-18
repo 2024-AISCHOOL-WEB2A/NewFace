@@ -18,8 +18,7 @@
                 <div class="col-xs-2 col-xs-offset-1">
                     <p>
                         이연주<br>
-                        TEL.010-1234-1234<br>
-                        MAIL.
+                        dosrhd@naver.com
                     </p>
                 </div>
                 <div class="col-xs-2">

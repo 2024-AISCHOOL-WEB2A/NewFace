@@ -283,8 +283,8 @@
         color: white; /* 버튼 텍스트 색 */
         border: none;
         border-radius: 5px;
-        padding: 6px 12px;
-        font-size: 14px;
+        padding: 5px 10px;
+        font-size: 12px;
         font-weight: bold;
         cursor: pointer;
     }
@@ -292,6 +292,10 @@
 .custom-confirm-button:hover {
     background-color: #e63461; /* 호버 시 색상 */
 }
+
+.swal2-html-container {
+        font-size: 14px !important; 
+    }
 
             </style>
             <!-- FOR IE9 below -->
@@ -337,24 +341,14 @@
                             <!-- Google 로그인 버튼 -->
                             <button class="social-button google">
                                 <a href="/oauth2/authorization/google" style="color: #4285F4 !important;">
-                                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em"
-                                        viewBox="0 0 488 512">
-                                        <path
-                                            d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
-                                        </path>
-                                    </svg> 구글로 로그인하기
+                                    <img src="image/google_logo.png"style="height: 1.5em;"> 구글로 로그인하기
                                 </a>
                             </button>
 
                             <!-- Naver 로그인 버튼 -->
                             <button class="social-button naver">
                                 <a href="/oauth2/authorization/naver" style="color: #03C75A !important;">
-                                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em"
-                                        viewBox="0 0 448 512">
-                                        <path
-                                            d="M448 32V480C448 497.7 433.7 512 416 512H320C302.3 512 288 497.7 288 480V294.2L160 480H64C46.33 480 32 465.7 32 448V32C32 14.33 46.33 0 64 0H160C177.7 0 192 14.33 192 32V217.8L320 32H416C433.7 32 448 46.33 448 64z">
-                                        </path>
-                                    </svg> 네이버로 로그인하기
+                                    <img src="image/naver_logo.png"style="height: 2em;"> 네이버로 로그인하기
                                 </a>
                             </button>
 

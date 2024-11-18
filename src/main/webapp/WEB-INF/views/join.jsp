@@ -270,6 +270,45 @@
                     opacity: 0.9;
                 } */
 
+                .swal2-html-container {
+                    font-size: 13px !important; /* 글씨 크기 */
+                }
+
+                .swal2-title {
+                    font-size: 22px !important; /* 제목 크기 */
+                    font-weight: bold; /* 제목 굵게 */
+                }
+
+                .custom-confirm-button {
+                    background-color: #FF3B69; /* 버튼 배경 색 */
+                    color: white; /* 버튼 텍스트 색 */
+                    border: none;
+                    border-radius: 5px; /* 버튼 모서리 둥글게 */
+                    padding: 7px 14px; /* 버튼 크기 조정 */
+                    font-size: 14px; /* 글자 크기 */
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+
+                .custom-confirm-button:hover {
+                    background-color: #e63461; /* 호버 시 색상 */
+                }
+
+                .custom-cancel-button {
+                    background-color: #6c757d; /* 취소 버튼 배경 색 */
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 7px 14px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+
+                .custom-cancel-button:hover {
+                    background-color: #5a6268; /* 취소 버튼 호버 색상 */
+                }
+
             </style>
             <!-- FOR IE9 below -->
             <!--[if lt IE 9]>
@@ -502,6 +541,10 @@
                             cancelButtonColor: '#6c757d',
                             confirmButtonText: '확인',
                             cancelButtonText: '취소',
+                            customClass: {
+                                confirmButton: 'custom-confirm-button', // 확인 버튼에 스타일 적용
+                                cancelButton: 'custom-cancel-button'  // 취소 버튼에 스타일 적용
+                            }
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 window.location.href = "/loginForm";

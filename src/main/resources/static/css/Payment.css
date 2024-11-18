@@ -437,3 +437,15 @@
 .close:hover {
     color: #666;
 }
+
+/* 충전, 취소 버튼 스타일 */
+.swal2-actions .swal2-confirm, .swal2-actions .swal2-cancel {
+    padding: 8px 10px; /* 버튼 안쪽 여백 (padding) 조정 */
+    font-size: 13px !important;
+    border-radius: 8px; /* 버튼 모서리 둥글게 */
+    min-width: 80px; /* 최소 너비 설정 */
+}
+
+.swal2-actions {
+    gap: 20px; /* 버튼 사이 간격 */
+}
