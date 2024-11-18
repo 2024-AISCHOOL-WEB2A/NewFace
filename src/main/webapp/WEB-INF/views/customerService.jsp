@@ -212,11 +212,22 @@
         const rows = document.querySelectorAll('tbody tr');
 
         rows.forEach((row, index) => {
-            if (index % 2 === 0) { // 메인 행만 필터링
-                const categoryTag = row.querySelector('span');
-                const isMatch = category === 'all' || (categoryTag && categoryTag.textContent.includes(`[${category}]`));
-                row.style.display = isMatch ? '' : 'none';
-                row.nextElementSibling.style.display = 'none'; // 상세 내용도 숨김
+            if (index % 2 === 0) { // 메인 행만 처리
+                const categorySpan = row.querySelector('td:nth-child(2) span:first-child');
+                
+                if (categorySpan) {
+                    const categoryText = categorySpan.textContent.replace('[', '').replace(']', ''); // '[공지]' -> '공지'
+                    
+                    // 전체이거나 카테고리가 일치할 때 보여줌
+                    const isMatch = category === 'all' || categoryText === category;
+                    row.style.display = isMatch ? 'table-row' : 'none';
+                    
+                    // 상세 내용 행 숨기기
+                    const detailsRow = row.nextElementSibling;
+                    if (detailsRow) {
+                        detailsRow.style.display = 'none';
+                    }
+                }
             }
         });
     }
