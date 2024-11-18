@@ -340,16 +340,17 @@
                                     <span id="idMessage" class="form-text text-danger"></span>
 
                                     <label for="email">비밀번호</label>
-                                    <input type="password" name="userPw" placeholder="비밀번호를 입력하세요." required=""
-                                        id="userPw">
+                                    <input type="password" name="userPw" placeholder="비밀번호를 입력하세요." required="" id="userPw">
+                                    
+                                    <label for="userPwCheck">비밀번호 확인</label>
+                                    <input type="password" placeholder="비밀번호를 다시 입력하세요." required="" id="userPwCheck">
+                                    <span id="pwMessage" class="form-text text-danger"></span>
 
                                     <label for="email">닉네임</label>
-                                    <input type="text" name="userNickname" placeholder="닉네임을 입력하세요." required=""
-                                        id="userNickname">
+                                    <input type="text" name="userNickname" placeholder="닉네임을 입력하세요." required="" id="userNickname">
 
                                     <label for="email">이메일</label>
-                                    <input type="email" name="userEmail" placeholder="이메일을 입력하세요." required=""
-                                        id="userEmail">
+                                    <input type="email" name="userEmail" placeholder="이메일을 입력하세요." required="" id="userEmail">
                                     <span id="emailMessage" class="form-text text-danger"></span>
                                 </div>
 
@@ -410,6 +411,7 @@
                     $(document).ready(function () {
                         let isIdValid = false;
                         let isEmailValid = false;
+                        let isPwValid = false;  // 비밀번호 확인용 변수 추가
                         let emailCheckTimer;
 
                         // 이메일 형식 검증 함수
@@ -482,14 +484,33 @@
                             });
                         }
 
+                        // 비밀번호 확인 체크
+                        $("#userPw, #userPwCheck").on('input', function() {
+                            const pw = $("#userPw").val();
+                            const pwCheck = $("#userPwCheck").val();
+
+                            if(pw && pwCheck) {
+                                if(pw === pwCheck) {
+                                    $("#pwMessage").text("비밀번호가 일치합니다.").css("color", "green");
+                                    isPwValid = true;
+                                } else {
+                                    $("#pwMessage").text("비밀번호가 일치하지 않습니다.").css("color", "red");
+                                    isPwValid = false;
+                                }
+                            } else {
+                                $("#pwMessage").text("");
+                                isPwValid = false;
+                            }
+                        });
+
                         // 폼 제출 전 검증
                         $("#joinForm").submit(function(e) {
                         e.preventDefault();
 
-                        if (!isIdValid || !isEmailValid) {
+                        if (!isIdValid || !isEmailValid || !isPwValid) {
                             Swal.fire({
                                 title: '입력 오류',
-                                text: '아이디와 이메일을 확인해주세요.',
+                                text: '아이디와 이메일, 비밀번호를 확인해주세요.',
                                 icon: 'error',
                                 confirmButtonColor: '#FF3B69',
                                 confirmButtonText: '확인'
@@ -552,26 +573,6 @@
                                 window.location.href = "/";
                             }
                         });
-
-                        // 확인 버튼 클릭 시
-                        confirmBtn.onclick = function () {
-                            modal.style.display = "none";
-                            window.location.href = "/loginForm";
-                        };
-
-                        // 취소 버튼 클릭 시
-                        cancelBtn.onclick = function () {
-                            modal.style.display = "none";
-                            window.location.href = "/";
-                        };
-
-                        // 모달 외부 클릭 시
-                        window.onclick = function (event) {
-                            if (event.target == modal) {
-                                modal.style.display = "none";
-                                window.location.href = "/";
-                            }
-                        };
                     }
 
                     // 페이지 로드 시 에러/메시지 처리

@@ -37,7 +37,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     void saveWithEncryption(@Param("user") User user);
 
     // 로그인 체크용 쿼리 추가
-    @Query(value = "SELECT * FROM tb_user WHERE user_id = :userId AND user_pw = SHA2(:userPw, 256)", nativeQuery = true)
+    @Query(value = "SELECT * FROM tb_user WHERE user_id = :userId AND user_pw = SHA2(:userPw, 256) AND user_is_active = 1", nativeQuery = true)
     Optional<User> findByUserIdAndEncryptedPw(@Param("userId") String userId, @Param("userPw") String userPw);
 
 }
