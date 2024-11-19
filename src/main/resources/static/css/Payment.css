@@ -438,14 +438,47 @@
     color: #666;
 }
 
-/* 충전, 취소 버튼 스타일 */
-.swal2-actions .swal2-confirm, .swal2-actions .swal2-cancel {
-    padding: 8px 10px; /* 버튼 안쪽 여백 (padding) 조정 */
-    font-size: 13px !important;
-    border-radius: 8px; /* 버튼 모서리 둥글게 */
-    min-width: 80px; /* 최소 너비 설정 */
+.custom-cancel-button {
+    background-color: #d3d3d3 !important; /* 취소 버튼 배경색 */
+    color: white !important; /* 텍스트 색상 */
+    border-radius: 6px !important; /* 둥근 버튼 */
+    padding: 6px 12px !important; /* 버튼 크기 조정 */
+    font-size: 13px !important; /* 텍스트 크기 */
+    border: none !important; /* 테두리 제거 */
 }
 
-.swal2-actions {
-    gap: 20px; /* 버튼 사이 간격 */
+.custom-cancel-button:hover {
+    background-color: #5a6268 !important; /* 호버 시 색상 */
+}
+
+.custom-confirm-button {
+    background-color: #FF3B69 !important; /* 확인 버튼 배경색 */
+    color: white !important; /* 텍스트 색상 */
+    border-radius: 6px !important; /* 둥근 버튼 */
+    padding: 6px 12px !important; /* 버튼 크기 조정 */
+    font-size: 13px !important; /* 텍스트 크기 */
+    border: none !important; /* 테두리 제거 */
+}
+
+.custom-confirm-button:hover {
+    background-color: #e63461 !important; /* 호버 시 색상 */
+}
+
+.custom-confirm-button2 {
+    background-color: #FF3B69; /* 버튼 배경 색 */
+    color: white; /* 버튼 텍스트 색 */
+    border: none;
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
+    padding: 6px 12px; /* 버튼 크기 조정 */
+    font-size: 14px; /* 글자 크기 */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.custom-confirm-button2:hover {
+    background-color: #e63461; /* 호버 시 색상 */
+}
+
+.custom-text-class {
+    font-size: 12px !important; /* 글자 크기만 키움 */
 }

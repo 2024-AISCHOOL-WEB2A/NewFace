@@ -93,6 +93,55 @@
                             height: auto;
                             /* 비율 유지를 위해 자동 높이 조절 */
                         }
+
+                        .swal2-html-container {
+                            font-size: 13px !important; 
+                        }
+
+                        .custom-confirm-button {
+                            background-color: #FF3B69; /* 버튼 배경 색 */
+                            color: white; /* 버튼 텍스트 색 */
+                            border: none;
+                            border-radius: 5px;
+                            padding: 7px 14px;
+                            font-size: 12px;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+
+                        .custom-confirm-button:hover {
+                            background-color: #e63461; /* 호버 시 색상 */
+                        }
+
+                        .custom-confirm-button2 {
+                            background-color: #FF3B69; /* 버튼 배경 색 */
+                            color: white; /* 버튼 텍스트 색 */
+                            border: none;
+                            border-radius: 5px; /* 버튼 모서리 둥글게 */
+                            padding: 6px 12px; /* 버튼 크기 조정 */
+                            font-size: 14px; /* 글자 크기 */
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+
+                        .custom-confirm-button2:hover {
+                            background-color: #e63461; /* 호버 시 색상 */
+                        }
+
+                        .custom-cancel-button2 {
+                            background-color: #6c757d; /* 취소 버튼 배경 색 */
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            padding: 6px 12px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+
+                        .custom-cancel-button:hover2 {
+                            background-color: #5a6268; /* 취소 버튼 호버 색상 */
+                        }
                     </style>
 
 
@@ -227,7 +276,6 @@
                                 window.location.href = '/loginForm';
                                 return;
                             }
-                           
                             // 현재 캐릭터의 idx 가져오기
                             const characterIdx = Number(${character.characterIdx});
 
@@ -238,7 +286,10 @@
                                     text: '해당 캐릭터는 현재 서비스 준비중입니다.',
                                     icon: 'info',
                                     confirmButtonColor: '#FF3B69',
-                                    confirmButtonText: '확인'
+                                    confirmButtonText: '확인',
+                                    customClass: {
+                                        confirmButton: 'custom-confirm-button'
+                                    }
                                 });
                                 return;
                             }
@@ -253,7 +304,10 @@
                                             html: '해당 캐릭터는 이미 대여 중입니다.<br>만료일:' + rentalStatus.endDate,
                                             icon: 'info',
                                             confirmButtonColor: '#FF3B69',
-                                            confirmButtonText: '확인'
+                                            confirmButtonText: '확인',
+                                            customClass: {
+                                                confirmButton: 'custom-confirm-button'
+                                            }
                                         }).then(() => {
                                             window.location.href = '/start_virtual';
                                         });
@@ -271,6 +325,10 @@
                                             cancelButtonColor: '#d3d3d3',
                                             confirmButtonText: '확인',
                                             cancelButtonText: '취소',
+                                            customClass: {
+                                                confirmButton: 'custom-confirm-button2', // 확인 버튼에 스타일 적용
+                                                cancelButton: 'custom-cancel-button2'  // 취소 버튼에 스타일 적용
+                                            }
                                         }).then((result) => {
                                             if (result.isConfirmed) {
                                                 // 확인 버튼 클릭 시 결제 처리
@@ -293,7 +351,10 @@
                                                                 text: '캐릭터 구매가 완료되었습니다.',
                                                                 icon: 'success',
                                                                 confirmButtonColor: '#FF3B69',
-                                                                confirmButtonText: '확인'
+                                                                confirmButtonText: '확인',
+                                                                customClass: {
+                                                                    confirmButton: 'custom-confirm-button'
+                                                                }
                                                             }).then(() => {
                                                                 window.location.href = '/start_virtual';
                                                             });
@@ -303,7 +364,10 @@
                                                                 text: result,
                                                                 icon: 'error',
                                                                 confirmButtonColor: '#FF3B69',
-                                                                confirmButtonText: '확인'
+                                                                confirmButtonText: '확인',
+                                                                customClass: {
+                                                                    confirmButton: 'custom-confirm-button'
+                                                                }
                                                             });
                                                         }
                                                     })

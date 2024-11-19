@@ -64,7 +64,7 @@
         h2,
         h3,
         h6 {
-            font-size: 20px;
+            /* font-size: 16px; */
         }
 
         span {
@@ -74,6 +74,7 @@
         .pagination {
             display: flex;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .table th,
@@ -116,7 +117,7 @@
                     <!-- 브랜드 로고 -->
                     <a href="/" class="app-brand-link">
                         <span class="app-brand-logo demo">
-                            <img src="image/logo.png" width="150" />
+                            <h1 id="fh5co-logo" style="margin-bottom: 25px;"><a href="/">New Face</a></h1>
                         </span>
                     </a>
                 </div>
@@ -131,18 +132,18 @@
                     </li>
 
                     <!-- 관리 메뉴 -->
-                    <li class="menu-header small text-uppercase">
+                    <!-- <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">관리</span>
-                    </li>
+                    </li> -->
                     <li class="menu-item">
-                        <a href="user-list" class="menu-link menu-toggle">
+                        <a href="user-list" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                            <div data-i18n="Account Settings">사용자 페이지</div>
+                            <div data-i18n="Account Settings">유저 관리</div>
                         </a>
                     </li>
 
                     <!-- 계정 메뉴 -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">계정</span></li>
+                    <!-- <li class="menu-header small text-uppercase"><span class="menu-header-text">계정</span></li> -->
                     <li class="menu-item">
                         <a href="/logout" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
@@ -159,12 +160,11 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="py-3 mb-2">사용자 정보 리스트</h4>
-
-                        <hr class="my-4" />
+                        <!-- <h4 class="py-3 mb-2">사용자 정보 리스트</h4> -->
+                        <!-- <hr class="my-4" /> -->
 
                         <div class="card">
-                            <h5 class="card-header">사용자 정보 리스트 상세</h5>
+                            <h5 class="card-header">사용자 정보 리스트</h5>
                             <div class="table-responsive text-nowrap">
                                 <table class="table">
                                     <thead>
@@ -195,7 +195,7 @@
                             </div>
                         </div>
 
-                        <hr class="my-4" />
+                        <!-- <hr class="my-4" /> -->
 
                         <nav aria-label="Page navigation">
                             <ul class="pagination">

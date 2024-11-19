@@ -74,7 +74,7 @@
 
                         <c:forEach var="usePayment" items="${usePayments}">
                             <div class="usage-item">
-                                <div class="item-title">스마일 사용${character.character_name}</div>
+                                <div class="item-title">스마일 사용${character.characterName}</div>
                                 <div class="item-date">
                                     ${usePayment.formattedPointDate}
                                 </div>
@@ -190,9 +190,10 @@
                     showCancelButton: true,
                     confirmButtonText: '충전',
                     cancelButtonText: '취소',
-                    confirmButtonColor: '#FF3B69',
-                    cancelButtonColor: '#6c757d',
-                    showConfirmButton: true,
+                    customClass: {
+                        confirmButton: 'custom-confirm-button',
+                        cancelButton: 'custom-cancel-button',
+                    },
                     width: '500px',
                     didOpen: () => {
                         document.querySelectorAll('.charge-option').forEach(button => {
@@ -207,6 +208,7 @@
                                 selectedPoint = parseInt(this.dataset.point);
                             });
                         });
+    
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -249,7 +251,11 @@
                                     icon: 'success',
                                     title: '충전 완료!',
                                     text: '스마일 충전이 완료되었습니다.',
-                                    confirmButtonColor: '#FF3B69'
+                                    confirmButtonColor: '#FF3B69',
+                                    customClass: {
+                                        confirmButton: 'custom-confirm-button2',
+                                        htmlContainer: 'custom-text-class' // 텍스트 스타일만 변경
+                                    }
                                 }).then((result) => {
                                     if (result.isConfirmed) {
                                         location.reload();
