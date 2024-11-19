@@ -116,8 +116,8 @@ a.bg-primary:hover, a.bg-primary:focus {
 }
 
 .bg-label-primary {
-  background-color: #e7e7ff !important;
-  color: #696cff !important;
+  background-color: #ffe7ec !important;
+  color: #27282d !important;
 }
 
 .border-label-primary {
@@ -296,11 +296,11 @@ button.list-group-item-primary.active {
 }
 
 .nav .nav-link:hover, .nav .nav-link:focus {
-  color: #5f61e6;
+  color: #27282d;
 }
 
 .nav-pills .nav-link.active, .nav-pills .nav-link.active:hover, .nav-pills .nav-link.active:focus {
-  background-color: #696cff;
+  background-color: #27282d;
   color: #fff;
   box-shadow: 0 2px 4px 0 rgba(105, 108, 255, 0.4);
 }
@@ -557,10 +557,12 @@ html[dir=rtl] .border-primary {
 }
 
 a {
-  color: #696cff;
+  color: #FF3B69;
+  display: inline-block; /* transform 효과 적용을 위해 블록 요소로 설정 */
 }
 a:hover {
-  color: #787bff;
+  color: #FF3B69;
+  transform: scale(1.05);
 }
 
 .fill-primary {
@@ -748,8 +750,9 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
   color: #696cff;
 }
 .bg-menu-theme .menu-inner > .menu-item.active > .menu-link {
-  color: #696cff;
+  color: #566a7f;
   background-color: rgba(105, 108, 255, 0.16) !important;
+  font-weight: 400;
 }
 .bg-menu-theme .menu-inner > .menu-item.active:before {
   background: #696cff;

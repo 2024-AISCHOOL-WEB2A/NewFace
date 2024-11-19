@@ -68,18 +68,18 @@
                     </li>
 
                     <!-- 관리 메뉴 -->
-                    <li class="menu-header small text-uppercase">
+                    <!-- <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">관리</span>
-                    </li>
+                    </li> -->
                     <li class="menu-item">
-                        <a href="user-list" class="menu-link menu-toggle">
+                        <a href="user-list" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                            <div data-i18n="Account Settings">유저 페이지</div>
+                            <div data-i18n="Account Settings">유저 관리</div>
                         </a>
                     </li>
 
                     <!-- 계정 메뉴 -->
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">계정</span></li>
+                    <!-- <li class="menu-header small text-uppercase"><span class="menu-header-text">계정</span></li> -->
                     <li class="menu-item">
                         <a href="/logout" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
