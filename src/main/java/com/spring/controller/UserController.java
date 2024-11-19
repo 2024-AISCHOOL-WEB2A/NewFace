@@ -139,26 +139,17 @@ public class UserController {
             HttpSession session) {
 
         try {
-            System.out.println("=== Update Profile Start ===");
-            System.out.println("UserIdx: " + userIdx);
-            System.out.println("New Nickname: " + userNickname);
-            System.out.println("Image present: " + (profileImage != null));
-
             User loginUser = userService.getUserById(userIdx);
-            System.out.println("Found user: " + loginUser.getUserId());
-
+           
             loginUser.setUserNickname(userNickname);
             User updatedUser = userService.updateProfile(loginUser, profileImage);
-            System.out.println("Profile updated");
-
+           
             session.setAttribute("loginUser", updatedUser);
-            System.out.println("=== Update Profile End ===");
-
+           
             return ResponseEntity.ok()
                     .body(Map.of("success", true));
 
         } catch (Exception e) {
-            System.out.println("Error updating profile: " + e.getMessage());
             e.printStackTrace();
             return ResponseEntity.badRequest()
                     .body(Map.of("success", false, "error", e.getMessage()));
