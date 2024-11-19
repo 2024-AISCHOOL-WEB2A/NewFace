@@ -69,6 +69,11 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+    <!-- toastui-editor CSS -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <!-- toastui-editor JS -->
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+
 </head>
 
 <body>
@@ -80,46 +85,64 @@
             <!-- end:header-top -->
 
 
-            <div id="fh5co-blog-section" style="padding: 100px 0 !important;">
+            <div id="fh5co-blog-section" style="padding: 50px 0 !important;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
                             <h3>고객지원 작성</h3>
                         </div>
                     </div>
-
+            
                     <div class="container py-5 bg-light rounded shadow-sm">
-                        <form action="/customerService/register" method="post" class="register-form" id="registerForm">
-                            <!-- 작성자 이름 -->
-                            <div class="mb-3">
-                                <label for="authorName" class="form-label">이름</label>
-                                <input type="text" id="authorName" name="authorName" class="form-control"
-                                    value="${userNickname}" readonly>
-                            </div>
-
-                            <!-- 작성자 아이디 -->
-                            <div class="mb-3">
-                                <label for="authorId" class="form-label">아이디</label>
-                                <input type="text" id="authorId" name="authorId" class="form-control" value="${userId}"
-                                    readonly>
-                            </div>
-
-                            <!-- 제목 -->
-                            <div class="mb-3">
+                        <form id="writeForm" action="/customerService/register" method="post" enctype="multipart/form-data">
+                            <!-- 카테고리 선택 - form 안으로 이동 -->
+                            <c:choose>
+                                <c:when test="${sessionScope.loginUser.userRole eq 'admin'}">
+                                    <div class="form-group mb-3">
+                                        <label for="category" class="form-label">카테고리</label>
+                                        <select id="category" name="category" class="form-select" required>
+                                            <option value="공지">공지</option>
+                                            <option value="FAQ">FAQ</option>
+                                        </select>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <input type="hidden" name="category" value="요청">
+                                </c:otherwise>
+                            </c:choose>
+            
+                            <div class="form-group mb-3">
                                 <label for="title" class="form-label">제목</label>
-                                <input type="text" id="title" name="title" class="form-control" required
-                                    placeholder="제목을 입력하세요">
+                                <input type="text" id="title" name="title" class="form-control" required>
                             </div>
-
-                            <!-- 내용 -->
-                            <div class="mb-3">
-                                <label for="content" class="form-label">내용</label>
-                                <textarea id="content" name="content" class="form-control" rows="10" required
-                                    placeholder="내용을 입력하세요">${fn:replace(content, newLine, '<br>')}</textarea>
+            
+                            <div class="form-group mb-3">
+                                <label for="file" class="form-label">이미지 첨부</label>
+                                <input type="file" id="file" name="file" class="form-control" accept="image/*">
                             </div>
+            
+                            <div class="form-group mb-3">
+                                <label for="videoFile" class="form-label">동영상 첨부</label>
+                                <input type="file" id="videoFile" name="videoFile" class="form-control" accept="video/mp4">
+                            </div>
+            
+                            <div class="form-group mb-4">
+                                <label for="editor" class="form-label">내용</label>
+                                <div id="editor"></div>
+                                <input type="hidden" name="content" id="content">
+                            </div>
+            
+                            <div class="d-flex justify-content-center text-center gap-2">
+                                <button type="submit" class="btn btn-primary px-4">글쓰기</button>
+                                <button type="button" class="btn btn-secondary px-4" onclick="location.href='/customerService'">취소</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
                             <!-- 카테고리 선택 -->
-                            <c:choose>
+                            <!-- <c:choose>
                                 <c:when test="${sessionScope.loginUser.userRole eq 'admin'}">
                                     <div class="mb-3">
                                         <label for="category" class="form-label">카테고리</label>
@@ -131,23 +154,23 @@
                                     </div>
                                 </c:when>
                                 <c:otherwise>
-                                    <div style="display: none;">
+                                    <div style="display: none;"> -->
                                         <!-- admin이 아닌 경우 빈 div로 표시만 유지 -->
-                                        <input type="hidden" id="category" name="category" value="요청">
+                                        <!-- <input type="hidden" id="category" name="category" value="요청">
                                     </div>
                                 </c:otherwise>
-                            </c:choose>
+                            </c:choose> -->
 
 
 
 
                             <!-- 작성 및 취소 버튼 -->
-                            <div class="text-center mt-4" style="margin-top: 30px;">
+                            <!-- <div class="text-center mt-4" style="margin-top: 30px;">
                                 <div class="d-inline-flex gap-3">
                                     <button type="submit" class="btn btn-primary px-4">글쓰기</button>
                                     <a href="/customerService" class="btn btn-secondary px-4">취소</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </form>
 
                     </div>
@@ -191,7 +214,7 @@
     <!-- Main JS -->
     <script src="/js/main.js"></script>
 
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             // 폼 제출 전 유효성 검사
             $("#registerForm").submit(function (e) {
@@ -220,7 +243,65 @@
                 $(this).val(content);
             });
         });
-    </script>
+    </script> -->
+
+<script>
+    const editor = new toastui.Editor({
+        el: document.querySelector('#editor'),
+        height: '500px',
+        initialValue: '',
+        initialEditType: 'wysiwyg',
+        previewStyle: 'vertical',
+        language: 'ko',
+        toolbarItems: [
+            ['heading', 'bold', 'italic', 'strike'],
+            ['hr', 'quote'],
+            ['ul', 'ol', 'task'],
+            ['table', 'image', 'link'],
+            ['code', 'codeblock'],
+            ['scrollSync'],
+        ],
+        hooks: {
+            addImageBlobHook: async (blob, callback) => {
+                const formData = new FormData();
+                formData.append('file', blob);
+
+                try {
+                    const response = await fetch('/customerService/uploadImage', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+                    document.getElementById('file').value = data.url;
+                    callback(data.url);
+                } catch (error) {
+                    console.error('이미지 업로드 실패:', error);
+                }
+            }
+        }
+    });
+
+    document.getElementById('writeForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const title = document.getElementById('title').value.trim();
+        const content = editor.getHTML();
+
+        if (title === "") {
+            alert("제목을 입력해주세요.");
+            document.getElementById('title').focus();
+            return false;
+        }
+
+        if (content === "") {
+            alert("내용을 입력해주세요.");
+            editor.focus();
+            return false;
+        }
+
+        document.getElementById('content').value = content;
+        this.submit();
+    });
+</script>
 
 </body>
 

@@ -74,7 +74,8 @@
         .pagination {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
+            margin-bottom: -10px;
         }
 
         .table th,

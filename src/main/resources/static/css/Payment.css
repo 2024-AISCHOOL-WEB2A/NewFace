@@ -73,13 +73,14 @@
 .username {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    font-family: var(--font-bold);
+    font-family: 'GmarketSans', sans-serif !important;
+    font-weight: 600;
 }
 
 .email {
     color: #666;
     margin-bottom: 20px;
-    font-family: var(--font-light);
+    font-family: 'GmarketSans', sans-serif !important;
 }
 
 .point-display {
@@ -98,7 +99,10 @@
 
 .point-amount {
     font-family: var(--font-bold);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-family: 'GmarketSans', sans-serif !important;
+    font-weight: 600;
+    color: #666;
 }
 
 .charge-button {
@@ -108,7 +112,8 @@
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
-    font-family: var(--font-bold);
+    font-family: 'GmarketSans', sans-serif; /* 폰트 적용 */
+    font-weight: 600;
     width: 100%;
 }
 
@@ -442,9 +447,10 @@
     background-color: #d3d3d3 !important; /* 취소 버튼 배경색 */
     color: white !important; /* 텍스트 색상 */
     border-radius: 6px !important; /* 둥근 버튼 */
-    padding: 6px 12px !important; /* 버튼 크기 조정 */
+    padding: 8px 16px !important; /* 버튼 크기 조정 */
     font-size: 13px !important; /* 텍스트 크기 */
     border: none !important; /* 테두리 제거 */
+    font-weight: 1000;
 }
 
 .custom-cancel-button:hover {
@@ -455,7 +461,7 @@
     background-color: #FF3B69 !important; /* 확인 버튼 배경색 */
     color: white !important; /* 텍스트 색상 */
     border-radius: 6px !important; /* 둥근 버튼 */
-    padding: 6px 12px !important; /* 버튼 크기 조정 */
+    padding: 8px 16px !important; /* 버튼 크기 조정 */
     font-size: 13px !important; /* 텍스트 크기 */
     border: none !important; /* 테두리 제거 */
 }
@@ -481,4 +487,110 @@
 
 .custom-text-class {
     font-size: 12px !important; /* 글자 크기만 키움 */
+}
+
+/* 테이블 기본 스타일 */
+.usage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 테이블 헤더 스타일 */
+.usage-table thead tr {
+    background-color: white;
+    border-bottom: 2px solid white;
+}
+
+.usage-table th {
+    padding: 15px;
+    text-align: center;
+    font-family: 'GmarketSansBold', sans-serif;
+    color: #495057;
+    font-size: 1.3rem;
+}
+
+/* 열 너비 조정 */
+.usage-table th:nth-child(1), /* 번호 */
+.usage-table td:nth-child(1) {
+    width: 10%;
+    font-size: 1.4rem;
+    font-family: "GmarketSansLight", sans-serif !important;
+}
+
+.usage-table th:nth-child(2), /* 날짜 */
+.usage-table td:nth-child(2) {
+    width: 25%;
+    font-size: 1.4rem;
+    font-family: "GmarketSansLight", sans-serif !important;
+}
+
+.usage-table th:nth-child(3), /* 스마일 */
+.usage-table td:nth-child(3) {
+    width: 15%;
+    font-size: 1.4rem;
+    font-family: "GmarketSansLight", sans-serif !important;
+}
+
+.usage-table th:nth-child(4), /* 내역 */
+.usage-table td:nth-child(4) {
+    width: 25%;
+    font-size: 1.4rem;
+    font-family: "GmarketSansLight", sans-serif !important;
+}
+
+.usage-table th:nth-child(5), /* 잔여 포인트 */
+.usage-table td:nth-child(5) {
+    width: 25%;
+    font-size: 1.4rem !important;
+    font-family: "GmarketSansLight", sans-serif !important
+}
+
+/* 테이블 셀 스타일 */
+.usage-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+/* 마지막 행의 테두리 제거 */
+.usage-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 스마일 포인트 스타일 */
+.usage-table .point-amount {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.usage-table .point-amount.positive {
+    color: #2196F3;
+}
+
+.usage-table .point-amount.negative {
+    color: #F44336;
+}
+
+/* 홀수 행 배경색 */
+.usage-table tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* 행 호버 효과 */
+.usage-table tbody tr:hover {
+    background-color: #f1f3f5;
+    transition: background-color 0.2s ease;
+}
+
+/* 잔여 포인트 스타일 */
+.usage-table .remaining-points {
+    color: #666;
+    font-size: 1.4rem;
 }

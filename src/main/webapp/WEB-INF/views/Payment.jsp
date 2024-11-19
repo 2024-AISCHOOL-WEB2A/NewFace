@@ -57,34 +57,46 @@
                         <h2 style="margin: 0;">사용 내역</h2>
                     </div>
                     <div class="usage-list">
-                        <c:forEach var="payment" items="${allPayments}">
-                            <div class="usage-item">
-                                <div class="item-title">
-                                    ${payment.pointAmount > 0 ? '스마일 충전' : '스마일 사용'}
-                                </div>
-                                <div class="item-date">
-                                    ${payment.formattedPointDate}
-                                </div>
-                                <div class="item-amount ${payment.pointAmount > 0 ? 'positive' : 'negative'}">
-                                    ${payment.pointAmount > 0 ? '+' : ''}${payment.pointAmount}
-                                </div>
-                                <div class="item-total">${payment.totalPoints}</div>
-                            </div>
-                        </c:forEach>
-
-                        <c:forEach var="usePayment" items="${usePayments}">
-                            <div class="usage-item">
-                                <div class="item-title">스마일 사용${character.characterName}</div>
-                                <div class="item-date">
-                                    ${usePayment.formattedPointDate}
-                                </div>
-                                <div class="item-amount negative">${usePayment.pointAmount}</div>
-                                <div class="item-total">${usePayment.totalPoints}</div>
-                            </div>
-                        </c:forEach>
+                        <table class="usage-table">
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>날짜</th>
+                                    <th>스마일</th>
+                                    <th>내역</th>
+                                    <th>잔여 포인트</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="payment" items="${allPayments}" varStatus="status">
+                                    <tr>
+                                        <td>${status.count}</td>
+                                        <td>${payment.formattedPointDate}</td>
+                                        <td>
+                                            <span class="point-amount ${payment.pointAmount > 0 ? 'positive' : 'negative'}">
+                                                ${payment.pointAmount > 0 ? '+' : ''}${payment.pointAmount}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${payment.pointAmount > 0}">
+                                                    스마일 충전
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${payment.character.characterName} 대여
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        <td>
+                                            <span class="remaining-points">
+                                                ${payment.totalPoints} P
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
 
             <!-- 회원정보 수정 모달 -->
             <div class="edit-profile-modal" id="editProfileModal">

@@ -40,41 +40,41 @@ public class PaymentController {
     
     @GetMapping("/payment")
     public String payment(Model model, HttpSession session) {
-    User loginUser = (User) session.getAttribute("loginUser");
+        User loginUser = (User) session.getAttribute("loginUser");
+        
+        if(loginUser != null) {
+            model.addAttribute("user", loginUser);
     
-    if(loginUser != null) {
-        model.addAttribute("user", loginUser);
-
-        List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
-        
-        // 모든 포인트 내역을 날짜 역순으로 정렬
-        List<PointPayment> allPayments = new ArrayList<>(pointPayments);
-        allPayments.sort((a, b) -> b.getPointDate().compareTo(a.getPointDate()));
-        
-        // 누적 포인트 계산을 위해 날짜순 정렬된 리스트 생성
-        List<PointPayment> forCalculation = new ArrayList<>(pointPayments);
-        forCalculation.sort(Comparator.comparing(PointPayment::getPointDate));
-        
-        int runningTotal = 0;
-        for(PointPayment payment : forCalculation) {
-            runningTotal += payment.getPointAmount();
-            payment.setTotalPoints(runningTotal);
-        }
-        
-        // 역순 정렬된 리스트의 totalPoints 설정
-        for(PointPayment payment : allPayments) {
-            int index = forCalculation.indexOf(payment);
-            payment.setTotalPoints(forCalculation.get(index).getTotalPoints());
-        }
-        
-        model.addAttribute("allPayments", allPayments);  // 하나의 리스트로 전달
-        model.addAttribute("currentTotal", runningTotal);
-       
-        return "Payment";  
-    } else {
-        return "redirect:/loginForm";  
-    } 
-}
+            List<PointPayment> pointPayments = pointPaymentService.getPointPaymentsByUserIdx(loginUser.getUserIdx());
+            
+            // 모든 포인트 내역을 날짜 역순으로 정렬
+            List<PointPayment> allPayments = new ArrayList<>(pointPayments);
+            allPayments.sort((a, b) -> b.getPointDate().compareTo(a.getPointDate()));
+            
+            // 누적 포인트 계산을 위해 날짜순 정렬된 리스트 생성
+            List<PointPayment> forCalculation = new ArrayList<>(pointPayments);
+            forCalculation.sort(Comparator.comparing(PointPayment::getPointDate));
+            
+            int runningTotal = 0;
+            for(PointPayment payment : forCalculation) {
+                runningTotal += payment.getPointAmount();
+                payment.setTotalPoints(runningTotal);
+            }
+            
+            // 역순 정렬된 리스트의 totalPoints 설정
+            for(PointPayment payment : allPayments) {
+                int index = forCalculation.indexOf(payment);
+                payment.setTotalPoints(forCalculation.get(index).getTotalPoints());
+            }
+            
+            model.addAttribute("allPayments", allPayments);
+            model.addAttribute("currentTotal", runningTotal);
+           
+            return "Payment";  
+        } else {
+            return "redirect:/loginForm";  
+        } 
+    }
 
     @PostMapping("payment/complete")
     @ResponseBody
