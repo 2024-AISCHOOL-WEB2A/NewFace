@@ -266,7 +266,7 @@
                                     confirmButtonColor: '#FF3B69',
                                     customClass: {
                                         confirmButton: 'custom-confirm-button2',
-                                        htmlContainer: 'custom-text-class' // 텍스트 스타일만 변경
+                                        htmlContainer: 'swal2-html-container'
                                     }
                                 }).then((result) => {
                                     if (result.isConfirmed) {
