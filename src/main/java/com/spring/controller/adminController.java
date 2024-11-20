@@ -49,6 +49,7 @@ public class adminController {
         model.addAttribute("notices", notices);
         model.addAttribute("faqs", faqs);
         model.addAttribute("requests", requests);
+        model.addAttribute("currentMenu", "dashboard");
         
         return "admin";
     }
@@ -88,6 +89,7 @@ public class adminController {
         model.addAttribute("users", currentUsers);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages",Math.max(1, totalPages));
+        model.addAttribute("currentMenu", "user-list");
                                     
         return "admin-user-list";  
     

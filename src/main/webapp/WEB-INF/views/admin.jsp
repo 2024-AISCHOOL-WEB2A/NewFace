@@ -60,26 +60,22 @@
                 <div class="menu-inner-shadow"></div>
                 <ul class="menu-inner py-1">
                     <!-- 대시보드 링크 -->
-                    <li class="menu-item active">
-                        <a href="/admin"class="menu-link">
+                    <li class="menu-item ${currentMenu == 'dashboard' ? 'active' : ''}">
+                        <a href="/admin" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">대시보드</div>
                         </a>
                     </li>
-
-                    <!-- 관리 메뉴 -->
-                    <!-- <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">관리</span>
-                    </li> -->
-                    <li class="menu-item">
+                
+                    <!-- 유저 관리 링크 -->
+                    <li class="menu-item ${currentMenu == 'user-list' ? 'active' : ''}">
                         <a href="user-list" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Account Settings">유저 관리</div>
                         </a>
                     </li>
-
-                    <!-- 계정 메뉴 -->
-                    <!-- <li class="menu-header small text-uppercase"><span class="menu-header-text">계정</span></li> -->
+                
+                    <!-- 로그아웃 링크 -->
                     <li class="menu-item">
                         <a href="/logout" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-log-out-circle"></i>

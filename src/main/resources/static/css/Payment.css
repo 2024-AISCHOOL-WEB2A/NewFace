@@ -485,8 +485,8 @@
     background-color: #e63461; /* 호버 시 색상 */
 }
 
-.custom-text-class {
-    font-size: 12px !important; /* 글자 크기만 키움 */
+.swal2-html-container {
+    font-size: 14px !important;
 }
 
 /* 테이블 기본 스타일 */
