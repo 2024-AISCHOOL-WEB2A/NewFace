@@ -124,7 +124,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3> 캐릭터 도감 </h3>
+						<h3> 캐릭터 소개 </h3>
 						<p>다양한 캐릭터 정보를 한눈에! 당신이 좋아하는 캐릭터들을 찾아보세요!</p>
 					</div>
 				</div>

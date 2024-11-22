@@ -176,26 +176,27 @@
             const chargeBtn = document.getElementById('chargeBtn');
 
             // 충전하기 버튼 클릭 이벤트
+            // data-amount가 금액부분임
             chargeBtn.addEventListener('click', function() {
                 Swal.fire({
                     title: '<div style="display: flex; align-items: center; justify-content: center; gap: 10px;"><img src="/image/happy.png" style="width: 30px; height: 30px;">스마일 충전</div>',
                     html: `
                         <div class="charge-options" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 20px 0;">
-                            <button class="charge-option" data-amount="100" data-point="100" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
+                            <button class="charge-option" data-amount="10000" data-point="100" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
                                 <div style="font-size: 16px; font-weight: bold;">100 스마일</div>
-                                <div style="color: #666;">100원</div>
+                                <div style="color: #666;">10,000원</div>
                             </button>
-                            <button class="charge-option" data-amount="300" data-point="300" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
+                            <button class="charge-option" data-amount="20000" data-point="200" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
+                                <div style="font-size: 16px; font-weight: bold;">200 스마일</div>
+                                <div style="color: #666;">20,000원</div>
+                            </button>
+                            <button class="charge-option" data-amount="30000" data-point="300" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
                                 <div style="font-size: 16px; font-weight: bold;">300 스마일</div>
-                                <div style="color: #666;">300원</div>
+                                <div style="color: #666;">30,000원</div>
                             </button>
-                            <button class="charge-option" data-amount="500" data-point="500" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
+                            <button class="charge-option" data-amount="50000" data-point="500" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
                                 <div style="font-size: 16px; font-weight: bold;">500 스마일</div>
-                                <div style="color: #666;">500원</div>
-                            </button>
-                            <button class="charge-option" data-amount="1000" data-point="1000" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer;">
-                                <div style="font-size: 16px; font-weight: bold;">1000 스마일</div>
-                                <div style="color: #666;">1,000원</div>
+                                <div style="color: #666;">50,000원</div>
                             </button>
                         </div>
                     `,
