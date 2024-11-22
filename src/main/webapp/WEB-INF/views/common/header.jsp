@@ -12,8 +12,6 @@
             <nav id="fh5co-menu-wrap" role="navigation">
                 <ul class="sf-menu" id="fh5co-primary-menu">
                     <li><a href="/" class="<%= request.getRequestURI().equals(" /") ? "active" : "" %>">HOME</a></li>
-                    <li><a href="/start_virtual" class="<%= request.getRequestURI().contains(" start_virtual")
-                            ? "active" : "" %>">게임하기</a></li>
                     <li><a href="/character_intro" class="<%= request.getRequestURI().contains(" character_intro")
                             ? "active" : "" %>">캐릭터 소개</a></li>
                     <li><a href="/pride_board" class="<%= request.getRequestURI().contains(" pride_board") ? "active"
@@ -26,6 +24,9 @@
                     <li><a></a></li>
                     <li><a></a></li>
                     <li><a></a></li>
+                    <li><a></a></li>
+                    <li><a></a></li>
+
 
 
                     <!-- 로그인 상태 확인하여 if 조건문으로 버튼 표시 -->
