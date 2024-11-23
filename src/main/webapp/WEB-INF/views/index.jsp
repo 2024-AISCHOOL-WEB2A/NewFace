@@ -28,7 +28,7 @@
 
   <!-- Build script -->
 
-  <script type="module" crossorigin src="/assets/index-ZSEkPd2i.js"></script>
+  <script type="module" crossorigin src="/assets/index-_taSoYhx.js"></script>
 </head>
 
 <body>
